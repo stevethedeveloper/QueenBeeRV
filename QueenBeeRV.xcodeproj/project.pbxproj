@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA782BDD2A16EC7400ACFCC5 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */; };
+		AA782BE02A16FAD500ACFCC5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = AA782BDF2A16FAD500ACFCC5 /* SDWebImage */; };
 		AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC932A15805300BE8E70 /* AppDelegate.swift */; };
 		AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */; };
-		AAFEDC982A15805300BE8E70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC972A15805300BE8E70 /* ViewController.swift */; };
-		AAFEDC9B2A15805300BE8E70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAFEDC992A15805300BE8E70 /* Main.storyboard */; };
 		AAFEDC9E2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC9C2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld */; };
 		AAFEDCA02A15805500BE8E70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAFEDC9F2A15805500BE8E70 /* Assets.xcassets */; };
 		AAFEDCA32A15805500BE8E70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAFEDCA12A15805500BE8E70 /* LaunchScreen.storyboard */; };
 		AAFEDCAE2A15805500BE8E70 /* QueenBeeRVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCAD2A15805500BE8E70 /* QueenBeeRVTests.swift */; };
 		AAFEDCB82A15805500BE8E70 /* QueenBeeRVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCB72A15805500BE8E70 /* QueenBeeRVUITests.swift */; };
 		AAFEDCBA2A15805500BE8E70 /* QueenBeeRVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCB92A15805500BE8E70 /* QueenBeeRVUITestsLaunchTests.swift */; };
+		AAFEDCCB2A15950B00BE8E70 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */; };
+		AAFEDCCE2A15A5B800BE8E70 /* BlogListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCCD2A15A5B800BE8E70 /* BlogListVC.swift */; };
+		AAFEDCD02A15A8BA00BE8E70 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */; };
+		AAFEDCD32A15B3FC00BE8E70 /* Blogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCD22A15B3FC00BE8E70 /* Blogs.swift */; };
+		AAFEDCD52A15B41300BE8E70 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCD42A15B41300BE8E70 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		AAFEDC902A15805300BE8E70 /* QueenBeeRV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueenBeeRV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFEDC932A15805300BE8E70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AAFEDC972A15805300BE8E70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AAFEDC9A2A15805300BE8E70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AAFEDC9D2A15805300BE8E70 /* QueenBeeRV.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QueenBeeRV.xcdatamodel; sourceTree = "<group>"; };
 		AAFEDC9F2A15805500BE8E70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAFEDCA22A15805500BE8E70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +55,11 @@
 		AAFEDCB32A15805500BE8E70 /* QueenBeeRVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QueenBeeRVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFEDCB72A15805500BE8E70 /* QueenBeeRVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBeeRVUITests.swift; sourceTree = "<group>"; };
 		AAFEDCB92A15805500BE8E70 /* QueenBeeRVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBeeRVUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		AAFEDCCD2A15A5B800BE8E70 /* BlogListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlogListVC.swift; path = QueenBeeRV/BlogListVC.swift; sourceTree = SOURCE_ROOT; };
+		AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		AAFEDCD22A15B3FC00BE8E70 /* Blogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blogs.swift; sourceTree = "<group>"; };
+		AAFEDCD42A15B41300BE8E70 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA782BE02A16FAD500ACFCC5 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,14 +111,13 @@
 		AAFEDC922A15805300BE8E70 /* QueenBeeRV */ = {
 			isa = PBXGroup;
 			children = (
-				AAFEDC932A15805300BE8E70 /* AppDelegate.swift */,
-				AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */,
-				AAFEDC972A15805300BE8E70 /* ViewController.swift */,
-				AAFEDC992A15805300BE8E70 /* Main.storyboard */,
-				AAFEDC9F2A15805500BE8E70 /* Assets.xcassets */,
-				AAFEDCA12A15805500BE8E70 /* LaunchScreen.storyboard */,
+				AAFEDCD12A15B3B000BE8E70 /* Model */,
+				AAFEDCC92A1594CF00BE8E70 /* Extensions */,
+				AAFEDCCD2A15A5B800BE8E70 /* BlogListVC.swift */,
+				AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */,
 				AAFEDCA42A15805500BE8E70 /* Info.plist */,
 				AAFEDC9C2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld */,
+				AAFEDCCC2A15961F00BE8E70 /* Supporting */,
 			);
 			path = QueenBeeRV;
 			sourceTree = "<group>";
@@ -130,6 +139,35 @@
 			path = QueenBeeRVUITests;
 			sourceTree = "<group>";
 		};
+		AAFEDCC92A1594CF00BE8E70 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */,
+				AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AAFEDCCC2A15961F00BE8E70 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEDC932A15805300BE8E70 /* AppDelegate.swift */,
+				AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */,
+				AAFEDC9F2A15805500BE8E70 /* Assets.xcassets */,
+				AAFEDCA12A15805500BE8E70 /* LaunchScreen.storyboard */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		AAFEDCD12A15B3B000BE8E70 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEDCD22A15B3FC00BE8E70 /* Blogs.swift */,
+				AAFEDCD42A15B41300BE8E70 /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +184,9 @@
 			dependencies = (
 			);
 			name = QueenBeeRV;
+			packageProductDependencies = (
+				AA782BDF2A16FAD500ACFCC5 /* SDWebImage */,
+			);
 			productName = QueenBeeRV;
 			productReference = AAFEDC902A15805300BE8E70 /* QueenBeeRV.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +259,9 @@
 				Base,
 			);
 			mainGroup = AAFEDC872A15805300BE8E70;
+			packageReferences = (
+				AA782BDE2A16FAD500ACFCC5 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = AAFEDC912A15805300BE8E70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -236,7 +280,6 @@
 			files = (
 				AAFEDCA32A15805500BE8E70 /* LaunchScreen.storyboard in Resources */,
 				AAFEDCA02A15805500BE8E70 /* Assets.xcassets in Resources */,
-				AAFEDC9B2A15805300BE8E70 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +304,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAFEDC982A15805300BE8E70 /* ViewController.swift in Sources */,
+				AA782BDD2A16EC7400ACFCC5 /* String+Ext.swift in Sources */,
 				AAFEDC9E2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld in Sources */,
+				AAFEDCCE2A15A5B800BE8E70 /* BlogListVC.swift in Sources */,
+				AAFEDCD32A15B3FC00BE8E70 /* Blogs.swift in Sources */,
+				AAFEDCD52A15B41300BE8E70 /* Post.swift in Sources */,
+				AAFEDCCB2A15950B00BE8E70 /* UIView+Ext.swift in Sources */,
 				AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */,
 				AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */,
+				AAFEDCD02A15A8BA00BE8E70 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +349,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AAFEDC992A15805300BE8E70 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AAFEDC9A2A15805300BE8E70 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AAFEDCA12A15805500BE8E70 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -445,10 +485,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueenBeeRV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -473,10 +512,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueenBeeRV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -606,6 +644,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA782BDE2A16FAD500ACFCC5 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA782BDF2A16FAD500ACFCC5 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA782BDE2A16FAD500ACFCC5 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		AAFEDC9C2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld */ = {
