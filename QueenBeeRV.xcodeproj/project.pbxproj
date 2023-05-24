@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AA782BDD2A16EC7400ACFCC5 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */; };
 		AA782BE02A16FAD500ACFCC5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = AA782BDF2A16FAD500ACFCC5 /* SDWebImage */; };
+		AA9D82352A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = AA9D82342A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper */; };
+		AAD616BD2A1C4494008EC100 /* BlogPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */; };
 		AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC932A15805300BE8E70 /* AppDelegate.swift */; };
 		AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */; };
 		AAFEDC9E2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC9C2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld */; };
@@ -43,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostVC.swift; sourceTree = "<group>"; };
 		AAFEDC902A15805300BE8E70 /* QueenBeeRV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueenBeeRV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFEDC932A15805300BE8E70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA782BE02A16FAD500ACFCC5 /* SDWebImage in Frameworks */,
+				AA9D82352A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +118,7 @@
 				AAFEDCD12A15B3B000BE8E70 /* Model */,
 				AAFEDCC92A1594CF00BE8E70 /* Extensions */,
 				AAFEDCCD2A15A5B800BE8E70 /* BlogListVC.swift */,
+				AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */,
 				AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */,
 				AAFEDCA42A15805500BE8E70 /* Info.plist */,
 				AAFEDC9C2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld */,
@@ -186,6 +191,7 @@
 			name = QueenBeeRV;
 			packageProductDependencies = (
 				AA782BDF2A16FAD500ACFCC5 /* SDWebImage */,
+				AA9D82342A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper */,
 			);
 			productName = QueenBeeRV;
 			productReference = AAFEDC902A15805300BE8E70 /* QueenBeeRV.app */;
@@ -261,6 +267,7 @@
 			mainGroup = AAFEDC872A15805300BE8E70;
 			packageReferences = (
 				AA782BDE2A16FAD500ACFCC5 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				AA9D82332A1EBF9500DF1E5C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 			);
 			productRefGroup = AAFEDC912A15805300BE8E70 /* Products */;
 			projectDirPath = "";
@@ -308,6 +315,7 @@
 				AAFEDC9E2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld in Sources */,
 				AAFEDCCE2A15A5B800BE8E70 /* BlogListVC.swift in Sources */,
 				AAFEDCD32A15B3FC00BE8E70 /* Blogs.swift in Sources */,
+				AAD616BD2A1C4494008EC100 /* BlogPostVC.swift in Sources */,
 				AAFEDCD52A15B41300BE8E70 /* Post.swift in Sources */,
 				AAFEDCCB2A15950B00BE8E70 /* UIView+Ext.swift in Sources */,
 				AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */,
@@ -654,6 +662,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		AA9D82332A1EBF9500DF1E5C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -661,6 +677,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA782BDE2A16FAD500ACFCC5 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		AA9D82342A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA9D82332A1EBF9500DF1E5C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
 		};
 /* End XCSwiftPackageProductDependency section */
 

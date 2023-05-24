@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -25,7 +24,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let titleColor = UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
         navController.navigationBar.titleTextAttributes = [.foregroundColor: titleColor]
         navController.navigationBar.largeTitleTextAttributes = [.foregroundColor: titleColor]
-
+        navController.navigationBar.backgroundColor = .black
+        navController.navigationBar.isTranslucent = false
+        
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
+        ]
+        navigationBarAppearance.largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
+        ]
+        navigationBarAppearance.backgroundColor = UIColor.black
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        
+//        let tabBarApperance = UITabBarAppearance()
+//        tabBarApperance.configureWithOpaqueBackground()
+//        tabBarApperance.backgroundColor = UIColor.black
+//        UITabBar.appearance().scrollEdgeAppearance = tabBarApperance
+//        UITabBar.appearance().standardAppearance = tabBarApperance
+    
+        
+        
+        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = navController

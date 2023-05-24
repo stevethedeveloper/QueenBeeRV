@@ -19,14 +19,17 @@ class BlogListVC: UIViewController {
         
         let urlString: String
         urlString = "https://queenbeerv.com/blog/f.json"
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                parse(json: data)
-                return
-            }
-        }
         
-        showError()
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let url = URL(string: urlString) {
+                if let data = try? Data(contentsOf: url) {
+                    self.parse(json: data)
+                    return
+                }
+            }
+            
+            self.showError()
+        }
     }
     
     func parse(json: Data) {
@@ -34,14 +37,18 @@ class BlogListVC: UIViewController {
         
         if let jsonBlogs = try? decoder.decode(Blogs.self, from: json) {
             blogPosts = jsonBlogs.items
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 
     func showError() {
-        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        DispatchQueue.main.async {
+            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+        }
     }
 
     func configureTableView() {
@@ -55,6 +62,7 @@ class BlogListVC: UIViewController {
         tableView.register(PostCell.self, forCellReuseIdentifier: "PostCell")
         // set constraints
         tableView.pin(to: view)
+        tableView.backgroundColor = .black
     }
 }
 
@@ -68,5 +76,12 @@ extension BlogListVC: UITableViewDelegate, UITableViewDataSource {
         let post = blogPosts[indexPath.row]
         cell.set(post: post)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = BlogPostVC()
+//        vc.modalPresentationStyle = .fullScreen
+        vc.currentWebsite = blogPosts[indexPath.row].url
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

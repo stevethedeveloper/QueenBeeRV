@@ -19,6 +19,8 @@ class PostCell: UITableViewCell {
         addSubview(blogImageView)
         addSubview(blogTitleLabel)
         
+        self.backgroundColor = .black
+        
         configureImageView()
         configureTitleLabel()
         setImageConstraints()
@@ -41,6 +43,7 @@ class PostCell: UITableViewCell {
 //        let regex: NSRegularExpression = try! NSRegularExpression(pattern: regex, options: .caseInsensitive)
 //        let images = post.html_content.regex(pattern: "")
         blogTitleLabel.text = post.title
+        blogTitleLabel.textColor = .white
     }
 
     func configureImageView() {
