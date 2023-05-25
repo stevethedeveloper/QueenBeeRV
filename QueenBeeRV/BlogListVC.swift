@@ -62,7 +62,7 @@ class BlogListVC: UIViewController {
         tableView.register(PostCell.self, forCellReuseIdentifier: "PostCell")
         // set constraints
         tableView.pin(to: view)
-        tableView.backgroundColor = .black
+//        tableView.backgroundColor = .black
     }
 }
 

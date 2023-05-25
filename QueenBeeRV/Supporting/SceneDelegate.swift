@@ -16,29 +16,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
+                
+        let firstViewController = BlogListVC()
+        firstViewController.title = "Blog"
+        let secondViewController = VideoVC()
+        secondViewController.title = "Videos"
         
-        let viewController = BlogListVC()
-        viewController.view.backgroundColor = UIColor.white
-        let navController = UINavigationController(rootViewController: viewController)
-        navController.navigationBar.prefersLargeTitles = true
+//        viewController.view.backgroundColor = UIColor.white
+        let firstNavController = UINavigationController(rootViewController: firstViewController)
+        let secondNavController = UINavigationController(rootViewController: secondViewController)
+
+//        firstNavController.viewControllers = [firstNavController, secondNavController]
+        
+        firstNavController.navigationBar.prefersLargeTitles = true
         let titleColor = UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
-        navController.navigationBar.titleTextAttributes = [.foregroundColor: titleColor]
-        navController.navigationBar.largeTitleTextAttributes = [.foregroundColor: titleColor]
-        navController.navigationBar.backgroundColor = .black
-        navController.navigationBar.isTranslucent = false
+        firstNavController.navigationBar.titleTextAttributes = [.foregroundColor: titleColor]
+        firstNavController.navigationBar.largeTitleTextAttributes = [.foregroundColor: titleColor]
+        firstNavController.navigationBar.tintColor = titleColor
         
-        let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.configureWithOpaqueBackground()
-        navigationBarAppearance.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor : UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
-        ]
-        navigationBarAppearance.largeTitleTextAttributes = [
-            NSAttributedString.Key.foregroundColor : UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
-        ]
-        navigationBarAppearance.backgroundColor = UIColor.black
-        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        let tabController = UITabBarController()
+        tabController.viewControllers = [firstNavController, secondNavController]
+        tabController.tabBar.tintColor = titleColor
+//        navController.navigationBar.backgroundColor = .black
+//        navController.navigationBar.isTranslucent = false
+        
+//        let navigationBarAppearance = UINavigationBarAppearance()
+//        navigationBarAppearance.configureWithOpaqueBackground()
+//        navigationBarAppearance.titleTextAttributes = [
+//            NSAttributedString.Key.foregroundColor : UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
+//        ]
+//        navigationBarAppearance.largeTitleTextAttributes = [
+//            NSAttributedString.Key.foregroundColor : UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
+//        ]
+//        navigationBarAppearance.backgroundColor = UIColor.black
+//        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+//        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+//        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
 //        let tabBarApperance = UITabBarAppearance()
 //        tabBarApperance.configureWithOpaqueBackground()
@@ -51,7 +64,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = navController
+        window?.rootViewController = tabController
         window?.makeKeyAndVisible()
     }
 
