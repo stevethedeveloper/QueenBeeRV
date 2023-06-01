@@ -46,7 +46,6 @@
 
 /* Begin PBXFileReference section */
 		AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		AA7C765C2A2845EF007C3E46 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
 		AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostVC.swift; sourceTree = "<group>"; };
 		AAFEDC902A15805300BE8E70 /* QueenBeeRV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueenBeeRV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +123,6 @@
 				AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */,
 				AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */,
 				AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */,
-				AA7C765C2A2845EF007C3E46 /* Config.xcconfig */,
 				AAFEDCA42A15805500BE8E70 /* Info.plist */,
 				AAFEDC9C2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld */,
 				AAFEDCCC2A15961F00BE8E70 /* Supporting */,
