@@ -65,7 +65,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = tabController
-        window?.makeKeyAndVisible()
+        window?.makeKeyAndVisible()        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

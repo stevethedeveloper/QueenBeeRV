@@ -11,7 +11,8 @@ import YouTubeiOSPlayerHelper
 class VideoVC: UIViewController {
 
     var playerView: YTPlayerView!
-
+    let youtubeKey = Bundle.main.infoDictionary?["YOUTUBE_KEY"] as? String
+    
     override func loadView() {
         view = UIView()
         
@@ -39,9 +40,6 @@ class VideoVC: UIViewController {
         
         
         
-
-        
-        
     }
     
     override func viewDidLoad() {
@@ -53,7 +51,12 @@ class VideoVC: UIViewController {
         // get all playlists
 //        urlString = "https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCyX7EwK1gp-ttAny5j3VmPg&key=AIzaSyDa7ztQFUTcUpSKDUF8bg6PlN9q2plsLR8"
         // get videos from playlist
-        urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLHjzGLpw8j9HL4cQmGuKRelglepviECd0&key=AIzaSyDa7ztQFUTcUpSKDUF8bg6PlN9q2plsLR8&maxResults=55"
+        
+        // this gets the latest video, the playlist id is the same as the channel id only starting with UU instead of UC
+        // https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUyX7EwK1gp-ttAny5j3VmPg&key=AIzaSyDa7ztQFUTcUpSKDUF8bg6PlN9q2plsLR8&maxResults=1
+        
+        
+        urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLHjzGLpw8j9HL4cQmGuKRelglepviECd0&key=\(youtubeKey ?? "")&maxResults=55"
 
         DispatchQueue.global(qos: .userInitiated).async {
             if let url = URL(string: urlString) {
