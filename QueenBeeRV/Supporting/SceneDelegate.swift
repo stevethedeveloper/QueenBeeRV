@@ -16,10 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-                
+
         let firstViewController = BlogListVC()
-        firstViewController.title = "Blog"
-        let secondViewController = VideoVC()
+        firstViewController.title = "Blogs"
+        let secondViewController = VideoListVC()
         secondViewController.title = "Videos"
         
 //        viewController.view.backgroundColor = UIColor.white
@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        firstNavController.viewControllers = [firstNavController, secondNavController]
         
         firstNavController.navigationBar.prefersLargeTitles = true
-        let titleColor = UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
+        let titleColor = UIColor.tintColor
         firstNavController.navigationBar.titleTextAttributes = [.foregroundColor: titleColor]
         firstNavController.navigationBar.largeTitleTextAttributes = [.foregroundColor: titleColor]
         firstNavController.navigationBar.tintColor = titleColor
@@ -37,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabController = UITabBarController()
         tabController.viewControllers = [firstNavController, secondNavController]
         tabController.tabBar.tintColor = titleColor
+//        tabController.tabBar.backgroundColor = #colorLiteral(red: 0.913140689, green: 0.913140689, blue: 0.913140689, alpha: 1)
 //        navController.navigationBar.backgroundColor = .black
 //        navController.navigationBar.isTranslucent = false
         
@@ -63,6 +64,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.backgroundColor = .white
         window?.windowScene = windowScene
         window?.rootViewController = tabController
         window?.makeKeyAndVisible()        

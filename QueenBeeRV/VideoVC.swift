@@ -55,9 +55,9 @@ class VideoVC: UIViewController {
         // this gets the latest video, the playlist id is the same as the channel id only starting with UU instead of UC
         // https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUyX7EwK1gp-ttAny5j3VmPg&key=AIzaSyDa7ztQFUTcUpSKDUF8bg6PlN9q2plsLR8&maxResults=1
         
-        
+        print(youtubeKey!)
         urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLHjzGLpw8j9HL4cQmGuKRelglepviECd0&key=\(youtubeKey ?? "")&maxResults=55"
-
+print(urlString)
         DispatchQueue.global(qos: .userInitiated).async {
             if let url = URL(string: urlString) {
                 if let data = try? Data(contentsOf: url) {
