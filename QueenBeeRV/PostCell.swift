@@ -19,8 +19,6 @@ class PostCell: UITableViewCell {
         addSubview(blogImageView)
         addSubview(blogTitleLabel)
         
-//        self.backgroundColor = .black
-        
         configureImageView()
         configureTitleLabel()
         setImageConstraints()
@@ -38,12 +36,9 @@ class PostCell: UITableViewCell {
         let regex: Regex = /src\s*=\s*"(.+?)"/
         if let match = post.html_content.firstMatch(of: regex) {
             blogImageView.sd_setImage(with: URL(string: String(match.output.1)), placeholderImage: placeholderImage, options: SDWebImageOptions.highPriority, context: nil, progress: nil)
-//            print(match.output.1)
         }
-//        let regex: NSRegularExpression = try! NSRegularExpression(pattern: regex, options: .caseInsensitive)
-//        let images = post.html_content.regex(pattern: "")
+        // get title
         blogTitleLabel.text = post.title
-//        blogTitleLabel.textColor = .white
     }
 
     func configureImageView() {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA782BDD2A16EC7400ACFCC5 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */; };
 		AA782BE02A16FAD500ACFCC5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = AA782BDF2A16FAD500ACFCC5 /* SDWebImage */; };
+		AA7C93702A340EDF00237628 /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C936F2A340EDF00237628 /* PlaylistCell.swift */; };
 		AA7C9D5F2A314663004FF1EF /* VideoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C9D5E2A314663004FF1EF /* VideoListVC.swift */; };
 		AA7C9D612A31623A004FF1EF /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C9D602A31623A004FF1EF /* Playlists.swift */; };
 		AA7C9D632A316256004FF1EF /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C9D622A316256004FF1EF /* Playlist.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		AA7C765E2A28494E007C3E46 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		AA7C936F2A340EDF00237628 /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		AA7C9D5E2A314663004FF1EF /* VideoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListVC.swift; sourceTree = "<group>"; };
 		AA7C9D602A31623A004FF1EF /* Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlists.swift; sourceTree = "<group>"; };
 		AA7C9D622A316256004FF1EF /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				AAFEDCCD2A15A5B800BE8E70 /* BlogListVC.swift */,
 				AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */,
 				AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */,
+				AA7C936F2A340EDF00237628 /* PlaylistCell.swift */,
 				AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */,
 				AA7C9D5E2A314663004FF1EF /* VideoListVC.swift */,
 				AAFEDCA42A15805500BE8E70 /* Info.plist */,
@@ -343,6 +346,7 @@
 				AA7C9D652A316268004FF1EF /* Video.swift in Sources */,
 				AA7C9D612A31623A004FF1EF /* Playlists.swift in Sources */,
 				AA7C9D632A316256004FF1EF /* Playlist.swift in Sources */,
+				AA7C93702A340EDF00237628 /* PlaylistCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

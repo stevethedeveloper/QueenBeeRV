@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct Playlists: Codable {
+struct Playlists: Decodable {
+    var etag: String
     var items: [Playlist]
 }

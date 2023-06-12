@@ -17,10 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let firstViewController = BlogListVC()
-        firstViewController.title = "Blogs"
-        let secondViewController = VideoListVC()
-        secondViewController.title = "Videos"
+        let firstViewController = VideoListVC()
+        firstViewController.title = "Videos"
+        let secondViewController = BlogListVC()
+        secondViewController.title = "Blogs"
         
 //        viewController.view.backgroundColor = UIColor.white
         let firstNavController = UINavigationController(rootViewController: firstViewController)

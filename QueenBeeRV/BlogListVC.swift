@@ -20,18 +20,7 @@ class BlogListVC: UIViewController {
         getPosts()
         tableView.reloadData()
     }
-    
-    func parse(json: Data) {
-        let decoder = JSONDecoder()
         
-        if let jsonBlogs = try? decoder.decode(Blogs.self, from: json) {
-            blogPosts = jsonBlogs.items
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
     func configureTableView() {
         view.addSubview(tableView)
         tableView.delegate = self
@@ -53,6 +42,17 @@ class BlogListVC: UIViewController {
             self.parse(json: data)
             return
         }.resume()
+    }
+
+    func parse(json: Data) {
+        let decoder = JSONDecoder()
+        
+        if let jsonBlogs = try? decoder.decode(Blogs.self, from: json) {
+            blogPosts = jsonBlogs.items
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     func showError() {
