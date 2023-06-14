@@ -27,7 +27,7 @@ class VideoListVC: UIViewController {
                collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         
         view.addSubview(collectionView ?? UICollectionView())
-        collectionView?.register(PlaylistCell.self, forCellWithReuseIdentifier: "PlaylistCell")
+        collectionView?.register(VideoCollectionCell.self, forCellWithReuseIdentifier: "PlaylistCell")
         collectionView?.delegate = self
         collectionView?.dataSource = self
 //        collectionView.rowHeight = 100
@@ -80,7 +80,7 @@ class VideoListVC: UIViewController {
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
             }
-            print(playlists ?? Playlists.self)
+//            print(playlists ?? Playlists.self)
         } catch {
             showError()
         }
@@ -101,7 +101,7 @@ class VideoListVC: UIViewController {
 // MARK: Data delegate and datasource functions
 extension VideoListVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaylistCell", for: indexPath) as! PlaylistCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaylistCell", for: indexPath) as! VideoCollectionCell
         let playlist = playlists?.items[indexPath.row]
 //        cell.set(playlist: playlist)
         return cell

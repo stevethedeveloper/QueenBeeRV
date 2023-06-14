@@ -8,12 +8,13 @@
 import Foundation
 
 public struct Playlist: Decodable {
-    var id: String
+    var id: String?
     var publishedAt: String
     var title: String
     var description: String
     var thumbnailSmall: String
     var thumbnailLarge: String
+    var items: [Video]
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -34,7 +35,8 @@ public struct Playlist: Decodable {
     
     public init(from decoder: Decoder) throws {
         let rootContainer = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try rootContainer.decode(String.self, forKey: .id)
+        
+        self.id = try rootContainer.decodeIfPresent(String.self, forKey: .id)
         
         let snippet = try rootContainer.nestedContainer(keyedBy: PlaylistItemCodingKeys.self, forKey: CodingKeys.snippet)
         self.title = try snippet.decode(String.self, forKey: .title)
@@ -46,6 +48,7 @@ public struct Playlist: Decodable {
         let thumbnailSmallDetails = try thumbnails.nestedContainer(keyedBy: PlaylistItemThumbnailDetailsCodingKeys.self, forKey: PlaylistItemThumbnailCodingKeys.default)
         self.thumbnailLarge = try thumbnailLargeDetails.decode(String.self, forKey: .url)
         self.thumbnailSmall = try thumbnailSmallDetails.decode(String.self, forKey: .url)
+        items = [Video]()
     }
 }
 

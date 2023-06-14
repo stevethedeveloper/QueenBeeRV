@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class PlaylistCell: UICollectionViewCell {
+class VideoCollectionCell: UICollectionViewCell {
 
     fileprivate var bg: UIImageView = {
         let iv = UIImageView()
