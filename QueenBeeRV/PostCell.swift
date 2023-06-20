@@ -1,5 +1,5 @@
 //
-//  BlogCell.swift
+//  PostCell.swift
 //  QueenBeeRV
 //
 //  Created by Stephen Walton on 5/17/23.

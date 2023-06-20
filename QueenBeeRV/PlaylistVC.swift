@@ -7,35 +7,26 @@
 
 import UIKit
 
-class VideoListVC: UIViewController {
+class PlaylistVC: UIViewController {
     let youtubeKey = Bundle.main.infoDictionary?["YOUTUBE_KEY"] as? String
-    var playlists: Playlists?
+    var playlist: String?
+    var selectedVideo: Video?
+    
+    var tableView: UITableView?
 
-    var collectionView: UICollectionView?
-
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+        title = "All Videos"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCollectionView()
-        fetchPlaylists()
+        fetchPlaylist()
     }
     
-    func configureCollectionView() {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-               layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-               layout.itemSize = CGSize(width: 60, height: 60)
-               
-               collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        
-        view.addSubview(collectionView ?? UICollectionView())
-        collectionView?.register(VideoCollectionCell.self, forCellWithReuseIdentifier: "PlaylistCell")
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-//        collectionView.rowHeight = 100
-        collectionView?.pin(to: view)
-    }
-
     
-    func fetchPlaylists() {
+    func fetchPlaylist() {
         let url: URL = URL(string: "https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCyX7EwK1gp-ttAny5j3VmPg&key=\(youtubeKey ?? "")")!
 
         var request = URLRequest(url: url)
@@ -75,10 +66,10 @@ class VideoListVC: UIViewController {
 //        }
         
         do {
-            let playlistsDecoded = try decoder.decode(Playlists.self, from: json)
-            playlists = playlistsDecoded
+            let playlistsDecoded = try decoder.decode(Playlist.self, from: json)
+//            playlist = playlistsDecoded
             DispatchQueue.main.async {
-                self.collectionView?.reloadData()
+                self.tableView?.reloadData()
             }
 //            print(playlists ?? Playlists.self)
         } catch {
@@ -99,22 +90,13 @@ class VideoListVC: UIViewController {
 }
 
 // MARK: Data delegate and datasource functions
-extension VideoListVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaylistCell", for: indexPath) as! VideoCollectionCell
-        let playlist = playlists?.items[indexPath.row]
-//        cell.set(playlist: playlist)
-        return cell
+extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        playlists?.items.count ?? 0
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
-        
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = BlogPostVC()
-////        vc.modalPresentationStyle = .fullScreen
-//        vc.currentWebsite = blogPosts[indexPath.row].url
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
+    
 }

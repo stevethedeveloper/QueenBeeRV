@@ -21,5 +21,9 @@
 	</dict>
 	<key>YOUTUBE_KEY</key>
 	<string>$(YOUTUBE_KEY)</string>
+	<key>YOUTUBE_CHANNEL_ID</key>
+	<string>$(YOUTUBE_CHANNEL_ID)</string>
+	<key>YOUTUBE_ALL_VIDEOS_PLAYLIST_ID</key>
+	<string>$(YOUTUBE_ALL_VIDEOS_PLAYLIST_ID)</string>
 </dict>
 </plist>
