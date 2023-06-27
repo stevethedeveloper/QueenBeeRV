@@ -9,6 +9,7 @@ import Foundation
 
 struct Videos: Decodable {
     var etag: String
+    var nextPageToken: String?
     var items: [Video]
 }
 

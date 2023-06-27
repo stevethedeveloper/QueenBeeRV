@@ -24,6 +24,8 @@ class VideoTableSectionHeader: UITableViewHeaderFooterView {
         label.text = ""
         label.textColor = UIColor(named: "AccentColor")
         label.font = UIFont.systemFont(ofSize: 24)
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
         return label
     }()
@@ -56,7 +58,7 @@ class VideoTableSectionHeader: UITableViewHeaderFooterView {
         label.sizeToFit()
         label.frame = CGRect(x: 20,
                              y: contentView.frame.size.height - 10 - label.frame.size.height,
-                             width: contentView.frame.size.width,
+                             width: contentView.frame.size.width - 30,
                              height: label.frame.size.height)
 //        button.sizeToFit()
 //        button.frame = CGRect(x: -10,

@@ -13,6 +13,11 @@ class BlogListVC: UIViewController {
     
     var tableView = UITableView()
     
+    override func loadView() {
+        let view = UIView()
+        self.view = view
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Blog"

@@ -14,7 +14,7 @@ public struct Video: Decodable {
     var description: String
     var playlistId: String
     var thumbnailSmall: String
-    var thumbnailLarge: String
+//    var thumbnailLarge: String
     var videoId: String
     
     private enum CodingKeys: String, CodingKey {
@@ -31,7 +31,7 @@ public struct Video: Decodable {
     }
 
     private enum VideoThumbnailCodingKeys: String, CodingKey {
-        case standard, `default`
+        case `default`
     }
 
     private enum VideoThumbnailDetailsCodingKeys: String, CodingKey {
@@ -49,11 +49,15 @@ public struct Video: Decodable {
         self.playlistId = try snippet.decode(String.self, forKey: .playlistId)
 
         let thumbnails = try snippet.nestedContainer(keyedBy: VideoThumbnailCodingKeys.self, forKey: VideoCodingKeys.thumbnails)
-        let thumbnailLargeDetails = try thumbnails.nestedContainer(keyedBy: VideoThumbnailDetailsCodingKeys.self, forKey: VideoThumbnailCodingKeys.standard)
-        let thumbnailSmallDetails = try thumbnails.nestedContainer(keyedBy: VideoThumbnailDetailsCodingKeys.self, forKey: VideoThumbnailCodingKeys.default)
-        self.thumbnailLarge = try thumbnailLargeDetails.decode(String.self, forKey: .url)
-        self.thumbnailSmall = try thumbnailSmallDetails.decode(String.self, forKey: .url)
-
+        if !thumbnails.allKeys.isEmpty {
+            //            let thumbnailLargeDetails = try thumbnails.nestedContainer(keyedBy: VideoThumbnailDetailsCodingKeys.self, forKey: VideoThumbnailCodingKeys.standard)
+            let thumbnailSmallDetails = try thumbnails.nestedContainer(keyedBy: VideoThumbnailDetailsCodingKeys.self, forKey: VideoThumbnailCodingKeys.default)
+            //            self.thumbnailLarge = try thumbnailLargeDetails.decodeIfPresent(String.self, forKey: .url) ?? ""
+            self.thumbnailSmall = try thumbnailSmallDetails.decodeIfPresent(String.self, forKey: .url) ?? ""
+        } else {
+            self.thumbnailSmall = ""
+        }
+        
         let resourceId = try snippet.nestedContainer(keyedBy: VideoResourceCodingKeys.self, forKey: VideoCodingKeys.resourceId)
         self.videoId = try resourceId.decode(String.self, forKey: .videoId)
     }

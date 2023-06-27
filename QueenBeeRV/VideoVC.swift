@@ -7,9 +7,6 @@
 
 import UIKit
 import YouTubeiOSPlayerHelper
-import SDWebImage
-
-
 
 class VideoVC: UIViewController {
     var playerView: YTPlayerView!
@@ -37,10 +34,8 @@ class VideoVC: UIViewController {
     
     
     override func loadView() {
-        // Set up root view
-        view = UIView()
-        view.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        view.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        let view = UIView()
+        self.view = view
         view.backgroundColor = .white
     }
     
@@ -53,7 +48,7 @@ class VideoVC: UIViewController {
         setupPlayerView()
         displayVideo(promoVideoId)
         
-        self.tableView = UITableView(frame: view.bounds, style: .grouped)
+        tableView = UITableView(frame: view.bounds, style: .grouped)
         configureTableView()
         fetchPlaylists()
         fetchLatestVideos()
@@ -69,9 +64,10 @@ class VideoVC: UIViewController {
             tableView.register(VideoTableSectionHeader.self, forHeaderFooterViewReuseIdentifier: headerViewIdentifier)
             tableView.translatesAutoresizingMaskIntoConstraints                          = false
             tableView.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 10).isActive    = true
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -10).isActive     = true
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive     = true
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive   = true
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive       = true
+            tableView.separatorStyle = .none
         }
     }
     
@@ -87,7 +83,7 @@ class VideoVC: UIViewController {
     }
     
     func displayVideo(_ videoId: String) {
-        playerView.load(withVideoId: videoId, playerVars: ["playsinline": 1])
+        playerView.load(withVideoId: videoId, playerVars: ["playsinline": 1, "modestbranding": 1, "rel": 0])
         return
     }
     
@@ -175,10 +171,13 @@ class VideoVC: UIViewController {
         }
     }
     
-    @objc func sectionHeaderTapped() {
-        print(data)
+    func viewAllVideos() {
+        let vc = PlaylistVC()
+        vc.playlistID = youtubeAllVideosPlaylistID
+        vc.playlistName = "All Videos"
+        vc.selectedVideo = latestVideos?.items[0]
+        navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
 // MARK: Data delegate and datasource functions
@@ -202,6 +201,8 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
             let itemsInSection = data[indexPath.section].videos
             guard let video = itemsInSection?[indexPath.row] else { return UITableViewCell() }
             cell.set(video: video)
+            cell.layer.borderColor = UIColor.systemGray6.cgColor
+            cell.layer.borderWidth = 1
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             return cell
         } else if data[indexPath.section].sectionName == playlistSectionTitle {
@@ -209,6 +210,8 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
             let itemsInSection = data[indexPath.section].playlists
             guard let playlist = itemsInSection?[indexPath.row] else { return UITableViewCell() }
             cell.set(playlist: playlist)
+            cell.layer.borderColor = UIColor.systemGray6.cgColor
+            cell.layer.borderWidth = 1
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             return cell
         }
@@ -219,7 +222,6 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerViewIdentifier) as? VideoTableSectionHeader
         header?.labelText = data[section].sectionName ?? ""
-        header?.button.addTarget(self, action: #selector(sectionHeaderTapped), for: .touchUpInside)
         return header
     }
     
@@ -238,25 +240,40 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
         guard data[section].sectionName == videoSectionTitle else { return nil }
         
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-        let button = UIButton(type: .custom)
+                
+        let button = UIButton(type: .custom, primaryAction: UIAction(title: "View All Videos", handler: { _ in
+            let vc = PlaylistVC()
+            vc.playlistID = self.youtubeAllVideosPlaylistID
+            vc.playlistName = "All Videos"
+            vc.selectedVideo = self.latestVideos?.items[0]
+            self.navigationController?.pushViewController(vc, animated: true)
+        }))
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 30)
         button.center = footerView.center
         button.setTitle("View All Videos", for: .normal)
-        button.addTarget(self, action: #selector(viewAllVideos), for: .touchUpInside)
         button.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 10.0
+        
         footerView.addSubview(button)
         return footerView
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
-    }
-    
-    @objc func viewAllVideos() {
         let vc = PlaylistVC()
-        vc.playlist = youtubeAllVideosPlaylistID
+
+        if data[indexPath.section].sectionName == videoSectionTitle {
+            vc.playlistID = youtubeAllVideosPlaylistID
+            vc.playlistName = "All Videos"
+            vc.selectedVideo = latestVideos?.items[indexPath.row]
+        } else if data[indexPath.section].sectionName == playlistSectionTitle {
+            vc.playlistID = allPlaylists?.items[indexPath.row].id
+            vc.playlistName = allPlaylists?.items[indexPath.row].title
+//            vc.selectedVideo = latestVideos?.items[indexPath.row]
+        } else {
+            return
+        }
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 }
