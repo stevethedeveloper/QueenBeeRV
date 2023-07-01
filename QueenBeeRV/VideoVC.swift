@@ -273,7 +273,8 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             return
         }
-        
+
         navigationController?.pushViewController(vc, animated: true)
+        print("c")
     }
 }

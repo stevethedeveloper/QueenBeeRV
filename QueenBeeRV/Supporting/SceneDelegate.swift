@@ -19,9 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 //        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
         
-        let firstViewController = ChecklistVC()
-        firstViewController.title = "Tools"
-        firstViewController.tabBarItem.image = UIImage(systemName: "hammer")
+        let firstViewController = ChecklistsVC()
+        firstViewController.title = "Checklists"
+        firstViewController.tabBarItem.image = UIImage(systemName: "checklist")
         let thirdViewController = VideoVC()
         thirdViewController.title = "Videos"
         thirdViewController.tabBarItem.image = UIImage(systemName: "video")
@@ -32,6 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        viewController.view.backgroundColor = UIColor.white
         let firstNavController = UINavigationController(rootViewController: firstViewController)
         let secondNavController = UINavigationController(rootViewController: secondViewController)
+        let thirdNavController = UINavigationController(rootViewController: thirdViewController)
 
 //        firstNavController.viewControllers = [firstNavController, secondNavController]
         
@@ -42,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         firstNavController.navigationBar.tintColor = titleColor
         
         let tabController = UITabBarController()
-        tabController.viewControllers = [firstNavController, secondNavController, thirdViewController]
+        tabController.viewControllers = [firstNavController, secondNavController, thirdNavController]
         tabController.tabBar.tintColor = titleColor
 //        tabController.tabBar.backgroundColor = #colorLiteral(red: 0.913140689, green: 0.913140689, blue: 0.913140689, alpha: 1)
 //        navController.navigationBar.backgroundColor = .black

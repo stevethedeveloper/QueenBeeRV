@@ -8,6 +8,7 @@
 import Foundation
 
 struct Checklist: Decodable {
+    var title: String
     var items: [ChecklistItem]
 }
 

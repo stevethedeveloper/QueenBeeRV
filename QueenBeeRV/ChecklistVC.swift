@@ -1,117 +1,253 @@
 //
-//  Checklist.swift
+//  ChecklistVC.swift
 //  QueenBeeRV
 //
-//  Created by Stephen Walton on 6/27/23.
+//  Created by Stephen Walton on 6/30/23.
 //
 
 import UIKit
+import CoreData
 
+class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-class ChecklistVC: UIViewController {
-    var checklist: Checklist?
+    var todoListRecordObjectID: NSManagedObjectID!
     
-//    var incompleteItems = [Post]()
+    // change to "as?"
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var tableView = UITableView()
+    let tableView: UITableView = {
+        let table = UITableView()
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return table
+    }()
     
-    override func loadView() {
-        let view = UIView()
-        self.view = view
-    }
+    private var models = [TodoListItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Checklist"
         
-        configureTableView()
-        getChecklist()
-        tableView.reloadData()
-    }
+        //        print(todoListRecord.todoListItems!)
         
-    func configureTableView() {
+        title = "To Do List"
         view.addSubview(tableView)
-        tableView.delegate = self
+        getAllItems()
         tableView.dataSource = self
-        tableView.rowHeight = 100
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ItemCell")
-        //        tableView.register(PostCell.self, forCellReuseIdentifier: "PostCell")
-        tableView.pin(to: view)
+        tableView.delegate = self
+        tableView.frame = view.bounds
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
     }
     
-    func getChecklist() {
-        var titleString = ""
-        var completedValue = false
-        
-            if let checklistFileURL = Bundle.main.url(forResource: "checklist_in", withExtension: "json") {
-                var request = URLRequest(url: checklistFileURL)
-                request.cachePolicy = .reloadIgnoringCacheData
-                
-                URLSession.shared.dataTask(with: checklistFileURL) { data, response, error in
-                    if let error = error { print(error) }
-                    guard let data = data else { return }
-//                    print("a: \((String(data: data, encoding: String.Encoding.utf8) ?? "nothing") as String)")
-                    self.parse(json: data)
-//                    print(self.allItems)
-                    return
-                }.resume()
-
-//                if let checklistContents = try? String(contentsOf: checklistFileURL) {
-//                    print(checklistContents)
-//                }
+    @objc private func didTapAdd() {
+        let alert = UIAlertController(title: "New Item", message: "Enter new item", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+        alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak self] _ in
+            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                return
             }
-//        guard let url: URL = URL(string: urlString) else { return }
-//
-//        var request = URLRequest(url: url)
-//        request.cachePolicy = .useProtocolCachePolicy
-//
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            if let error = error { print(error) }
-//            guard let data = data else { return }
-//            self.parse(json: data)
-//            return
-//        }.resume()
+            
+            self?.createItem(name: text)
+        }))
+        present(alert, animated: true)
     }
-
-    func parse(json: Data) {
-        let decoder = JSONDecoder()
-
-        if let jsonChecklist = try? decoder.decode(Checklist.self, from: json) {
-            checklist = jsonChecklist
-            print(checklist)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-
-    func showError() {
-        DispatchQueue.main.async {
-            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
-        }
-    }
-}
-
-// MARK: Data delegate and datasource functions
-extension ChecklistVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return checklist?.items.count ?? 0
+        return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        let item = checklist?.items[indexPath.row]
-        cell.textLabel?.text = item?.title
-//        cell.set(post: post)
+        let item = models[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = item.name
+        
+        var buttonConfiguration = UIButton.Configuration.bordered()
+
+        if item.completed {
+            cell.textLabel?.textColor = .systemGray
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+            buttonConfiguration.image = UIImage(systemName: "checkmark")
+        } else {
+            cell.textLabel?.textColor = .black
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+            buttonConfiguration.image = UIImage()
+        }
+        
+        buttonConfiguration.title = ""
+        buttonConfiguration.imagePadding = 0
+        buttonConfiguration.background.backgroundColor = .systemBackground
+        
+        //        let button = UIButton(configuration: buttonConfiguration, primaryAction: UIAction(title: "View All Videos", handler: { _ in
+        //
+        ////        let button = UIButton(type: .custom, primaryAction: UIAction(title: "View All Videos", handler: { _ in
+        ////            let vc = PlaylistVC()
+        ////            vc.playlistID = self.youtubeAllVideosPlaylistID
+        ////            vc.playlistName = "All Videos"
+        ////            vc.selectedVideo = self.latestVideos?.items[0]
+        ////            self.navigationController?.pushViewController(vc, animated: true)
+        //            print(indexPath)
+        //        }))
+        
+        let button = UIButton(configuration: buttonConfiguration)
+        
+        button.addAction(UIAction(title: "", handler: { _ in
+            self.toggleCompleted(item: item)
+            //        let button = UIButton(type: .custom, primaryAction: UIAction(title: "View All Videos", handler: { _ in
+            //            let vc = PlaylistVC()
+            //            vc.playlistID = self.youtubeAllVideosPlaylistID
+            //            vc.playlistName = "All Videos"
+            //            vc.selectedVideo = self.latestVideos?.items[0]
+            //            self.navigationController?.pushViewController(vc, animated: true)
+            print(indexPath)
+        }), for: .touchUpInside)
+        
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.setTitle("", for: .normal)
+        //        button.backgroundColor = .systemBackground
+        button.layer.cornerRadius = 10.0
+        //        button.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        button.imageView?.tintColor = .systemGreen
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 1.0
+        
+        cell.accessoryView = button
+        
+        
+        
+        
+        
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = BlogPostVC()
-////        vc.modalPresentationStyle = .fullScreen
-//        vc.currentWebsite = blogPosts[indexPath.row].url
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+            let item = self.models[indexPath.row]
+            
+            let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes, delete", style: .default, handler: { [weak self] _ in
+                self?.deleteItem(item: item)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }))
+            alert.addAction(UIAlertAction(title: "No, cancel", style: .cancel, handler: { _ in
+                tableView.reloadData()
+            }))
+            self.present(alert, animated: true)
+        }
+        
+        let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
+            let item = self.models[indexPath.row]
+            
+            let alert = UIAlertController(title: "Edit Item", message: "Edit your item", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: nil)
+            alert.textFields?.first?.text = item.name
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
+                guard let field = alert.textFields?.first, let newName = field.text, !newName.isEmpty else {
+                    return
+                }
+                
+                self?.updateItem(item: item, newName: newName)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            self.present(alert, animated: true)
+        }
+        
+        delete.backgroundColor = .red
+        let configuration = UISwipeActionsConfiguration(actions: [delete, edit])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
+    }
+    
+    
+    
+    
+    
+    // Core Data
+    func getAllItems() {
+        guard let listRecord = context.object(with: todoListRecordObjectID!) as? TodoList else { return }
+        print(listRecord)
+        models = listRecord.itemArray
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+        //        let fetchRequest: NSFetchRequest<TodoList>
+        //        fetchRequest = TodoList.fetchRequest()
+        
+        //        fetchRequest.predicate = NSPredicate(
+        //            format: "title = %@", todoListRecord.title!
+        //        )
+        
+        //        do {
+        //            let listRecord = try context.fetch(fetchRequest)
+        //            print(listRecord)
+        ////            models = listRecord.itemArray
+        ////            print(models)
+        //
+        //            DispatchQueue.main.async {
+        //                self.tableView.reloadData()
+        //            }
+        //        } catch {
+        //
+        //        }
+        
+    }
+    
+    func createItem(name: String) {
+        guard let listRecord = context.object(with: todoListRecordObjectID!) as? TodoList else { return }
+        let newItem = TodoListItem(context: context)
+        newItem.name = name
+        newItem.createdAt = Date()
+        newItem.todoList = listRecord
+        //        newItem.todoList = todoListRecord
+        
+        //        todoListRecord.addToTodoListItems(newItem)
+        do {
+            try context.save()
+            getAllItems()
+        } catch {
+            
+        }
+    }
+    
+    func deleteItem(item: TodoListItem) {
+        context.delete(item)
+        
+        do {
+            try context.save()
+            getAllItems()
+        } catch {
+            
+        }
+    }
+    
+    func updateItem(item: TodoListItem, newName: String) {
+        item.name = newName
+        
+        do {
+            try context.save()
+            getAllItems()
+        } catch {
+            
+        }
+    }
+    
+    func toggleCompleted(item: TodoListItem) {
+        item.completed = !item.completed
+        
+        do {
+            try context.save()
+            getAllItems()
+        } catch {
+            
+        }
+    }
 }
