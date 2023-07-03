@@ -54,8 +54,9 @@ class PlaylistVC: UIViewController {
         configureTableView()
         fetchPlaylist()
                 
-        let tableViewLoadingCellNib = UINib(nibName: "LoadingCell", bundle: nil)
-        tableView?.register(tableViewLoadingCellNib, forCellReuseIdentifier: "loadingCellId")
+//        let tableViewLoadingCellNib = UINib(nibName: "LoadingCell", bundle: nil)
+//        tableView?.register(tableViewLoadingCellNib, forCellReuseIdentifier: "loadingCellId")
+        tableView?.register(LoadingCell.self, forCellReuseIdentifier: "loadingCellId")
                 
         displayVideo(selectedVideo)
     }

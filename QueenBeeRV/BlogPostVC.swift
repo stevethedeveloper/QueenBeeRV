@@ -32,6 +32,7 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
 
         navigationItem.largeTitleDisplayMode = .never
         
+        // TODO - obscures part of page, pin webview to top of this
         progressView = UIProgressView(progressViewStyle: .default)
         progressView.sizeToFit()
         let progressButton = UIBarButtonItem(customView: progressView)

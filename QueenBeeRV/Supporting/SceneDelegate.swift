@@ -19,12 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 //        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
         
-        let firstViewController = ChecklistsVC()
-        firstViewController.title = "Checklists"
-        firstViewController.tabBarItem.image = UIImage(systemName: "checklist")
-        let thirdViewController = VideoVC()
-        thirdViewController.title = "Videos"
-        thirdViewController.tabBarItem.image = UIImage(systemName: "video")
+        let thirdViewController = ChecklistsVC()
+        thirdViewController.title = "Checklists"
+        thirdViewController.tabBarItem.image = UIImage(systemName: "checklist")
+        let firstViewController = VideoVC()
+        firstViewController.title = "Videos"
+        firstViewController.tabBarItem.image = UIImage(systemName: "video")
         let secondViewController = BlogListVC()
         secondViewController.title = "Blog"
         secondViewController.tabBarItem.image = UIImage(systemName: "square.and.pencil")

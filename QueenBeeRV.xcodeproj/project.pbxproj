@@ -14,7 +14,6 @@
 		AA7AAE992A4BB96A00C71998 /* checklist_set_up.json in Resources */ = {isa = PBXBuildFile; fileRef = AA7AAE982A4BB96A00C71998 /* checklist_set_up.json */; };
 		AA7AAE9B2A4BBEC600C71998 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AAE9A2A4BBEC600C71998 /* Checklist.swift */; };
 		AA7B7F932A4274B60024A755 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B7F912A4274B60024A755 /* LoadingCell.swift */; };
-		AA7B7F942A4274B60024A755 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7B7F922A4274B60024A755 /* LoadingCell.xib */; };
 		AA7C077D2A45059800286486 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AA7C077C2A45059800286486 /* Lottie */; };
 		AA7C077F2A45062900286486 /* waves.json in Resources */ = {isa = PBXBuildFile; fileRef = AA7C077E2A45062800286486 /* waves.json */; };
 		AA7C5C5F2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C5C5B2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift */; };
@@ -73,7 +72,6 @@
 		AA7AAE982A4BB96A00C71998 /* checklist_set_up.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checklist_set_up.json; sourceTree = "<group>"; };
 		AA7AAE9A2A4BBEC600C71998 /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		AA7B7F912A4274B60024A755 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
-		AA7B7F922A4274B60024A755 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		AA7C077E2A45062800286486 /* waves.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waves.json; sourceTree = "<group>"; };
 		AA7C5C5B2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA7C5C5C2A4FBB6B0053EFEA /* TodoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 				AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */,
 				AA7940092A3BCBF10027C90B /* VideoCell.swift */,
 				AA7B7F912A4274B60024A755 /* LoadingCell.swift */,
-				AA7B7F922A4274B60024A755 /* LoadingCell.xib */,
 				AA7C936F2A340EDF00237628 /* VideoCollectionCell.swift */,
 				AA7C6B312A4102AC003F4707 /* VideoTableSectionHeader.swift */,
 				AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */,
@@ -369,7 +366,6 @@
 				AAFEDCA32A15805500BE8E70 /* LaunchScreen.storyboard in Resources */,
 				AAFEDCA02A15805500BE8E70 /* Assets.xcassets in Resources */,
 				AA7AAE992A4BB96A00C71998 /* checklist_set_up.json in Resources */,
-				AA7B7F942A4274B60024A755 /* LoadingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,14 +590,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = MXP653QBU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueenBeeRV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -622,14 +618,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = MXP653QBU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueenBeeRV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
