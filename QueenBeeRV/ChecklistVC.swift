@@ -17,6 +17,7 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     let tableView: UITableView = {
         let table = UITableView()
+        table.separatorColor = .systemGray
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return table
     }()
@@ -59,15 +60,23 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let item = models[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = item.name
+        cell.separatorInset = .zero
         
         var buttonConfiguration = UIButton.Configuration.bordered()
 
+        if item.starred {
+            let image = UIImage(systemName: "star.fill")
+            cell.imageView?.image = image?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+        } else {
+            cell.imageView?.image = nil
+        }
+
         if item.completed {
-            cell.textLabel?.textColor = .systemGray
+            cell.textLabel?.textColor = .secondaryLabel
             cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
             buttonConfiguration.image = UIImage(systemName: "checkmark")
         } else {
-            cell.textLabel?.textColor = .black
+            cell.textLabel?.textColor = .label
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
             buttonConfiguration.image = UIImage()
         }
@@ -106,7 +115,7 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         button.layer.cornerRadius = 10.0
         //        button.setImage(UIImage(systemName: "checkmark"), for: .normal)
         button.imageView?.tintColor = .systemGreen
-        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderColor = UIColor.systemGray.cgColor
         button.layer.borderWidth = 1.0
         
         cell.accessoryView = button
@@ -123,7 +132,24 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return nil
+        tableView.cellForRow(at: indexPath)?.imageView?.image = nil
+        let item = self.models[indexPath.row]
+        let star = UIContextualAction(style: .normal, title: "Star") { (action, view, handler) in
+            item.starred = !item.starred
+            tableView.reloadData()
+        }
+        if item.starred {
+            let image = UIImage(systemName: "star.fill")
+            star.image = image?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+        } else {
+            let image = UIImage(systemName: "star")
+            star.image = image?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+        }
+        star.backgroundColor = .systemGray5
+        
+        let configuration = UISwipeActionsConfiguration(actions: [star])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -159,7 +185,7 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             self.present(alert, animated: true)
         }
         
-        delete.backgroundColor = .red
+        delete.backgroundColor = .systemRed
         let configuration = UISwipeActionsConfiguration(actions: [delete, edit])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration

@@ -36,7 +36,7 @@ class VideoVC: UIViewController {
     override func loadView() {
         let view = UIView()
         self.view = view
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
     override func viewDidLoad() {
@@ -60,26 +60,47 @@ class VideoVC: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.rowHeight = 80
-            tableView.register(VideoCell.self, forCellReuseIdentifier: "VideoCell")
+            tableView.separatorColor = .systemGray
+            tableView.separatorStyle = .singleLine
             tableView.register(VideoTableSectionHeader.self, forHeaderFooterViewReuseIdentifier: headerViewIdentifier)
-            tableView.translatesAutoresizingMaskIntoConstraints                          = false
-            tableView.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 10).isActive    = true
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive     = true
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive   = true
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive       = true
-            tableView.separatorStyle = .none
+
+            tableView.register(VideoCell.self, forCellReuseIdentifier: "VideoCell")
+            tableView.translatesAutoresizingMaskIntoConstraints = false
+            tableView.tableFooterView = nil
+
+            let constraints = [
+                tableView.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 10),
+                tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+            ]
+            NSLayoutConstraint.activate(constraints)
+
+//            view.addSubview(tableView)
+//            tableView.delegate = self
+//            tableView.dataSource = self
+//            tableView.rowHeight = 80
+//            tableView.register(VideoCell.self, forCellReuseIdentifier: "VideoCell")
+//            tableView.separatorColor = .systemGray
+//            tableView.separatorStyle = .singleLine
+//            tableView.register(VideoTableSectionHeader.self, forHeaderFooterViewReuseIdentifier: headerViewIdentifier)
+//            tableView.translatesAutoresizingMaskIntoConstraints                                         = false
+//            tableView.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 10).isActive     = true
+//            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive      = true
+//            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive   = true
+//            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive  = true
+//            tableView.separatorStyle = .none
         }
     }
     
     func setupPlayerView() {
         playerView = YTPlayerView()
-        playerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(playerView)
-        
-        playerView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
-        playerView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
-        playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        playerView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        playerView.translatesAutoresizingMaskIntoConstraints                                            = false
+        playerView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive    = true
+        playerView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive  = true
+        playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive           = true
+        playerView.heightAnchor.constraint(equalToConstant: 200).isActive                               = true
     }
     
     func displayVideo(_ videoId: String) {
@@ -105,7 +126,6 @@ class VideoVC: UIViewController {
                         // add this at any position and playlists at position 0, will throw error if trying to add to position 1 and array is empty
                         self.data.append(LatestVideos.init(sectionName: self.videoSectionTitle, videos: allVideos))
                         self.tableView?.reloadData()
-                        //                        self.displayVideo(allVideos[0])
                     }
                 }
             }
@@ -119,7 +139,6 @@ class VideoVC: UIViewController {
             let videoDecoded = try decoder.decode(Videos.self, from: json)
             self.latestVideos = videoDecoded.items.count > 0 ? videoDecoded : nil
         } catch {
-            //            print(error)
             showError()
         }
         
@@ -157,7 +176,6 @@ class VideoVC: UIViewController {
             let playlistsDecoded = try decoder.decode(Playlists.self, from: json)
             self.allPlaylists = playlistsDecoded.items.count > 0 ? playlistsDecoded : nil
         } catch {
-            //            print(error)
             showError()
         }
         
@@ -198,20 +216,22 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if data[indexPath.section].sectionName == videoSectionTitle {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
+            cell.separatorInset = .zero
             let itemsInSection = data[indexPath.section].videos
             guard let video = itemsInSection?[indexPath.row] else { return UITableViewCell() }
             cell.set(video: video)
-            cell.layer.borderColor = UIColor.systemGray6.cgColor
-            cell.layer.borderWidth = 1
+//            cell.layer.borderColor = UIColor.systemGray6.cgColor
+//            cell.layer.borderWidth = 1
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             return cell
         } else if data[indexPath.section].sectionName == playlistSectionTitle {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
+            cell.separatorInset = .zero
             let itemsInSection = data[indexPath.section].playlists
             guard let playlist = itemsInSection?[indexPath.row] else { return UITableViewCell() }
             cell.set(playlist: playlist)
-            cell.layer.borderColor = UIColor.systemGray6.cgColor
-            cell.layer.borderWidth = 1
+//            cell.layer.borderColor = UIColor.systemGray6.cgColor
+//            cell.layer.borderWidth = 1
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             return cell
         }
@@ -252,7 +272,7 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
         button.center = footerView.center
         button.setTitle("View All Videos", for: .normal)
         button.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 10.0
         
         footerView.addSubview(button)
@@ -269,12 +289,10 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
         } else if data[indexPath.section].sectionName == playlistSectionTitle {
             vc.playlistID = allPlaylists?.items[indexPath.row].id
             vc.playlistName = allPlaylists?.items[indexPath.row].title
-//            vc.selectedVideo = latestVideos?.items[indexPath.row]
         } else {
             return
         }
 
         navigationController?.pushViewController(vc, animated: true)
-        print("c")
     }
 }

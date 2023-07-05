@@ -15,4 +15,6 @@ struct Checklist: Decodable {
 public struct ChecklistItem: Codable {
     var title: String
     var completed: Bool = false
+    var starred: Bool = false
+    var sortIndex: Int = 0
 }

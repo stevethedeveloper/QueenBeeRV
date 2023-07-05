@@ -45,7 +45,6 @@ class VideoCell: UITableViewCell {
     }
 
     func configureImageView() {
-//        videoImageView.layer.cornerRadius = 20
         videoImageView.clipsToBounds = true
     }
     
@@ -55,20 +54,20 @@ class VideoCell: UITableViewCell {
     }
     
     func setImageConstraints() {
-        videoImageView.translatesAutoresizingMaskIntoConstraints = false
-        videoImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        videoImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        videoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        videoImageView.widthAnchor.constraint(equalTo: videoImageView.heightAnchor, multiplier: 4/3).isActive = true
+        videoImageView.translatesAutoresizingMaskIntoConstraints                                                = false
+        videoImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive                                = true
+        videoImageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive                                = true
+        videoImageView.heightAnchor.constraint(equalToConstant: 60).isActive                                    = true
+        videoImageView.widthAnchor.constraint(equalTo: videoImageView.heightAnchor, multiplier: 4/3).isActive   = true
         videoImageView.contentMode = .scaleAspectFit
     }
 
     func setTitleLabelConstraints() {
-        videoTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        videoTitleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        videoTitleLabel.translatesAutoresizingMaskIntoConstraints                                               = false
+        videoTitleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive                               = true
         videoTitleLabel.leadingAnchor.constraint(equalTo: videoImageView.trailingAnchor, constant: 10).isActive = true
-        videoTitleLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        videoTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40).isActive = true
+        videoTitleLabel.heightAnchor.constraint(equalToConstant: 60).isActive                                   = true
+        videoTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40).isActive              = true
     }
     
     func loadNowPlayingAnimation() {
@@ -80,11 +79,11 @@ class VideoCell: UITableViewCell {
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
         
-        animationView.translatesAutoresizingMaskIntoConstraints                               = false
-        animationView.centerXAnchor.constraint(equalTo: videoImageView.centerXAnchor).isActive = true
-        animationView.centerYAnchor.constraint(equalTo: videoImageView.centerYAnchor).isActive = true
-        animationView.widthAnchor.constraint(equalTo: videoImageView.widthAnchor).isActive = true
-        animationView.heightAnchor.constraint(equalTo: videoImageView.heightAnchor).isActive = true
+        animationView.translatesAutoresizingMaskIntoConstraints                                 = false
+        animationView.centerXAnchor.constraint(equalTo: videoImageView.centerXAnchor).isActive  = true
+        animationView.centerYAnchor.constraint(equalTo: videoImageView.centerYAnchor).isActive  = true
+        animationView.widthAnchor.constraint(equalTo: videoImageView.widthAnchor).isActive      = true
+        animationView.heightAnchor.constraint(equalTo: videoImageView.heightAnchor).isActive    = true
 
         animationView.play()
     }

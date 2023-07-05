@@ -17,12 +17,7 @@ class PlaylistVC: UIViewController {
     var playlistID: String?
     var playlistName: String?
     var selectedVideo: Video?
-//    {
-//        didSet {
-//            let oldId = oldValue?.videoId
-//            displayVideo(selectedVideo.videoId)
-//        }
-//    }
+
     var playlist: Videos?
     var videos = [Video]()
 
@@ -35,7 +30,7 @@ class PlaylistVC: UIViewController {
     override func loadView() {
         let view = UIView()
         self.view = view
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
     }
     
     override func viewDidLoad() {
@@ -54,8 +49,6 @@ class PlaylistVC: UIViewController {
         configureTableView()
         fetchPlaylist()
                 
-//        let tableViewLoadingCellNib = UINib(nibName: "LoadingCell", bundle: nil)
-//        tableView?.register(tableViewLoadingCellNib, forCellReuseIdentifier: "loadingCellId")
         tableView?.register(LoadingCell.self, forCellReuseIdentifier: "loadingCellId")
                 
         displayVideo(selectedVideo)
@@ -93,7 +86,6 @@ class PlaylistVC: UIViewController {
             let constraints = [
                 playlistLabel.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 10),
                 playlistLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-//                playlistLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
                 playlistLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
                 playlistLabel.heightAnchor.constraint(equalToConstant: 70)
             ]
@@ -108,9 +100,10 @@ class PlaylistVC: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.rowHeight = 80
+            tableView.separatorColor = .systemGray
+            tableView.separatorStyle = .singleLine
             tableView.register(VideoCell.self, forCellReuseIdentifier: "VideoCell")
-            tableView.translatesAutoresizingMaskIntoConstraints                          = false
-            tableView.separatorStyle = .none
+            tableView.translatesAutoresizingMaskIntoConstraints = false
             tableView.tableFooterView = nil
 
             let constraints = [
@@ -186,7 +179,6 @@ class PlaylistVC: UIViewController {
             }
             videos.removeAll(where: {$0.title.contains("Private")})
         } catch {
-//                        print(error)
             showError()
         }
     }
@@ -248,17 +240,13 @@ extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
+            cell.separatorInset = .zero
             cell.reset()
             let video = videos[indexPath.row]
-//            var isNowPlaying = false
-//            if video.videoId == selectedVideo?.videoId {
-//                isNowPlaying = true
-//            }
             let isNowPlaying = video.videoId == selectedVideo?.videoId ? true : false
             cell.set(video: video, isNowPlaying: isNowPlaying)
-            cell.layer.borderColor = UIColor.systemGray6.cgColor
-            cell.layer.borderWidth = 1
-//            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+//            cell.layer.borderColor = UIColor.systemGray.cgColor
+//            cell.layer.borderWidth = 1
             return cell
         } else {
             guard playlist?.nextPageToken != nil else { return UITableViewCell() }

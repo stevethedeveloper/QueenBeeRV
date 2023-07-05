@@ -39,10 +39,6 @@ class VideoTableSectionHeader: UITableViewHeaderFooterView {
         return button
     }()
     
-//    @objc func viewAllPressed() {
-//        print("pressed")
-//    }
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.addSubview(label)
@@ -60,14 +56,5 @@ class VideoTableSectionHeader: UITableViewHeaderFooterView {
                              y: contentView.frame.size.height - 10 - label.frame.size.height,
                              width: contentView.frame.size.width - 30,
                              height: label.frame.size.height)
-//        button.sizeToFit()
-//        button.frame = CGRect(x: -10,
-//                              y: contentView.frame.size.height - 10 - label.frame.size.height,
-//                              width: contentView.frame.size.width,
-//                              height: label.frame.size.height)
-//        print(sectionName)
-//        if let sectionName = sectionName {
-//            button.addTarget(self, action: #selector(viewAllPressed), for: .touchUpInside)
-//        }
     }
 }

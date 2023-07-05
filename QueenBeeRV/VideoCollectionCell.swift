@@ -30,20 +30,4 @@ class VideoCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    var playlistImageView   = UIImageView()
-//    var playlistTitleLabel  = UILabel()
-//    let placeholderImage = UIImage(named: "placeholder")
-//
-//    override init(style: UICollectionViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        addSubview(playlistImageView)
-//        addSubview(playlistTitleLabel)
-//
-////        configureImageView()
-////        configureTitleLabel()
-////        setImageConstraints()
-////        setTitleLabelConstraints()
-//    }
-
 }

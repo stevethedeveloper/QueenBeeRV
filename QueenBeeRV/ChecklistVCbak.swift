@@ -102,6 +102,7 @@ extension ChecklistVCbak: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        cell.separatorInset = .zero
         let item = checklist?.items[indexPath.row]
         cell.textLabel?.text = item?.title
 //        cell.set(post: post)

@@ -31,6 +31,7 @@ class BlogListVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 100
+        tableView.separatorColor = .systemGray
         tableView.register(PostCell.self, forCellReuseIdentifier: "PostCell")
         tableView.pin(to: view)
     }
@@ -77,6 +78,7 @@ extension BlogListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+        cell.separatorInset = .zero
         let post = blogPosts[indexPath.row]
         cell.set(post: post)
         return cell

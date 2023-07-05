@@ -14,6 +14,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 
     let tableView: UITableView = {
         let table = UITableView()
+        table.separatorColor = .systemGray
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return table
     }()
@@ -53,6 +54,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.separatorInset = .zero
         cell.textLabel?.text = model.title
         return cell
     }
@@ -130,7 +132,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.present(alert, animated: true)
         }
 
-        delete.backgroundColor = .red
+        delete.backgroundColor = .systemRed
         let configuration = UISwipeActionsConfiguration(actions: [delete, edit])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
