@@ -37,6 +37,8 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @objc private func didTapAdd() {
         let alert = UIAlertController(title: "New List", message: "Enter new list", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
+        alert.textFields?[0].spellCheckingType = .yes
+        alert.textFields?[0].autocorrectionType = .yes
         alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak self] _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return

@@ -78,7 +78,6 @@ class ChecklistVCbak: UIViewController {
 
         if let jsonChecklist = try? decoder.decode(Checklist.self, from: json) {
             checklist = jsonChecklist
-            print(checklist)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
