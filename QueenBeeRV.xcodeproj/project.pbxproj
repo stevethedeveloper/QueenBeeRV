@@ -13,6 +13,10 @@
 		AA7AAE952A4BAB4500C71998 /* ChecklistVCbak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AAE942A4BAB4500C71998 /* ChecklistVCbak.swift */; };
 		AA7AAE992A4BB96A00C71998 /* checklist_set_up.json in Resources */ = {isa = PBXBuildFile; fileRef = AA7AAE982A4BB96A00C71998 /* checklist_set_up.json */; };
 		AA7AAE9B2A4BBEC600C71998 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AAE9A2A4BBEC600C71998 /* Checklist.swift */; };
+		AA7B5DA92A5CA6F500F41768 /* BlogListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DA82A5CA6F500F41768 /* BlogListViewModel.swift */; };
+		AA7B5DAB2A5CB28300F41768 /* BlogPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DAA2A5CB28300F41768 /* BlogPostViewModel.swift */; };
+		AA7B5DAD2A5CF6C900F41768 /* ChecklistsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DAC2A5CF6C900F41768 /* ChecklistsViewModel.swift */; };
+		AA7B5DAF2A5CFA3200F41768 /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DAE2A5CFA3200F41768 /* ChecklistViewModel.swift */; };
 		AA7B7F932A4274B60024A755 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B7F912A4274B60024A755 /* LoadingCell.swift */; };
 		AA7C077D2A45059800286486 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AA7C077C2A45059800286486 /* Lottie */; };
 		AA7C077F2A45062900286486 /* waves.json in Resources */ = {isa = PBXBuildFile; fileRef = AA7C077E2A45062800286486 /* waves.json */; };
@@ -29,9 +33,13 @@
 		AA7C9D612A31623A004FF1EF /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C9D602A31623A004FF1EF /* Playlists.swift */; };
 		AA7C9D632A316256004FF1EF /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C9D622A316256004FF1EF /* Playlist.swift */; };
 		AA7C9D652A316268004FF1EF /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C9D642A316268004FF1EF /* Video.swift */; };
+		AA7F00A62A5A1AAC0030414B /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F00A52A5A1AAC0030414B /* PlaylistViewModel.swift */; };
 		AA8668372A384279002E0781 /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8668362A384279002E0781 /* Videos.swift */; };
 		AA9D82352A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = AA9D82342A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper */; };
 		AA9D82372A1ED4D700DF1E5C /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */; };
+		AABC67862A58C06D0059963C /* BlogListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC67852A58C06D0059963C /* BlogListVC.swift */; };
+		AABC67892A58CD760059963C /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC67882A58CD760059963C /* VideoViewModel.swift */; };
+		AABC678B2A58D7FB0059963C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC678A2A58D7FB0059963C /* Observable.swift */; };
 		AAD616BD2A1C4494008EC100 /* BlogPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */; };
 		AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC932A15805300BE8E70 /* AppDelegate.swift */; };
 		AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */; };
@@ -42,7 +50,6 @@
 		AAFEDCB82A15805500BE8E70 /* QueenBeeRVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCB72A15805500BE8E70 /* QueenBeeRVUITests.swift */; };
 		AAFEDCBA2A15805500BE8E70 /* QueenBeeRVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCB92A15805500BE8E70 /* QueenBeeRVUITestsLaunchTests.swift */; };
 		AAFEDCCB2A15950B00BE8E70 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */; };
-		AAFEDCCE2A15A5B800BE8E70 /* BlogListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCCD2A15A5B800BE8E70 /* BlogListVC.swift */; };
 		AAFEDCD02A15A8BA00BE8E70 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */; };
 		AAFEDCD32A15B3FC00BE8E70 /* Blogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCD22A15B3FC00BE8E70 /* Blogs.swift */; };
 		AAFEDCD52A15B41300BE8E70 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDCD42A15B41300BE8E70 /* Post.swift */; };
@@ -71,6 +78,10 @@
 		AA7AAE942A4BAB4500C71998 /* ChecklistVCbak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistVCbak.swift; sourceTree = "<group>"; };
 		AA7AAE982A4BB96A00C71998 /* checklist_set_up.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checklist_set_up.json; sourceTree = "<group>"; };
 		AA7AAE9A2A4BBEC600C71998 /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		AA7B5DA82A5CA6F500F41768 /* BlogListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogListViewModel.swift; sourceTree = "<group>"; };
+		AA7B5DAA2A5CB28300F41768 /* BlogPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostViewModel.swift; sourceTree = "<group>"; };
+		AA7B5DAC2A5CF6C900F41768 /* ChecklistsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsViewModel.swift; sourceTree = "<group>"; };
+		AA7B5DAE2A5CFA3200F41768 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
 		AA7B7F912A4274B60024A755 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		AA7C077E2A45062800286486 /* waves.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waves.json; sourceTree = "<group>"; };
 		AA7C5C5B2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -87,8 +98,12 @@
 		AA7C9D602A31623A004FF1EF /* Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlists.swift; sourceTree = "<group>"; };
 		AA7C9D622A316256004FF1EF /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		AA7C9D642A316268004FF1EF /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		AA7F00A52A5A1AAC0030414B /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
 		AA8668362A384279002E0781 /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
+		AABC67852A58C06D0059963C /* BlogListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlogListVC.swift; path = ../../BlogListVC.swift; sourceTree = "<group>"; };
+		AABC67882A58CD760059963C /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
+		AABC678A2A58D7FB0059963C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostVC.swift; sourceTree = "<group>"; };
 		AAFEDC902A15805300BE8E70 /* QueenBeeRV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueenBeeRV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFEDC932A15805300BE8E70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,7 +118,6 @@
 		AAFEDCB72A15805500BE8E70 /* QueenBeeRVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBeeRVUITests.swift; sourceTree = "<group>"; };
 		AAFEDCB92A15805500BE8E70 /* QueenBeeRVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenBeeRVUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
-		AAFEDCCD2A15A5B800BE8E70 /* BlogListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlogListVC.swift; path = QueenBeeRV/BlogListVC.swift; sourceTree = SOURCE_ROOT; };
 		AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		AAFEDCD22A15B3FC00BE8E70 /* Blogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blogs.swift; sourceTree = "<group>"; };
 		AAFEDCD42A15B41300BE8E70 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -137,6 +151,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA7C39F32A58BF5500467BB4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA7C5C642A4FBFF10053EFEA /* ChecklistVC.swift */,
+				AA7C5C662A4FC0080053EFEA /* ChecklistsVC.swift */,
+				AA7C9D5E2A314663004FF1EF /* PlaylistVC.swift */,
+				AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */,
+				AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */,
+				AABC67852A58C06D0059963C /* BlogListVC.swift */,
+				AA7AAE942A4BAB4500C71998 /* ChecklistVCbak.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		AA7C5C632A4FBB7C0053EFEA /* CoreDataFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +174,19 @@
 				AA7C5C5E2A4FBB6B0053EFEA /* TodoList+CoreDataProperties.swift */,
 			);
 			path = CoreDataFiles;
+			sourceTree = "<group>";
+		};
+		AABC67872A58C0FB0059963C /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA7B5DA82A5CA6F500F41768 /* BlogListViewModel.swift */,
+				AA7B5DAA2A5CB28300F41768 /* BlogPostViewModel.swift */,
+				AABC67882A58CD760059963C /* VideoViewModel.swift */,
+				AA7F00A52A5A1AAC0030414B /* PlaylistViewModel.swift */,
+				AA7B5DAC2A5CF6C900F41768 /* ChecklistsViewModel.swift */,
+				AA7B5DAE2A5CFA3200F41768 /* ChecklistViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		AAFEDC872A15805300BE8E70 = {
@@ -172,20 +213,15 @@
 			isa = PBXGroup;
 			children = (
 				AAFEDCCC2A15961F00BE8E70 /* Supporting */,
-				AAFEDCD12A15B3B000BE8E70 /* Model */,
 				AAFEDCC92A1594CF00BE8E70 /* Extensions+Utilities */,
-				AA7AAE942A4BAB4500C71998 /* ChecklistVCbak.swift */,
-				AA7C5C642A4FBFF10053EFEA /* ChecklistVC.swift */,
-				AA7C5C662A4FC0080053EFEA /* ChecklistsVC.swift */,
-				AAFEDCCD2A15A5B800BE8E70 /* BlogListVC.swift */,
-				AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */,
+				AAFEDCD12A15B3B000BE8E70 /* Models */,
+				AABC67872A58C0FB0059963C /* View Models */,
+				AA7C39F32A58BF5500467BB4 /* Controllers */,
 				AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */,
 				AA7940092A3BCBF10027C90B /* VideoCell.swift */,
 				AA7B7F912A4274B60024A755 /* LoadingCell.swift */,
 				AA7C936F2A340EDF00237628 /* VideoCollectionCell.swift */,
 				AA7C6B312A4102AC003F4707 /* VideoTableSectionHeader.swift */,
-				AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */,
-				AA7C9D5E2A314663004FF1EF /* PlaylistVC.swift */,
 				AA7C077E2A45062800286486 /* waves.json */,
 				AAFEDCA42A15805500BE8E70 /* Info.plist */,
 				AA7C765E2A28494E007C3E46 /* Config.xcconfig */,
@@ -216,6 +252,7 @@
 			children = (
 				AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */,
 				AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */,
+				AABC678A2A58D7FB0059963C /* Observable.swift */,
 			);
 			path = "Extensions+Utilities";
 			sourceTree = "<group>";
@@ -232,7 +269,7 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
-		AAFEDCD12A15B3B000BE8E70 /* Model */ = {
+		AAFEDCD12A15B3B000BE8E70 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				AA7C5C632A4FBB7C0053EFEA /* CoreDataFiles */,
@@ -245,7 +282,7 @@
 				AAFEDCD42A15B41300BE8E70 /* Post.swift */,
 				AA7C6B332A41034A003F4707 /* LatestVideos.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,21 +428,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA782BDD2A16EC7400ACFCC5 /* String+Ext.swift in Sources */,
+				AA7B5DA92A5CA6F500F41768 /* BlogListViewModel.swift in Sources */,
 				AA8668372A384279002E0781 /* Videos.swift in Sources */,
+				AA7B5DAD2A5CF6C900F41768 /* ChecklistsViewModel.swift in Sources */,
 				AAFEDC9E2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld in Sources */,
 				AA7C6B322A4102AC003F4707 /* VideoTableSectionHeader.swift in Sources */,
 				AA7C6B342A41034A003F4707 /* LatestVideos.swift in Sources */,
-				AAFEDCCE2A15A5B800BE8E70 /* BlogListVC.swift in Sources */,
 				AAFEDCD32A15B3FC00BE8E70 /* Blogs.swift in Sources */,
 				AAD616BD2A1C4494008EC100 /* BlogPostVC.swift in Sources */,
 				AA7AAE9B2A4BBEC600C71998 /* Checklist.swift in Sources */,
 				AA9D82372A1ED4D700DF1E5C /* VideoVC.swift in Sources */,
+				AABC67862A58C06D0059963C /* BlogListVC.swift in Sources */,
 				AAFEDCD52A15B41300BE8E70 /* Post.swift in Sources */,
 				AA7C5C622A4FBB6B0053EFEA /* TodoList+CoreDataProperties.swift in Sources */,
 				AAFEDCCB2A15950B00BE8E70 /* UIView+Ext.swift in Sources */,
+				AA7B5DAB2A5CB28300F41768 /* BlogPostViewModel.swift in Sources */,
 				AA7C5C672A4FC0080053EFEA /* ChecklistsVC.swift in Sources */,
 				AA7C9D5F2A314663004FF1EF /* PlaylistVC.swift in Sources */,
 				AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */,
+				AA7F00A62A5A1AAC0030414B /* PlaylistViewModel.swift in Sources */,
 				AA7C5C652A4FBFF10053EFEA /* ChecklistVC.swift in Sources */,
 				AA79400A2A3BCBF10027C90B /* VideoCell.swift in Sources */,
 				AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */,
@@ -415,9 +456,12 @@
 				AA7C5C602A4FBB6B0053EFEA /* TodoListItem+CoreDataProperties.swift in Sources */,
 				AA7C9D612A31623A004FF1EF /* Playlists.swift in Sources */,
 				AA7C5C612A4FBB6B0053EFEA /* TodoList+CoreDataClass.swift in Sources */,
+				AA7B5DAF2A5CFA3200F41768 /* ChecklistViewModel.swift in Sources */,
 				AA7B7F932A4274B60024A755 /* LoadingCell.swift in Sources */,
 				AA7C9D632A316256004FF1EF /* Playlist.swift in Sources */,
+				AABC678B2A58D7FB0059963C /* Observable.swift in Sources */,
 				AA7AAE952A4BAB4500C71998 /* ChecklistVCbak.swift in Sources */,
+				AABC67892A58CD760059963C /* VideoViewModel.swift in Sources */,
 				AA7C93702A340EDF00237628 /* VideoCollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
