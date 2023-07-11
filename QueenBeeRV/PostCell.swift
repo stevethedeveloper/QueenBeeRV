@@ -31,7 +31,7 @@ class PostCell: UITableViewCell {
     
     func set(post: Post) {
         // get paragraph
-//        let paragraph = post.html_content.components(separatedBy: "<p>").last?.replacingOccurrences(of: "</p>", with: "", options: .regularExpression) ?? ""
+        let paragraph = post.html_content.components(separatedBy: "<p>").last?.replacingOccurrences(of: "</p>", with: "", options: .regularExpression) ?? ""
         //get images
         let regex: Regex = /src\s*=\s*"(.+?)"/
         if let match = post.html_content.firstMatch(of: regex) {
