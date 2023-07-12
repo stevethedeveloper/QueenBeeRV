@@ -8,7 +8,7 @@
 import UIKit
 import YouTubeiOSPlayerHelper
 
-class PlaylistVC: UIViewController {
+class PlaylistVC: UIViewController, YTPlayerViewDelegate {
     let viewModel = PlaylistViewModel()
     private var playerView: YTPlayerView!
 
@@ -16,6 +16,7 @@ class PlaylistVC: UIViewController {
     
     var playlistLabel: UILabel!
     
+    var loadingView = UIImageView()
     
     override func loadView() {
         let view = UIView()
@@ -57,6 +58,7 @@ class PlaylistVC: UIViewController {
     
     func setupPlayerView() {
         playerView = YTPlayerView()
+        playerView.delegate = self
         playerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(playerView)
         
@@ -67,6 +69,22 @@ class PlaylistVC: UIViewController {
             playerView.heightAnchor.constraint(equalToConstant: 200)
         ]
         NSLayoutConstraint.activate(constraints)
+        
+        loadingView.image = UIImage(named: "loading")
+        loadingView.contentMode = .scaleAspectFit
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.backgroundColor = .systemBackground
+        loadingView.layer.zPosition = 1
+        loadingView.isHidden = false
+        playerView.addSubview(loadingView)
+        let loadingViewConstraints = [
+            loadingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            loadingView.heightAnchor.constraint(equalToConstant: 200)
+        ]
+        NSLayoutConstraint.activate(loadingViewConstraints)
+
     }
 
     func configurePlaylistLabel() {
@@ -125,7 +143,12 @@ class PlaylistVC: UIViewController {
         }
         return
     }
-
+    
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        print("ready")
+        loadingView.isHidden = true
+    }
+    
     func showError() {
         DispatchQueue.main.async {
             let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the videos; please check your connection and try again.", preferredStyle: .alert)
