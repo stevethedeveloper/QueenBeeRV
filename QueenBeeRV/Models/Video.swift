@@ -50,9 +50,7 @@ public struct Video: Decodable {
 
         let thumbnails = try snippet.nestedContainer(keyedBy: VideoThumbnailCodingKeys.self, forKey: VideoCodingKeys.thumbnails)
         if !thumbnails.allKeys.isEmpty {
-            //            let thumbnailLargeDetails = try thumbnails.nestedContainer(keyedBy: VideoThumbnailDetailsCodingKeys.self, forKey: VideoThumbnailCodingKeys.standard)
             let thumbnailSmallDetails = try thumbnails.nestedContainer(keyedBy: VideoThumbnailDetailsCodingKeys.self, forKey: VideoThumbnailCodingKeys.default)
-            //            self.thumbnailLarge = try thumbnailLargeDetails.decodeIfPresent(String.self, forKey: .url) ?? ""
             self.thumbnailSmall = try thumbnailSmallDetails.decodeIfPresent(String.self, forKey: .url) ?? ""
         } else {
             self.thumbnailSmall = ""

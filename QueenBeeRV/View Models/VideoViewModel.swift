@@ -9,6 +9,7 @@ import Foundation
 import UIKit.UIImage
 
 public class VideoViewModel {
+    var onErrorHandling: ((String) -> Void)?
     private let youtubeKey = Bundle.main.infoDictionary?["YOUTUBE_KEY"] as? String
     private let youtubeChannelID = Bundle.main.infoDictionary?["YOUTUBE_CHANNEL_ID"] as? String
     let youtubeAllVideosPlaylistID = Bundle.main.infoDictionary?["YOUTUBE_ALL_VIDEOS_PLAYLIST_ID"] as? String
@@ -33,7 +34,10 @@ public class VideoViewModel {
         //        request.setValue("94GJ_J4sdWd_UmWSFt7hnr1Zn_g", forHTTPHeaderField: "If-None-Match")
         //        request.allHTTPHeaderFields?["If-None-Match"] = "4072u9p5TkOOjeUoWj1hoDIN3sI"
         URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error { print(error) }
+            if let error = error {
+                print(error)
+                self.onErrorHandling?("Could not retrieve videos.  Please check your connection and try again.")
+            }
             guard let data = data else { return }
             self.parseVideos(json: data)
             DispatchQueue.main.async {
@@ -41,7 +45,6 @@ public class VideoViewModel {
                     if allVideos.count > 0 {
                         // add this at any position and playlists at position 0, will throw error if trying to add to position 1 and array is empty
                         self.data.value.append(LatestVideos.init(sectionName: self.videoSectionTitle, videos: allVideos))
-//                        self.tableView?.reloadData()
                     }
                 }
             }
@@ -55,6 +58,7 @@ public class VideoViewModel {
             let videoDecoded = try decoder.decode(Videos.self, from: json)
             self.latestVideos = videoDecoded.items.count > 0 ? videoDecoded : nil
         } catch {
+            self.onErrorHandling?("Could not retrieve videos.  Please check your connection and try again.")
 //            showError()
         }
         
@@ -69,7 +73,10 @@ public class VideoViewModel {
         //        request.setValue("94GJ_J4sdWd_UmWSFt7hnr1Zn_g", forHTTPHeaderField: "If-None-Match")
         //        request.allHTTPHeaderFields?["If-None-Match"] = "4072u9p5TkOOjeUoWj1hoDIN3sI"
         URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error { print(error) }
+            if let error = error {
+                print(error)
+                self.onErrorHandling?("Could not retrieve playlists.  Please check your connection and try again.")
+            }
             guard let data = data else { return }
             self.parsePlaylists(json: data)
             DispatchQueue.main.async {
@@ -92,6 +99,7 @@ public class VideoViewModel {
             let playlistsDecoded = try decoder.decode(Playlists.self, from: json)
             self.allPlaylists = playlistsDecoded.items.count > 0 ? playlistsDecoded : nil
         } catch {
+            self.onErrorHandling?("Could not retrieve playlists.  Please check your connection and try again.")
 //            showError()
         }
         

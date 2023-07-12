@@ -8,7 +8,6 @@
 import Foundation
 
 public class BlogPostViewModel {
-//    var currentWebsite: String?
+    var onErrorHandling: ((String) -> Void)?
     var currentWebsite: Observable<String> = Observable("")
-
 }

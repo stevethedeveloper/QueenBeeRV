@@ -10,7 +10,6 @@
 		AA782BDD2A16EC7400ACFCC5 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */; };
 		AA782BE02A16FAD500ACFCC5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = AA782BDF2A16FAD500ACFCC5 /* SDWebImage */; };
 		AA79400A2A3BCBF10027C90B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7940092A3BCBF10027C90B /* VideoCell.swift */; };
-		AA7AAE952A4BAB4500C71998 /* ChecklistVCbak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AAE942A4BAB4500C71998 /* ChecklistVCbak.swift */; };
 		AA7AAE992A4BB96A00C71998 /* checklist_set_up.json in Resources */ = {isa = PBXBuildFile; fileRef = AA7AAE982A4BB96A00C71998 /* checklist_set_up.json */; };
 		AA7AAE9B2A4BBEC600C71998 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AAE9A2A4BBEC600C71998 /* Checklist.swift */; };
 		AA7B5DA92A5CA6F500F41768 /* BlogListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DA82A5CA6F500F41768 /* BlogListViewModel.swift */; };
@@ -75,7 +74,6 @@
 /* Begin PBXFileReference section */
 		AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		AA7940092A3BCBF10027C90B /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
-		AA7AAE942A4BAB4500C71998 /* ChecklistVCbak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistVCbak.swift; sourceTree = "<group>"; };
 		AA7AAE982A4BB96A00C71998 /* checklist_set_up.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checklist_set_up.json; sourceTree = "<group>"; };
 		AA7AAE9A2A4BBEC600C71998 /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		AA7B5DA82A5CA6F500F41768 /* BlogListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogListViewModel.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 				AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */,
 				AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */,
 				AABC67852A58C06D0059963C /* BlogListVC.swift */,
-				AA7AAE942A4BAB4500C71998 /* ChecklistVCbak.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -460,7 +457,6 @@
 				AA7B7F932A4274B60024A755 /* LoadingCell.swift in Sources */,
 				AA7C9D632A316256004FF1EF /* Playlist.swift in Sources */,
 				AABC678B2A58D7FB0059963C /* Observable.swift in Sources */,
-				AA7AAE952A4BAB4500C71998 /* ChecklistVCbak.swift in Sources */,
 				AABC67892A58CD760059963C /* VideoViewModel.swift in Sources */,
 				AA7C93702A340EDF00237628 /* VideoCollectionCell.swift in Sources */,
 			);

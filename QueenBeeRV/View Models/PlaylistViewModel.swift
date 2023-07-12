@@ -8,6 +8,7 @@
 import Foundation
 
 public class PlaylistViewModel {
+    var onErrorHandling: ((String) -> Void)?
     private let youtubeKey = Bundle.main.infoDictionary?["YOUTUBE_KEY"] as? String
     private let youtubeChannelID = Bundle.main.infoDictionary?["YOUTUBE_CHANNEL_ID"] as? String
     private let youtubeAllVideosPlaylistID = Bundle.main.infoDictionary?["YOUTUBE_ALL_VIDEOS_PLAYLIST_ID"] as? String
@@ -38,7 +39,10 @@ public class PlaylistViewModel {
         //        request.setValue("94GJ_J4sdWd_UmWSFt7hnr1Zn_g", forHTTPHeaderField: "If-None-Match")
         //        request.allHTTPHeaderFields?["If-None-Match"] = "4072u9p5TkOOjeUoWj1hoDIN3sI"
         URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error { print(error) }
+            if let error = error {
+                print(error)
+                self.onErrorHandling?("Could not retrieve playlist.  Please check your connection and try again.")
+            }
             guard let data = data else { return }
             self.parseVideos(json: data, loadingMore: loadingMore)
             DispatchQueue.main.async {
@@ -85,6 +89,7 @@ public class PlaylistViewModel {
             }
             videos.value.removeAll(where: {$0.title.contains("Private")})
         } catch {
+            self.onErrorHandling?("Could not retrieve playlist.  Please check your connection and try again.")
 //            showError()
         }
     }

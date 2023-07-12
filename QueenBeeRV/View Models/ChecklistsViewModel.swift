@@ -10,6 +10,7 @@ import UIKit.UIApplication
 import CoreData
 
 public class ChecklistsViewModel {
+    var onErrorHandling: ((String) -> Void)?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var models: Observable<[TodoList]> = Observable([])
 
@@ -24,7 +25,7 @@ public class ChecklistsViewModel {
 //                self.tableView.reloadData()
 //            }
         } catch {
-            
+            self.onErrorHandling?("Could not retrieve checklists.  Please check your connection and try again.")
         }
         
         
@@ -49,7 +50,7 @@ public class ChecklistsViewModel {
             try context.save()
             getAllLists()
         } catch {
-            
+            self.onErrorHandling?("Could not save checklist.  Please check your connection and try again.")
         }
     }
     
@@ -60,7 +61,7 @@ public class ChecklistsViewModel {
             try context.save()
             getAllLists()
         } catch {
-            
+            self.onErrorHandling?("Could not delete checklist.  Please check your connection and try again.")
         }
     }
     
@@ -71,7 +72,7 @@ public class ChecklistsViewModel {
             try context.save()
             getAllLists()
         } catch {
-            
+            self.onErrorHandling?("Could not update checklist.  Please check your connection and try again.")
         }
     }
 

@@ -8,22 +8,25 @@
 import UIKit
 
 class BlogListVC: UIViewController {
-    let urlString: String = "https://queenbeerv.com/blog/f.json"
-    var blogPosts = [Post]()
-    
+    let viewModel = BlogListViewModel()
     var tableView = UITableView()
     
     override func loadView() {
         let view = UIView()
         self.view = view
+        configureTableView()
+        viewModel.getPosts()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Blog"
-        configureTableView()
-        getPosts()
-        tableView.reloadData()
+
+        viewModel.blogPosts.bind { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
         
     func configureTableView() {
@@ -36,31 +39,6 @@ class BlogListVC: UIViewController {
         tableView.pin(to: view)
     }
     
-    func getPosts() {
-        guard let url: URL = URL(string: urlString) else { return }
-        
-        var request = URLRequest(url: url)
-        request.cachePolicy = .useProtocolCachePolicy
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error { print(error) }
-            guard let data = data else { return }
-            self.parse(json: data)
-            return
-        }.resume()
-    }
-
-    func parse(json: Data) {
-        let decoder = JSONDecoder()
-        
-        if let jsonBlogs = try? decoder.decode(Blogs.self, from: json) {
-            blogPosts = jsonBlogs.items
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-
     func showError() {
         DispatchQueue.main.async {
             let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
@@ -73,21 +51,24 @@ class BlogListVC: UIViewController {
 // MARK: Data delegate and datasource functions
 extension BlogListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return blogPosts.count
+        return viewModel.blogPosts.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         cell.separatorInset = .zero
-        let post = blogPosts[indexPath.row]
+        let post = viewModel.blogPosts.value[indexPath.row]
         cell.set(post: post)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = BlogPostVC()
+//        vc.viewModel = BlogPostViewModel()
+        vc.viewModel.currentWebsite.value = viewModel.blogPosts.value[indexPath.row].url
+        
 //        vc.modalPresentationStyle = .fullScreen
-        vc.currentWebsite = blogPosts[indexPath.row].url
+//        vc.currentWebsite = viewModel.blogPosts.value[indexPath.row].url
         navigationController?.pushViewController(vc, animated: true)
     }
 }

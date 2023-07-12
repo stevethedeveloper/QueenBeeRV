@@ -10,6 +10,7 @@ import UIKit.UIApplication
 import CoreData
 
 public class ChecklistViewModel {
+    var onErrorHandling: ((String) -> Void)?
     var todoListRecordObjectID: NSManagedObjectID!
     
     // change to "as?"
@@ -61,7 +62,7 @@ public class ChecklistViewModel {
             try context.save()
             getAllItems()
         } catch {
-            
+            self.onErrorHandling?("Could not create item.  Please check your connection and try again.")
         }
     }
     
@@ -72,7 +73,7 @@ public class ChecklistViewModel {
             try context.save()
             getAllItems()
         } catch {
-            
+            self.onErrorHandling?("Could not delete item.  Please check your connection and try again.")
         }
     }
     
@@ -83,18 +84,19 @@ public class ChecklistViewModel {
             try context.save()
             getAllItems()
         } catch {
-            
+            self.onErrorHandling?("Could not update item.  Please check your connection and try again.")
         }
     }
     
     func toggleCompleted(item: TodoListItem) {
         item.completed = !item.completed
-        
+        self.onErrorHandling?("Could not change status.  Please check your connection and try again.")
+
         do {
             try context.save()
             getAllItems()
         } catch {
-            
+            self.onErrorHandling?("Could not change status.  Please check your connection and try again.")
         }
     }
 

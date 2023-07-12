@@ -35,6 +35,14 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             }
         }
 
+        viewModel.onErrorHandling = { error in
+            DispatchQueue.main.async {
+                let ac = UIAlertController(title: "An error occured", message: error, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated: true)
+            }
+        }
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
     }
     
@@ -107,7 +115,6 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             //            vc.playlistName = "All Videos"
             //            vc.selectedVideo = self.latestVideos?.items[0]
             //            self.navigationController?.pushViewController(vc, animated: true)
-            print(indexPath)
         }), for: .touchUpInside)
         
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)

@@ -40,7 +40,13 @@ class VideoVC: UIViewController {
             }
         }
 
-        
+        viewModel.onErrorHandling = { error in
+            DispatchQueue.main.async {
+                let ac = UIAlertController(title: "An error occured", message: error, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated: true)
+            }
+        }
     }
     
     func configureTableView() {
