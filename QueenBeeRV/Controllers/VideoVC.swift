@@ -8,12 +8,13 @@
 import UIKit
 import YouTubeiOSPlayerHelper
 
-class VideoVC: UIViewController {
+class VideoVC: UIViewController, YTPlayerViewDelegate {
     private let viewModel = VideoViewModel()
     private var playerView: YTPlayerView!
     private let headerViewIdentifier = "TableViewHeaderView"
     private var tableView: UITableView?
-        
+    private var loadingView = UIImageView()
+
     override func loadView() {
         let view = UIView()
         self.view = view
@@ -66,7 +67,8 @@ class VideoVC: UIViewController {
             let constraints = [
                 tableView.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 10),
                 tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+//                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                 tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
             ]
             NSLayoutConstraint.activate(constraints)
@@ -75,12 +77,32 @@ class VideoVC: UIViewController {
     
     func setupPlayerView() {
         playerView = YTPlayerView()
+        playerView.delegate = self
+        playerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(playerView)
-        playerView.translatesAutoresizingMaskIntoConstraints                                            = false
-        playerView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive    = true
-        playerView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive  = true
-        playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive           = true
-        playerView.heightAnchor.constraint(equalToConstant: 200).isActive                               = true
+        
+        let constraints = [
+            playerView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            playerView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            playerView.heightAnchor.constraint(equalToConstant: 200)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+        loadingView.image = UIImage(named: "loading")
+        loadingView.contentMode = .scaleAspectFit
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.backgroundColor = .systemBackground
+        loadingView.layer.zPosition = 1
+        loadingView.isHidden = false
+        playerView.addSubview(loadingView)
+        let loadingViewConstraints = [
+            loadingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            loadingView.heightAnchor.constraint(equalToConstant: 200)
+        ]
+        NSLayoutConstraint.activate(loadingViewConstraints)
     }
     
     func displayVideo(_ videoId: String) {
@@ -88,7 +110,11 @@ class VideoVC: UIViewController {
         return
     }
     
-    
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        print("ready")
+        loadingView.isHidden = true
+    }
+
     func showError() {
         DispatchQueue.main.async {
             let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the videos; please check your connection and try again.", preferredStyle: .alert)

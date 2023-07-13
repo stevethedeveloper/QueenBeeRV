@@ -17,7 +17,7 @@ class BlogListVC: UIViewController {
         configureTableView()
         viewModel.getPosts()
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Blog"

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA7025292A5F77A0004F7E61 /* RoundedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7025282A5F77A0004F7E61 /* RoundedTabBarController.swift */; };
 		AA782BDD2A16EC7400ACFCC5 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */; };
 		AA782BE02A16FAD500ACFCC5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = AA782BDF2A16FAD500ACFCC5 /* SDWebImage */; };
 		AA79400A2A3BCBF10027C90B /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7940092A3BCBF10027C90B /* VideoCell.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA7025282A5F77A0004F7E61 /* RoundedTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTabBarController.swift; sourceTree = "<group>"; };
 		AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		AA7940092A3BCBF10027C90B /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		AA7AAE982A4BB96A00C71998 /* checklist_set_up.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checklist_set_up.json; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */,
 				AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */,
 				AABC678A2A58D7FB0059963C /* Observable.swift */,
+				AA7025282A5F77A0004F7E61 /* RoundedTabBarController.swift */,
 			);
 			path = "Extensions+Utilities";
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */,
 				AA7C5C5F2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift in Sources */,
 				AAFEDCD02A15A8BA00BE8E70 /* PostCell.swift in Sources */,
+				AA7025292A5F77A0004F7E61 /* RoundedTabBarController.swift in Sources */,
 				AA7C9D652A316268004FF1EF /* Video.swift in Sources */,
 				AA7C5C602A4FBB6B0053EFEA /* TodoListItem+CoreDataProperties.swift in Sources */,
 				AA7C9D612A31623A004FF1EF /* Playlists.swift in Sources */,

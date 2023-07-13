@@ -11,12 +11,9 @@ import YouTubeiOSPlayerHelper
 class PlaylistVC: UIViewController, YTPlayerViewDelegate {
     let viewModel = PlaylistViewModel()
     private var playerView: YTPlayerView!
-
     var tableView: UITableView?
-    
     var playlistLabel: UILabel!
-    
-    var loadingView = UIImageView()
+    private var loadingView = UIImageView()
     
     override func loadView() {
         let view = UIView()
@@ -84,7 +81,6 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
             loadingView.heightAnchor.constraint(equalToConstant: 200)
         ]
         NSLayoutConstraint.activate(loadingViewConstraints)
-
     }
 
     func configurePlaylistLabel() {
@@ -94,14 +90,12 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
             playlistLabel.text = viewModel.playlistName
             playlistLabel.translatesAutoresizingMaskIntoConstraints = false
 
-            
             playlistLabel.textColor = UIColor(named: "AccentColor")
             playlistLabel.font = UIFont.systemFont(ofSize: 24)
             playlistLabel.numberOfLines = 0
             playlistLabel.adjustsFontSizeToFitWidth = true
             playlistLabel.textAlignment = .left
 
-            
             let constraints = [
                 playlistLabel.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 10),
                 playlistLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),

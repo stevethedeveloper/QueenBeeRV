@@ -41,10 +41,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         firstNavController.navigationBar.titleTextAttributes = [.foregroundColor: titleColor]
         firstNavController.navigationBar.largeTitleTextAttributes = [.foregroundColor: titleColor]
         firstNavController.navigationBar.tintColor = titleColor
+
+        let tabController = RoundedTabBarController()
         
-        let tabController = UITabBarController()
+//        let tabController = UITabBarController()
         tabController.viewControllers = [firstNavController, secondNavController, thirdNavController]
-        tabController.tabBar.tintColor = titleColor
+//        tabController.tabBar.tintColor = .white
+
 //        tabController.tabBar.backgroundColor = #colorLiteral(red: 0.913140689, green: 0.913140689, blue: 0.913140689, alpha: 1)
 //        navController.navigationBar.backgroundColor = .black
 //        navController.navigationBar.isTranslucent = false
