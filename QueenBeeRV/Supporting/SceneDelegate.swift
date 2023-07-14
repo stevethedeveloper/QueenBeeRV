@@ -50,15 +50,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        let tabController = UITabBarController()
         tabController.viewControllers = [firstNavController, secondNavController, thirdNavController]
-        if let items = tabController.tabBar.items {
-            items.forEach { item in
-//                item.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-            }
-        }
+//        if let items = tabController.tabBar.items {
+//            items.forEach { item in
+////                item.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+//            }
+//        }
 
 //        tabController.tabBar.tintColor = .white
 
-//        tabController.tabBar.backgroundColor = #colorLiteral(red: 0.913140689, green: 0.913140689, blue: 0.913140689, alpha: 1)
+//        tabController.tabBar.backgroundColor = .systemBackground.withAlphaComponent(0.80)
 //        navController.navigationBar.backgroundColor = .black
 //        navController.navigationBar.isTranslucent = false
         

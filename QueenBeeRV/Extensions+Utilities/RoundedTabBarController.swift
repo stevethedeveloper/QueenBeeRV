@@ -35,19 +35,22 @@ class RoundedTabBarController: UITabBarController {
         tabBarItemAppearance.normal.iconColor = UIColor.systemGray4
         appearance.stackedLayoutAppearance = tabBarItemAppearance
         
-        let bgView = UIView()
-        bgView.backgroundColor = .systemBackground.withAlphaComponent(0.90)
-        view.addSubview(bgView)
-        bgView.translatesAutoresizingMaskIntoConstraints = false
-        bgView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        bgView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        bgView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        bgView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-        //      tab bar gradient background
+//        let bgView = UIView()
+//        bgView.backgroundColor = .systemBackground
+//        view.addSubview(bgView)
+//        bgView.translatesAutoresizingMaskIntoConstraints = false
+//        bgView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+//        bgView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//        bgView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        bgView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//
+//      tab bar gradient background
         let gradient = CAGradientLayer()
         gradient.frame = tabBar.bounds
-        gradient.colors = [UIColor.clear.cgColor, UIColor.systemBackground.withAlphaComponent(0.90).cgColor]
+        gradient.frame.size.height = 200
+        gradient.colors = [UIColor.clear.cgColor, UIColor.systemBackground.cgColor]
+        gradient.startPoint = CGPoint.zero
+        gradient.endPoint = CGPoint(x: 0, y: 0.5)
         tabBar.layer.insertSublayer(gradient, at: 0)
         
         tabBar.standardAppearance = appearance
