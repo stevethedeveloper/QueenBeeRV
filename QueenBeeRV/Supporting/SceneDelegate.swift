@@ -18,16 +18,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
 //        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
+//        UITabBarItem.appearance().titlePositionAdjustment.vertical = 5
         
         let thirdViewController = ChecklistsVC()
         thirdViewController.title = "Checklists"
-        thirdViewController.tabBarItem.image = UIImage(systemName: "checklist")
+        thirdViewController.tabBarItem.image = UIImage(systemName: "checklist")?.withBaselineOffset(fromBottom: 5.0)
+//        thirdViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15.0)
         let firstViewController = VideoVC()
         firstViewController.title = "Videos"
-        firstViewController.tabBarItem.image = UIImage(systemName: "video")
+        firstViewController.tabBarItem.image = UIImage(systemName: "video")?.withBaselineOffset(fromBottom: 5.0)
+//        firstViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15.0)
         let secondViewController = BlogListVC()
         secondViewController.title = "Blog"
-        secondViewController.tabBarItem.image = UIImage(systemName: "square.and.pencil")
+        secondViewController.tabBarItem.image = UIImage(systemName: "square.and.pencil")?.withBaselineOffset(fromBottom: 5.0)
+//        secondViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15.0)
 
 //        viewController.view.backgroundColor = UIColor.white
         let firstNavController = UINavigationController(rootViewController: firstViewController)
@@ -46,6 +50,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        let tabController = UITabBarController()
         tabController.viewControllers = [firstNavController, secondNavController, thirdNavController]
+        if let items = tabController.tabBar.items {
+            items.forEach { item in
+//                item.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+            }
+        }
+
 //        tabController.tabBar.tintColor = .white
 
 //        tabController.tabBar.backgroundColor = #colorLiteral(red: 0.913140689, green: 0.913140689, blue: 0.913140689, alpha: 1)

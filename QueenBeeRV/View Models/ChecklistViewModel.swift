@@ -90,7 +90,6 @@ public class ChecklistViewModel {
     
     func toggleCompleted(item: TodoListItem) {
         item.completed = !item.completed
-        self.onErrorHandling?("Could not change status.  Please check your connection and try again.")
 
         do {
             try context.save()

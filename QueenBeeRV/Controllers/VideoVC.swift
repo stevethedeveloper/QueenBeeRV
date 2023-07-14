@@ -34,7 +34,6 @@ class VideoVC: UIViewController, YTPlayerViewDelegate {
         
         displayVideo(viewModel.promoVideoId)
         
-        
         viewModel.data.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView?.reloadData()
@@ -111,7 +110,6 @@ class VideoVC: UIViewController, YTPlayerViewDelegate {
     }
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        print("ready")
         loadingView.isHidden = true
     }
 

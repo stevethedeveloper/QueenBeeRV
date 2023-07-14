@@ -138,8 +138,8 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
         return
     }
     
+
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        print("ready")
         loadingView.isHidden = true
     }
     
@@ -208,7 +208,8 @@ extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        displayVideo(viewModel.videos.value[indexPath.row])
+        viewModel.selectedVideo.value = viewModel.videos.value[indexPath.row]
+//        displayVideo(viewModel.videos.value[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
