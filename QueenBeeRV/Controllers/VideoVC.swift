@@ -28,9 +28,10 @@ class VideoVC: UIViewController, YTPlayerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         title = "Videos"
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
         
         displayVideo(viewModel.promoVideoId)
         
@@ -83,7 +84,7 @@ class VideoVC: UIViewController, YTPlayerViewDelegate {
         let constraints = [
             playerView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             playerView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             playerView.heightAnchor.constraint(equalToConstant: 200)
         ]
         NSLayoutConstraint.activate(constraints)
@@ -98,7 +99,7 @@ class VideoVC: UIViewController, YTPlayerViewDelegate {
         let loadingViewConstraints = [
             loadingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             loadingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             loadingView.heightAnchor.constraint(equalToConstant: 200)
         ]
         NSLayoutConstraint.activate(loadingViewConstraints)

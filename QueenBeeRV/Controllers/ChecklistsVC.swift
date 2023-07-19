@@ -36,11 +36,20 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
 
         title = "To Do Lists"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
+        
         view.addSubview(tableView)
         viewModel.getAllLists()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.frame = view.bounds
+//        tableView.frame = view.bounds
+        tableView.translatesAutoresizingMaskIntoConstraints                                                 = false
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive                = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive                            = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive                          = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive                              = true
+
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
     }
@@ -50,13 +59,14 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         alert.addTextField(configurationHandler: nil)
         alert.textFields?[0].spellCheckingType = .yes
         alert.textFields?[0].autocorrectionType = .yes
-        alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
             
             self?.viewModel.createList(title: text)
         }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
     }
     

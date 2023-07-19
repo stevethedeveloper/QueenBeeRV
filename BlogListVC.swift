@@ -21,6 +21,8 @@ class BlogListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Blog"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
 
         viewModel.blogPosts.bind { [weak self] _ in
             DispatchQueue.main.async {
@@ -38,13 +40,18 @@ class BlogListVC: UIViewController {
     }
         
     func configureTableView() {
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 100
-        tableView.separatorColor = .systemGray
+        tableView.rowHeight = 130
         tableView.register(PostCell.self, forCellReuseIdentifier: "PostCell")
-        tableView.pin(to: view)
+//        tableView.pin(to: view)
+        tableView.translatesAutoresizingMaskIntoConstraints                                     = false
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive    = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive                = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive              = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive                  = true
     }
     
     func showError() {

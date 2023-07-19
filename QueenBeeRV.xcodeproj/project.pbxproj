@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA4FFC072A620BE0000ED15F /* UINavigationController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC062A620BE0000ED15F /* UINavigationController+Ext.swift */; };
 		AA7025292A5F77A0004F7E61 /* RoundedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7025282A5F77A0004F7E61 /* RoundedTabBarController.swift */; };
 		AA782BDD2A16EC7400ACFCC5 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */; };
 		AA782BE02A16FAD500ACFCC5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = AA782BDF2A16FAD500ACFCC5 /* SDWebImage */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA4FFC062A620BE0000ED15F /* UINavigationController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Ext.swift"; sourceTree = "<group>"; };
 		AA7025282A5F77A0004F7E61 /* RoundedTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTabBarController.swift; sourceTree = "<group>"; };
 		AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		AA7940092A3BCBF10027C90B /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */,
 				AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */,
 				AABC678A2A58D7FB0059963C /* Observable.swift */,
+				AA4FFC062A620BE0000ED15F /* UINavigationController+Ext.swift */,
 				AA7025282A5F77A0004F7E61 /* RoundedTabBarController.swift */,
 			);
 			path = "Extensions+Utilities";
@@ -444,6 +447,7 @@
 				AAFEDCCB2A15950B00BE8E70 /* UIView+Ext.swift in Sources */,
 				AA7B5DAB2A5CB28300F41768 /* BlogPostViewModel.swift in Sources */,
 				AA7C5C672A4FC0080053EFEA /* ChecklistsVC.swift in Sources */,
+				AA4FFC072A620BE0000ED15F /* UINavigationController+Ext.swift in Sources */,
 				AA7C9D5F2A314663004FF1EF /* PlaylistVC.swift in Sources */,
 				AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */,
 				AA7F00A62A5A1AAC0030414B /* PlaylistViewModel.swift in Sources */,

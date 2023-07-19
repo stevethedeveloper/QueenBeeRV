@@ -22,7 +22,7 @@ class RoundedTabBarController: UITabBarController {
         layer.opacity = 1.0
         layer.isHidden = false
         layer.masksToBounds = false
-        layer.fillColor = UIColor(named: "AccentColor")?.cgColor
+        layer.fillColor = UIColor(named: "MenuColor")?.cgColor
         
         tabBar.layer.insertSublayer(layer, at: 0)
         let appearance = UITabBarAppearance()
@@ -47,8 +47,8 @@ class RoundedTabBarController: UITabBarController {
 //      tab bar gradient background
         let gradient = CAGradientLayer()
         gradient.frame = tabBar.bounds
-        gradient.frame.size.height = 200
-        gradient.colors = [UIColor.clear.cgColor, UIColor.systemBackground.cgColor]
+        gradient.frame.size.height = 150
+        gradient.colors = [UIColor.clear.withAlphaComponent(0).cgColor, UIColor.systemBackground.withAlphaComponent(1).cgColor]
         gradient.startPoint = CGPoint.zero
         gradient.endPoint = CGPoint(x: 0, y: 0.5)
         tabBar.layer.insertSublayer(gradient, at: 0)

@@ -23,12 +23,20 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         super.viewDidLoad()
         
         title = "To Do List"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
+
         view.addSubview(tableView)
         viewModel.getAllItems()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.frame = view.bounds
-        
+//        tableView.frame = view.bounds
+        tableView.translatesAutoresizingMaskIntoConstraints                                                 = false
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive                = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive                            = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive                          = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive                              = true
+
         viewModel.models.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -51,13 +59,15 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         alert.addTextField(configurationHandler: nil)
         alert.textFields?[0].spellCheckingType = .yes
         alert.textFields?[0].autocorrectionType = .yes
-        alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
             
             self?.viewModel.createItem(name: text)
         }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+//        alert.view.tintColor = .black
         present(alert, animated: true)
     }
     

@@ -18,7 +18,7 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
         webView = WKWebView()
         webView.navigationDelegate = self
         view = webView
-        self.edgesForExtendedLayout = []
+//        self.edgesForExtendedLayout = []
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +46,7 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
 //        webView = WKWebView()
 //        webView.navigationDelegate = self
 //        view.addSubview(webView)
-////        webView.pin(to: view)
+//        webView.pin(to: view)
 //
 //        webView.translatesAutoresizingMaskIntoConstraints                               = false
 //        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive             = true

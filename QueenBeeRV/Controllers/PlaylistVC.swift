@@ -30,9 +30,9 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Playlist"
-
+        title = ""
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
         
         viewModel.videos.bind { [weak self] _ in
             DispatchQueue.main.async {
@@ -62,7 +62,7 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
         let constraints = [
             playerView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             playerView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             playerView.heightAnchor.constraint(equalToConstant: 200)
         ]
         NSLayoutConstraint.activate(constraints)
@@ -77,7 +77,7 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
         let loadingViewConstraints = [
             loadingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             loadingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             loadingView.heightAnchor.constraint(equalToConstant: 200)
         ]
         NSLayoutConstraint.activate(loadingViewConstraints)
@@ -122,7 +122,7 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
             let constraints = [
                 tableView.topAnchor.constraint(equalTo: playlistLabel.bottomAnchor, constant: 10),
                 tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                 tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
             ]
             NSLayoutConstraint.activate(constraints)
@@ -209,6 +209,8 @@ extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectedVideo.value = viewModel.videos.value[indexPath.row]
+        loadingView.isHidden = false
+
 //        displayVideo(viewModel.videos.value[indexPath.row])
     }
     
