@@ -177,6 +177,26 @@
 			path = CoreDataFiles;
 			sourceTree = "<group>";
 		};
+		AAB5B5BE2A69BBFA008BC538 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AAB5B5BF2A69BC17008BC538 /* Custom Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AAB5B5BF2A69BC17008BC538 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */,
+				AA7940092A3BCBF10027C90B /* VideoCell.swift */,
+				AA7B7F912A4274B60024A755 /* LoadingCell.swift */,
+				AA7C936F2A340EDF00237628 /* VideoCollectionCell.swift */,
+				AA7C6B312A4102AC003F4707 /* VideoTableSectionHeader.swift */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		AABC67872A58C0FB0059963C /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,11 +238,7 @@
 				AAFEDCD12A15B3B000BE8E70 /* Models */,
 				AABC67872A58C0FB0059963C /* View Models */,
 				AA7C39F32A58BF5500467BB4 /* Controllers */,
-				AAFEDCCF2A15A8BA00BE8E70 /* PostCell.swift */,
-				AA7940092A3BCBF10027C90B /* VideoCell.swift */,
-				AA7B7F912A4274B60024A755 /* LoadingCell.swift */,
-				AA7C936F2A340EDF00237628 /* VideoCollectionCell.swift */,
-				AA7C6B312A4102AC003F4707 /* VideoTableSectionHeader.swift */,
+				AAB5B5BE2A69BBFA008BC538 /* Views */,
 				AA7C077E2A45062800286486 /* waves.json */,
 				AAFEDCA42A15805500BE8E70 /* Info.plist */,
 				AA7C765E2A28494E007C3E46 /* Config.xcconfig */,
