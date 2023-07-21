@@ -72,6 +72,7 @@ extension BlogListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         cell.separatorInset = .zero
+        cell.selectionStyle = .none
         let post = viewModel.blogPosts.value[indexPath.row]
         cell.set(post: post)
         return cell
@@ -81,9 +82,11 @@ extension BlogListVC: UITableViewDelegate, UITableViewDataSource {
         let vc = BlogPostVC()
 //        vc.viewModel = BlogPostViewModel()
         vc.viewModel.currentWebsite.value = viewModel.blogPosts.value[indexPath.row].url
-        
+        vc.modalPresentationStyle = .pageSheet
+        vc.modalTransitionStyle = .coverVertical
 //        vc.modalPresentationStyle = .fullScreen
 //        vc.currentWebsite = viewModel.blogPosts.value[indexPath.row].url
-        navigationController?.pushViewController(vc, animated: true)
+        self.present(vc, animated: true)
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }

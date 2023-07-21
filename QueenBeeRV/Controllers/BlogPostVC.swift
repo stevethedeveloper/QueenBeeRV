@@ -11,27 +11,22 @@ import WebKit
 class BlogPostVC: UIViewController, WKNavigationDelegate {
     let viewModel = BlogPostViewModel()
 
-    var webView: WKWebView!
-//    var progressView: UIProgressView!
-    
-    override func loadView() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        view = webView
-//        self.edgesForExtendedLayout = []
-    }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        navigationController?.isToolbarHidden = false
-//    }
-        
+    private var webView: WKWebView!
+    private let doneButton = UIButton()
+    private let headerView = UIView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         
+        view.backgroundColor = .black
+        
+        configureDoneButton()
+        configureWebView()
+        
         viewModel.currentWebsite.bind { [weak self] _ in
             DispatchQueue.main.async {
-                self?.configureAndLoadWebView(forUrlString: self?.viewModel.currentWebsite.value ?? "")
+                self?.loadWebView(forUrlString: self?.viewModel.currentWebsite.value ?? "")
             }
         }
         
@@ -42,52 +37,47 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
                 self.present(ac, animated: true)
             }
         }
-
-//        webView = WKWebView()
-//        webView.navigationDelegate = self
-//        view.addSubview(webView)
-//        webView.pin(to: view)
-//
-//        webView.translatesAutoresizingMaskIntoConstraints                               = false
-//        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive             = true
-//        webView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive     = true
-//        webView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive   = true
-//        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive       = true
     }
 
-    private func configureAndLoadWebView(forUrlString urlString: String) {
-        // TODO - obscures part of page, pin webview to top of this
-//        progressView = UIProgressView(progressViewStyle: .default)
-//        progressView.sizeToFit()
-//        let progressButton = UIBarButtonItem(customView: progressView)
-//        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-//        let back = UIBarButtonItem(barButtonSystemItem: .rewind, target: webView, action: #selector(webView.goBack))
-//        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-//        let forward = UIBarButtonItem(barButtonSystemItem: .fastForward, target: webView, action: #selector(webView.goForward))
-//        toolbarItems = [progressButton, spacer, back, forward, refresh]
-        navigationController?.isNavigationBarHidden = false
-        
-//        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
-        webView.allowsBackForwardNavigationGestures = true
-        
+    @objc private func dismissModal() {
+        self.dismiss(animated: true)
+    }
+    
+    private func configureDoneButton() {
+        view.addSubview(headerView)
+        headerView.backgroundColor = .black
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        headerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        headerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
+
+        doneButton.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
+        headerView.addSubview(doneButton)
+        doneButton.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
+        doneButton.setTitle("Done", for: .normal)
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        doneButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+        doneButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        doneButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+    }
+    
+    private func configureWebView() {
+        webView = WKWebView()
+        webView.navigationDelegate = self
+        view.addSubview(webView)
+        
+        webView.backgroundColor = .black
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
+    }
+    
+    private func loadWebView(forUrlString urlString: String) {
         let url = URL(string: urlString)!
         webView.load(URLRequest(url: url))
-
     }
-    
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        navigationController?.isToolbarHidden = true
-//    }
-
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//        if keyPath == "estimatedProgress" {
-//            progressView.progress = Float(webView.estimatedProgress)
-//        }
-//    }
-    
-//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//        title = webView.title
-//    }
 }

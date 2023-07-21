@@ -75,7 +75,7 @@ class PostCell: UITableViewCell {
         blogImageView.translatesAutoresizingMaskIntoConstraints = false
         blogImageView.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
         blogImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        blogImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//        blogImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         blogImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
 //        blogImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         blogImageView.widthAnchor.constraint(equalTo: blogImageView.heightAnchor, multiplier: 16/9).isActive = true
@@ -85,10 +85,10 @@ class PostCell: UITableViewCell {
         blogTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         blogTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
         blogTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        blogTitleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//        blogTitleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         blogTitleLabel.leadingAnchor.constraint(equalTo: blogImageView.trailingAnchor, constant: 20).isActive = true
 //        blogTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        blogTitleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//        blogTitleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
         blogTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
     }
 
