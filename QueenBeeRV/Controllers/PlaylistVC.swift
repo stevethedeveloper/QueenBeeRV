@@ -115,7 +115,7 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
             tableView.rowHeight = 80
             tableView.separatorColor = .systemGray
             tableView.separatorStyle = .singleLine
-            tableView.register(VideoCell.self, forCellReuseIdentifier: "VideoCell")
+            tableView.register(VideoCell.self, forCellReuseIdentifier: VideoCell.identifier)
             tableView.translatesAutoresizingMaskIntoConstraints = false
             tableView.tableFooterView = nil
 
@@ -190,7 +190,7 @@ extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: VideoCell.identifier) as! VideoCell
             cell.separatorInset = .zero
             cell.reset()
             let video = viewModel.videos.value[indexPath.row]

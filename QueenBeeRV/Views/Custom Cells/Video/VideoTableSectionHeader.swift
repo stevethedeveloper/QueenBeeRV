@@ -9,6 +9,7 @@ import UIKit
 
 class VideoTableSectionHeader: UITableViewHeaderFooterView {
     static let identifier = "TableHeader"
+    
     var labelText: String? = "" {
         didSet {
             label.text = labelText

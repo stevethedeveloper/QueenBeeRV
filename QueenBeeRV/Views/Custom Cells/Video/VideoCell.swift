@@ -10,7 +10,8 @@ import SDWebImage
 import Lottie
 
 class VideoCell: UITableViewCell {
-    
+    static let identifier = "VideoCell"
+
     var videoImageView   = UIImageView()
     var videoTitleLabel  = UILabel()
     let placeholderImage = UIImage(named: "placeholder")

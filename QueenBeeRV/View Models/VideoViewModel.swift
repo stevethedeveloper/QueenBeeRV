@@ -8,13 +8,18 @@
 import Foundation
 import UIKit.UIImage
 
+enum VideoTableSectionTitle: String {
+    case playlistSectionTitle = "Playlists"
+    case videoSectionTitle = "All Videos"
+}
+
 public class VideoViewModel {
     var onErrorHandling: ((String) -> Void)?
     private let youtubeKey = Bundle.main.infoDictionary?["YOUTUBE_KEY"] as? String
     private let youtubeChannelID = Bundle.main.infoDictionary?["YOUTUBE_CHANNEL_ID"] as? String
     let youtubeAllVideosPlaylistID = Bundle.main.infoDictionary?["YOUTUBE_ALL_VIDEOS_PLAYLIST_ID"] as? String
-    let playlistSectionTitle = "Playlists"
-    let videoSectionTitle = "Latest Videos"
+//    let playlistSectionTitle = "Playlists"
+//    let videoSectionTitle = "Latest Videos"
 
     var latestVideos: Videos?
     var allPlaylists: Playlists?
@@ -44,7 +49,7 @@ public class VideoViewModel {
                 if let allVideos = self.latestVideos?.items {
                     if allVideos.count > 0 {
                         // add this at any position and playlists at position 0, will throw error if trying to add to position 1 and array is empty
-                        self.data.value.append(LatestVideos.init(sectionName: self.videoSectionTitle, videos: allVideos))
+                        self.data.value.append(LatestVideos.init(sectionName: VideoTableSectionTitle.videoSectionTitle.rawValue, videos: allVideos))
                     }
                 }
             }
@@ -83,7 +88,7 @@ public class VideoViewModel {
                 if let allPlaylists = self.allPlaylists?.items {
                     if allPlaylists.count > 0 {
                         // always add this to position 0 so it comes first
-                        self.data.value.insert(LatestVideos.init(sectionName: self.playlistSectionTitle, playlists: allPlaylists), at: 0)
+                        self.data.value.insert(LatestVideos.init(sectionName: VideoTableSectionTitle.playlistSectionTitle.rawValue, playlists: allPlaylists), at: 0)
 //                        self.tableView?.reloadData()
                     }
                 }
