@@ -11,9 +11,11 @@ import WebKit
 class BlogPostVC: UIViewController, WKNavigationDelegate {
     let viewModel = BlogPostViewModel()
 
-    private var webView: WKWebView!
+    private var webView = WKWebView()
     private let doneButton = UIButton()
     private let headerView = UIView()
+    private let loadingView = UIView()
+    private var loadingImageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,8 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
         
         configureDoneButton()
         configureWebView()
-        
+        configureAndShowLoadingView()
+
         viewModel.currentWebsite.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.loadWebView(forUrlString: self?.viewModel.currentWebsite.value ?? "")
@@ -64,7 +67,7 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
     }
     
     private func configureWebView() {
-        webView = WKWebView()
+//        webView = WKWebView()
         webView.navigationDelegate = self
         view.addSubview(webView)
         
@@ -75,9 +78,39 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
         webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         webView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
     }
+
+    private func configureAndShowLoadingView() {
+        view.addSubview(loadingView)
+        
+        loadingView.backgroundColor = .black
+        loadingView.pin(to: webView)
+        
+        let image = UIImage(named: "loading")
+        loadingImageView.image = image
+        loadingImageView.contentMode = .scaleAspectFit
+        loadingView.addSubview(loadingImageView)
+        loadingImageView.translatesAutoresizingMaskIntoConstraints = false
+        loadingImageView.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor).isActive = true
+        loadingImageView.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor).isActive = true
+        loadingImageView.widthAnchor.constraint(equalToConstant: 300).isActive = true        
+    }
     
     private func loadWebView(forUrlString urlString: String) {
         let url = URL(string: urlString)!
         webView.load(URLRequest(url: url))
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if let host = navigationAction.request.url?.absoluteURL {
+            if host.absoluteURL.absoluteString == viewModel.currentWebsite.value {
+                decisionHandler(.allow)
+            } else {
+                decisionHandler(.cancel)
+            }
+        }
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadingView.removeFromSuperview()
     }
 }
