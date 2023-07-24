@@ -31,7 +31,7 @@ public class VideoViewModel {
     let placeholderImage = UIImage(named: "placeholder")
 
     func fetchLatestVideos() {
-        let url: URL = URL(string: "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(youtubeAllVideosPlaylistID ?? "")&key=\(youtubeKey ?? "")&maxResults=4")!
+        let url: URL = URL(string: "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(youtubeAllVideosPlaylistID ?? "")&key=\(youtubeKey ?? "")&maxResults=10")!
         
         var request = URLRequest(url: url)
         request.cachePolicy = .useProtocolCachePolicy

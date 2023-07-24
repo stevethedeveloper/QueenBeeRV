@@ -22,7 +22,7 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "To Do List"
+        title = "Checklist"
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
 

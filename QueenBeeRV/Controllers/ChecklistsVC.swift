@@ -35,7 +35,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             }
         }
 
-        title = "To Do Lists"
+        title = "Checkists"
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
         
