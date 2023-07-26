@@ -63,7 +63,7 @@ class BlogListVC: UIViewController {
     }
 }
 
-// MARK: Data delegate and datasource functions
+// MARK: Delegate and datasource functions
 extension BlogListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.blogPosts.value.count

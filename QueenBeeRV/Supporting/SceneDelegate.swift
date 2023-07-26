@@ -20,14 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
 //        UITabBarItem.appearance().titlePositionAdjustment.vertical = 5
         
-        let thirdViewController = ChecklistsVC()
-        thirdViewController.title = "Checklists"
-        thirdViewController.tabBarItem.image = UIImage(systemName: "checklist")?.withBaselineOffset(fromBottom: 5.0)
+        let firstViewController = ChecklistsVC()
+        firstViewController.title = "Checklists"
+        firstViewController.tabBarItem.image = UIImage(systemName: "checklist")?.withBaselineOffset(fromBottom: 5.0)
 //        thirdViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15.0)
-        let firstViewController = VideoVC()
-        firstViewController.title = "Videos"
+        let thirdViewController = VideoVC()
+        thirdViewController.title = "Videos"
 //        firstViewController.tabBarItem.image = UIImage(systemName: "video")?.withBaselineOffset(fromBottom: 5.0)
-        firstViewController.tabBarItem.image = UIImage(systemName: "play.tv.fill")?.withBaselineOffset(fromBottom: 5.0)
+        thirdViewController.tabBarItem.image = UIImage(systemName: "play.tv.fill")?.withBaselineOffset(fromBottom: 5.0)
 //        firstViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15.0)
         let secondViewController = BlogListVC()
         secondViewController.title = "Blog"

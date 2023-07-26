@@ -19,10 +19,11 @@
 		AA7B5DAD2A5CF6C900F41768 /* ChecklistsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DAC2A5CF6C900F41768 /* ChecklistsViewModel.swift */; };
 		AA7B5DAF2A5CFA3200F41768 /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DAE2A5CFA3200F41768 /* ChecklistViewModel.swift */; };
 		AA7B7F932A4274B60024A755 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B7F912A4274B60024A755 /* LoadingCell.swift */; };
+		AA7BBC112A6F4C6600D825EF /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7BBC102A6F4C6600D825EF /* SubtitleTableViewCell.swift */; };
+		AA7BBC132A6F571B00D825EF /* ChecklistEditItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7BBC122A6F571B00D825EF /* ChecklistEditItemVC.swift */; };
+		AA7BBC152A6F573E00D825EF /* ChecklistEditItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7BBC142A6F573E00D825EF /* ChecklistEditItemViewModel.swift */; };
 		AA7C077D2A45059800286486 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AA7C077C2A45059800286486 /* Lottie */; };
 		AA7C077F2A45062900286486 /* waves.json in Resources */ = {isa = PBXBuildFile; fileRef = AA7C077E2A45062800286486 /* waves.json */; };
-		AA7C5C5F2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C5C5B2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift */; };
-		AA7C5C602A4FBB6B0053EFEA /* TodoListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C5C5C2A4FBB6B0053EFEA /* TodoListItem+CoreDataProperties.swift */; };
 		AA7C5C612A4FBB6B0053EFEA /* TodoList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C5C5D2A4FBB6B0053EFEA /* TodoList+CoreDataClass.swift */; };
 		AA7C5C622A4FBB6B0053EFEA /* TodoList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C5C5E2A4FBB6B0053EFEA /* TodoList+CoreDataProperties.swift */; };
 		AA7C5C652A4FBFF10053EFEA /* ChecklistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C5C642A4FBFF10053EFEA /* ChecklistVC.swift */; };
@@ -35,6 +36,9 @@
 		AA7C9D632A316256004FF1EF /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C9D622A316256004FF1EF /* Playlist.swift */; };
 		AA7C9D652A316268004FF1EF /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C9D642A316268004FF1EF /* Video.swift */; };
 		AA7F00A62A5A1AAC0030414B /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F00A52A5A1AAC0030414B /* PlaylistViewModel.swift */; };
+		AA7FB9672A7061760033C874 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9662A7061760033C874 /* UITextField+Ext.swift */; };
+		AA7FB96A2A707E320033C874 /* TodoListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */; };
+		AA7FB96B2A707E320033C874 /* TodoListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */; };
 		AA8668372A384279002E0781 /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8668362A384279002E0781 /* Videos.swift */; };
 		AA9D82352A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = AA9D82342A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper */; };
 		AA9D82372A1ED4D700DF1E5C /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */; };
@@ -87,9 +91,10 @@
 		AA7B5DAC2A5CF6C900F41768 /* ChecklistsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsViewModel.swift; sourceTree = "<group>"; };
 		AA7B5DAE2A5CFA3200F41768 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
 		AA7B7F912A4274B60024A755 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		AA7BBC102A6F4C6600D825EF /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
+		AA7BBC122A6F571B00D825EF /* ChecklistEditItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistEditItemVC.swift; sourceTree = "<group>"; };
+		AA7BBC142A6F573E00D825EF /* ChecklistEditItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistEditItemViewModel.swift; sourceTree = "<group>"; };
 		AA7C077E2A45062800286486 /* waves.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waves.json; sourceTree = "<group>"; };
-		AA7C5C5B2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
-		AA7C5C5C2A4FBB6B0053EFEA /* TodoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA7C5C5D2A4FBB6B0053EFEA /* TodoList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA7C5C5E2A4FBB6B0053EFEA /* TodoList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA7C5C642A4FBFF10053EFEA /* ChecklistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistVC.swift; sourceTree = "<group>"; };
@@ -103,6 +108,9 @@
 		AA7C9D622A316256004FF1EF /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		AA7C9D642A316268004FF1EF /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AA7F00A52A5A1AAC0030414B /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		AA7FB9662A7061760033C874 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
+		AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA8668362A384279002E0781 /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
 		AAB5B5C02A69BDDA008BC538 /* VideoVCbak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoVCbak.swift; sourceTree = "<group>"; };
@@ -161,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				AA7C5C642A4FBFF10053EFEA /* ChecklistVC.swift */,
+				AA7BBC122A6F571B00D825EF /* ChecklistEditItemVC.swift */,
 				AA7C5C662A4FC0080053EFEA /* ChecklistsVC.swift */,
 				AA7C9D5E2A314663004FF1EF /* PlaylistVC.swift */,
 				AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */,
@@ -174,8 +183,8 @@
 		AA7C5C632A4FBB7C0053EFEA /* CoreDataFiles */ = {
 			isa = PBXGroup;
 			children = (
-				AA7C5C5B2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift */,
-				AA7C5C5C2A4FBB6B0053EFEA /* TodoListItem+CoreDataProperties.swift */,
+				AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */,
+				AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */,
 				AA7C5C5D2A4FBB6B0053EFEA /* TodoList+CoreDataClass.swift */,
 				AA7C5C5E2A4FBB6B0053EFEA /* TodoList+CoreDataProperties.swift */,
 			);
@@ -196,6 +205,7 @@
 				AAB5B5C32A69D555008BC538 /* Blog */,
 				AAB5B5C22A69D538008BC538 /* Video */,
 				AA7B7F912A4274B60024A755 /* LoadingCell.swift */,
+				AA7BBC102A6F4C6600D825EF /* SubtitleTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -228,6 +238,7 @@
 				AA7F00A52A5A1AAC0030414B /* PlaylistViewModel.swift */,
 				AA7B5DAC2A5CF6C900F41768 /* ChecklistsViewModel.swift */,
 				AA7B5DAE2A5CFA3200F41768 /* ChecklistViewModel.swift */,
+				AA7BBC142A6F573E00D825EF /* ChecklistEditItemViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -290,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */,
+				AA7FB9662A7061760033C874 /* UITextField+Ext.swift */,
 				AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */,
 				AABC678A2A58D7FB0059963C /* Observable.swift */,
 				AA4FFC062A620BE0000ED15F /* UINavigationController+Ext.swift */,
@@ -480,24 +492,27 @@
 				AAB5B5C12A69BDDA008BC538 /* VideoVCbak.swift in Sources */,
 				AA7AAE9B2A4BBEC600C71998 /* Checklist.swift in Sources */,
 				AA9D82372A1ED4D700DF1E5C /* VideoVC.swift in Sources */,
+				AA7FB96A2A707E320033C874 /* TodoListItem+CoreDataClass.swift in Sources */,
 				AABC67862A58C06D0059963C /* BlogListVC.swift in Sources */,
 				AAFEDCD52A15B41300BE8E70 /* Post.swift in Sources */,
 				AA7C5C622A4FBB6B0053EFEA /* TodoList+CoreDataProperties.swift in Sources */,
 				AAFEDCCB2A15950B00BE8E70 /* UIView+Ext.swift in Sources */,
 				AA7B5DAB2A5CB28300F41768 /* BlogPostViewModel.swift in Sources */,
 				AA7C5C672A4FC0080053EFEA /* ChecklistsVC.swift in Sources */,
+				AA7FB96B2A707E320033C874 /* TodoListItem+CoreDataProperties.swift in Sources */,
+				AA7FB9672A7061760033C874 /* UITextField+Ext.swift in Sources */,
 				AA4FFC072A620BE0000ED15F /* UINavigationController+Ext.swift in Sources */,
 				AA7C9D5F2A314663004FF1EF /* PlaylistVC.swift in Sources */,
+				AA7BBC152A6F573E00D825EF /* ChecklistEditItemViewModel.swift in Sources */,
 				AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */,
 				AA7F00A62A5A1AAC0030414B /* PlaylistViewModel.swift in Sources */,
 				AA7C5C652A4FBFF10053EFEA /* ChecklistVC.swift in Sources */,
 				AA79400A2A3BCBF10027C90B /* VideoCell.swift in Sources */,
 				AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */,
-				AA7C5C5F2A4FBB6B0053EFEA /* TodoListItem+CoreDataClass.swift in Sources */,
 				AAFEDCD02A15A8BA00BE8E70 /* PostCell.swift in Sources */,
+				AA7BBC132A6F571B00D825EF /* ChecklistEditItemVC.swift in Sources */,
 				AA7025292A5F77A0004F7E61 /* RoundedTabBarController.swift in Sources */,
 				AA7C9D652A316268004FF1EF /* Video.swift in Sources */,
-				AA7C5C602A4FBB6B0053EFEA /* TodoListItem+CoreDataProperties.swift in Sources */,
 				AA7C9D612A31623A004FF1EF /* Playlists.swift in Sources */,
 				AA7C5C612A4FBB6B0053EFEA /* TodoList+CoreDataClass.swift in Sources */,
 				AA7B5DAF2A5CFA3200F41768 /* ChecklistViewModel.swift in Sources */,
@@ -505,6 +520,7 @@
 				AA7C9D632A316256004FF1EF /* Playlist.swift in Sources */,
 				AABC678B2A58D7FB0059963C /* Observable.swift in Sources */,
 				AABC67892A58CD760059963C /* VideoViewModel.swift in Sources */,
+				AA7BBC112A6F4C6600D825EF /* SubtitleTableViewCell.swift in Sources */,
 				AAB5B5C52A69D6B6008BC538 /* CollectionTableViewCell.swift in Sources */,
 				AA7C93702A340EDF00237628 /* VideoCollectionCell.swift in Sources */,
 			);

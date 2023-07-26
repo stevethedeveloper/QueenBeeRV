@@ -77,16 +77,16 @@ public class ChecklistViewModel {
         }
     }
     
-    func updateItem(item: TodoListItem, newName: String) {
-        item.name = newName
-        
-        do {
-            try context.save()
-            getAllItems()
-        } catch {
-            self.onErrorHandling?("Could not update item.  Please check your connection and try again.")
-        }
-    }
+//    func updateItem(item: TodoListItem, newName: String) {
+//        item.name = newName
+//
+//        do {
+//            try context.save()
+//            getAllItems()
+//        } catch {
+//            self.onErrorHandling?("Could not update item.  Please check your connection and try again.")
+//        }
+//    }
     
     func toggleCompleted(item: TodoListItem) {
         item.completed = !item.completed

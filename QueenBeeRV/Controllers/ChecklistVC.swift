@@ -11,11 +11,11 @@ import CoreData
 class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let viewModel = ChecklistViewModel()
 
-    
     let tableView: UITableView = {
         let table = UITableView()
         table.separatorColor = .systemGray
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        table.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "cell")
         return table
     }()
     
@@ -30,7 +30,6 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         viewModel.getAllItems()
         tableView.dataSource = self
         tableView.delegate = self
-//        tableView.frame = view.bounds
         tableView.translatesAutoresizingMaskIntoConstraints                                                 = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive                = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive                            = true
@@ -67,7 +66,6 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             self?.viewModel.createItem(name: text)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-//        alert.view.tintColor = .black
         present(alert, animated: true)
     }
     
@@ -79,6 +77,8 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let item = viewModel.models.value[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = item.name
+        cell.textLabel?.numberOfLines = 0
+//        cell.detailTextLabel?.text = "aaaaa"
         cell.separatorInset = .zero
         
         var buttonConfiguration = UIButton.Configuration.bordered()
@@ -103,44 +103,21 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         buttonConfiguration.title = ""
         buttonConfiguration.imagePadding = 0
         buttonConfiguration.background.backgroundColor = .systemBackground
-        
-        //        let button = UIButton(configuration: buttonConfiguration, primaryAction: UIAction(title: "View All Videos", handler: { _ in
-        //
-        ////        let button = UIButton(type: .custom, primaryAction: UIAction(title: "View All Videos", handler: { _ in
-        ////            let vc = PlaylistVC()
-        ////            vc.playlistID = self.youtubeAllVideosPlaylistID
-        ////            vc.playlistName = "All Videos"
-        ////            vc.selectedVideo = self.latestVideos?.items[0]
-        ////            self.navigationController?.pushViewController(vc, animated: true)
-        //            print(indexPath)
-        //        }))
-        
+                
         let button = UIButton(configuration: buttonConfiguration)
         
         button.addAction(UIAction(title: "", handler: { _ in
             self.viewModel.toggleCompleted(item: item)
-            //        let button = UIButton(type: .custom, primaryAction: UIAction(title: "View All Videos", handler: { _ in
-            //            let vc = PlaylistVC()
-            //            vc.playlistID = self.youtubeAllVideosPlaylistID
-            //            vc.playlistName = "All Videos"
-            //            vc.selectedVideo = self.latestVideos?.items[0]
-            //            self.navigationController?.pushViewController(vc, animated: true)
         }), for: .touchUpInside)
         
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.setTitle("", for: .normal)
-        //        button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 10.0
-        //        button.setImage(UIImage(systemName: "checkmark"), for: .normal)
         button.imageView?.tintColor = .systemGreen
         button.layer.borderColor = UIColor.systemGray.cgColor
         button.layer.borderWidth = 1.0
         
         cell.accessoryView = button
-        
-        
-        
-        
         
         return cell
     }
@@ -186,22 +163,59 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             self.present(alert, animated: true)
         }
         
+        
+        
+        
+        
+        
         let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
+
+
             let item = self.viewModel.models.value[indexPath.row]
+
+            tableView.deselectRow(at: indexPath, animated: true)
+//            let list = self.viewModel.models.value[indexPath.row]
+
+            let vc = ChecklistEditItemVC()
+            vc.viewModel.todoListRecord = item
+            vc.onViewWillDisappear = {
+                tableView.reloadData()
+            }
+
+//            vc.viewModel.todoListRecordObjectID = item.objectID
+//            self.navigationController?.pushViewController(vc, animated: true)
+
+
+
+
+
+
+//            self.navigationController?.pushViewController(vc, animated: true)
+            self.present(vc, animated: true)
             
-            let alert = UIAlertController(title: "Edit Item", message: "Edit your item", preferredStyle: .alert)
-            alert.addTextField(configurationHandler: nil)
-            alert.textFields?.first?.text = item.name
-            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
-                guard let field = alert.textFields?.first, let newName = field.text, !newName.isEmpty else {
-                    return
-                }
-                
-                self?.viewModel.updateItem(item: item, newName: newName)
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            self.present(alert, animated: true)
+//            let item = self.viewModel.models.value[indexPath.row]
+//
+//            let alert = UIAlertController(title: "Edit Item", message: "Edit your item", preferredStyle: .alert)
+//            alert.addTextField(configurationHandler: nil)
+//            alert.textFields?.first?.text = item.name
+//            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] _ in
+//                guard let field = alert.textFields?.first, let newName = field.text, !newName.isEmpty else {
+//                    return
+//                }
+//
+//                self?.viewModel.updateItem(item: item, newName: newName)
+//            }))
+//            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+//                tableView.reloadData()
+//            }))
+//
+//            self.present(alert, animated: true)
         }
+        
+        
+        
+        
+        
         
         delete.backgroundColor = .systemRed
         let configuration = UISwipeActionsConfiguration(actions: [delete, edit])
