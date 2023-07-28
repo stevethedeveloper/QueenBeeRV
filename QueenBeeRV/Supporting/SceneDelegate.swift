@@ -20,6 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
 //        UITabBarItem.appearance().titlePositionAdjustment.vertical = 5
         
+
+        let homeViewController = HomeVC()
+        homeViewController.title = "Home"
+        homeViewController.tabBarItem.image = UIImage(systemName: "house.fill")?.withBaselineOffset(fromBottom: 5.0)
+        homeViewController.tabBarItem.title = "Home"
+
         let firstViewController = ChecklistsVC()
         firstViewController.title = "Checklists"
         firstViewController.tabBarItem.image = UIImage(systemName: "checklist")?.withBaselineOffset(fromBottom: 5.0)
@@ -39,11 +45,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let titleColor = UIColor.white
 
+        let homeNavController = UINavigationController(rootViewController: homeViewController)
         let firstNavController = UINavigationController(rootViewController: firstViewController)
         let secondNavController = UINavigationController(rootViewController: secondViewController)
         let thirdNavController = UINavigationController(rootViewController: thirdViewController)
 
-        let allNavControllers = [firstNavController, secondNavController, thirdNavController]
+        let allNavControllers = [homeNavController, firstNavController, secondNavController, thirdNavController]
 
         // init navigation bar on all views
         for nc in allNavControllers {

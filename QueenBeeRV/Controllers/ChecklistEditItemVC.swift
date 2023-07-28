@@ -47,6 +47,8 @@ class ChecklistEditItemVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
+        hideKeyboardWhenLosesFocus()
+        
         configureButtons()
                 
         // labels

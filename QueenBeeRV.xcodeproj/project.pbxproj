@@ -39,6 +39,8 @@
 		AA7FB9672A7061760033C874 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9662A7061760033C874 /* UITextField+Ext.swift */; };
 		AA7FB96A2A707E320033C874 /* TodoListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */; };
 		AA7FB96B2A707E320033C874 /* TodoListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */; };
+		AA80F8592A745CD8005DFA8A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80F8582A745CD8005DFA8A /* HomeVC.swift */; };
+		AA80F85B2A746818005DFA8A /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80F85A2A746818005DFA8A /* UIViewController+Ext.swift */; };
 		AA815DC82A71CAB60036AFB1 /* ChecklistItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815DC72A71CAB60036AFB1 /* ChecklistItemCell.swift */; };
 		AA8668372A384279002E0781 /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8668362A384279002E0781 /* Videos.swift */; };
 		AA9D82352A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = AA9D82342A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper */; };
@@ -112,6 +114,8 @@
 		AA7FB9662A7061760033C874 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AA80F8582A745CD8005DFA8A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		AA80F85A2A746818005DFA8A /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		AA815DC72A71CAB60036AFB1 /* ChecklistItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemCell.swift; sourceTree = "<group>"; };
 		AA8668362A384279002E0781 /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 				AAB5B5C02A69BDDA008BC538 /* VideoVCbak.swift */,
 				AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */,
 				AABC67852A58C06D0059963C /* BlogListVC.swift */,
+				AA80F8582A745CD8005DFA8A /* HomeVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			children = (
 				AAFEDCCA2A15950B00BE8E70 /* UIView+Ext.swift */,
 				AA7FB9662A7061760033C874 /* UITextField+Ext.swift */,
+				AA80F85A2A746818005DFA8A /* UIViewController+Ext.swift */,
 				AA782BDC2A16EC7400ACFCC5 /* String+Ext.swift */,
 				AABC678A2A58D7FB0059963C /* Observable.swift */,
 				AA4FFC062A620BE0000ED15F /* UINavigationController+Ext.swift */,
@@ -512,12 +518,14 @@
 				AA7B5DAB2A5CB28300F41768 /* BlogPostViewModel.swift in Sources */,
 				AA7C5C672A4FC0080053EFEA /* ChecklistsVC.swift in Sources */,
 				AA7FB96B2A707E320033C874 /* TodoListItem+CoreDataProperties.swift in Sources */,
+				AA80F8592A745CD8005DFA8A /* HomeVC.swift in Sources */,
 				AA7FB9672A7061760033C874 /* UITextField+Ext.swift in Sources */,
 				AA4FFC072A620BE0000ED15F /* UINavigationController+Ext.swift in Sources */,
 				AA7C9D5F2A314663004FF1EF /* PlaylistVC.swift in Sources */,
 				AA7BBC152A6F573E00D825EF /* ChecklistEditItemViewModel.swift in Sources */,
 				AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */,
 				AA7F00A62A5A1AAC0030414B /* PlaylistViewModel.swift in Sources */,
+				AA80F85B2A746818005DFA8A /* UIViewController+Ext.swift in Sources */,
 				AA7C5C652A4FBFF10053EFEA /* ChecklistVC.swift in Sources */,
 				AA79400A2A3BCBF10027C90B /* VideoCell.swift in Sources */,
 				AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */,
@@ -706,7 +714,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = MXP653QBU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueenBeeRV/Info.plist;
@@ -734,7 +742,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = MXP653QBU3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueenBeeRV/Info.plist;
