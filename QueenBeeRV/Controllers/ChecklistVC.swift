@@ -12,10 +12,14 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     let viewModel = ChecklistViewModel()
 
     let tableView: UITableView = {
-        let table = UITableView()
+        let table = UITableView(frame: .zero, style: .plain)
+        table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorColor = .systemGray
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        table.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(ChecklistItemCell.self, forCellReuseIdentifier: "cell")
+//        table.rowHeight = 40
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = 44
+//        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return table
     }()
     
@@ -30,8 +34,8 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         viewModel.getAllItems()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.translatesAutoresizingMaskIntoConstraints                                                 = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive                = true
+//        tableView.translatesAutoresizingMaskIntoConstraints                                                 = false
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive                = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive                            = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive                          = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive                              = true
@@ -75,49 +79,68 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = viewModel.models.value[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = item.name
-        cell.textLabel?.numberOfLines = 0
-//        cell.detailTextLabel?.text = "aaaaa"
-        cell.separatorInset = .zero
-        
-        var buttonConfiguration = UIButton.Configuration.bordered()
-
-        if item.starred {
-            let image = UIImage(systemName: "star.fill")
-            cell.imageView?.image = image?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
-        } else {
-            cell.imageView?.image = nil
-        }
-
-        if item.completed {
-            cell.textLabel?.textColor = .secondaryLabel
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-            buttonConfiguration.image = UIImage(systemName: "checkmark")
-        } else {
-            cell.textLabel?.textColor = .label
-            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-            buttonConfiguration.image = UIImage()
-        }
-        
-        buttonConfiguration.title = ""
-        buttonConfiguration.imagePadding = 0
-        buttonConfiguration.background.backgroundColor = .systemBackground
-                
-        let button = UIButton(configuration: buttonConfiguration)
-        
-        button.addAction(UIAction(title: "", handler: { _ in
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ChecklistItemCell
+        cell.toggleCompletedCallback = {
             self.viewModel.toggleCompleted(item: item)
-        }), for: .touchUpInside)
+        }
         
-        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        button.setTitle("", for: .normal)
-        button.layer.cornerRadius = 10.0
-        button.imageView?.tintColor = .systemGreen
-        button.layer.borderColor = UIColor.systemGray.cgColor
-        button.layer.borderWidth = 1.0
+        if !cell.notesHidden {
+            cell.toggleNotes()
+        }
+
+        cell.reloadCell = {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
         
-        cell.accessoryView = button
+        //        cell.toggleCompleted = {
+////            self.viewModel.toggleCompleted(item: item)
+//            print("ran")
+//        }
+        cell.set(item: item)
+        cell.separatorInset = .zero
+        cell.selectionStyle = .none
+
+//        cell.textLabel?.text = item.name
+//        cell.textLabel?.numberOfLines = 0
+////        cell.detailTextLabel?.text = "aaaaa"
+//        cell.separatorInset = .zero
+//        
+//        var buttonConfiguration = UIButton.Configuration.bordered()
+//
+//        if item.starred {
+//            let image = UIImage(systemName: "star.fill")
+//            cell.imageView?.image = image?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+//        } else {
+//            cell.imageView?.image = nil
+//        }
+//
+        if item.completed {
+            cell.itemTitleLabel.textColor = .secondaryLabel
+            cell.itemTitleLabel.font = UIFont.systemFont(ofSize: 16)
+        } else {
+            cell.itemTitleLabel.textColor = .label
+            cell.itemTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        }
+//        
+//        buttonConfiguration.title = ""
+//        buttonConfiguration.imagePadding = 0
+//        buttonConfiguration.background.backgroundColor = .systemBackground
+//                
+//        let button = UIButton(configuration: buttonConfiguration)
+//        
+//        button.addAction(UIAction(title: "", handler: { _ in
+//            self.viewModel.toggleCompleted(item: item)
+//        }), for: .touchUpInside)
+//        
+//        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//        button.setTitle("", for: .normal)
+//        button.layer.cornerRadius = 10.0
+//        button.imageView?.tintColor = .systemGreen
+//        button.layer.borderColor = UIColor.systemGray.cgColor
+//        button.layer.borderWidth = 1.0
+//        
+//        cell.accessoryView = button
         
         return cell
     }
@@ -221,5 +244,13 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let configuration = UISwipeActionsConfiguration(actions: [delete, edit])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

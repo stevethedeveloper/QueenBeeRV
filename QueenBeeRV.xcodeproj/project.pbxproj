@@ -39,6 +39,7 @@
 		AA7FB9672A7061760033C874 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9662A7061760033C874 /* UITextField+Ext.swift */; };
 		AA7FB96A2A707E320033C874 /* TodoListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */; };
 		AA7FB96B2A707E320033C874 /* TodoListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */; };
+		AA815DC82A71CAB60036AFB1 /* ChecklistItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815DC72A71CAB60036AFB1 /* ChecklistItemCell.swift */; };
 		AA8668372A384279002E0781 /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8668362A384279002E0781 /* Videos.swift */; };
 		AA9D82352A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = AA9D82342A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper */; };
 		AA9D82372A1ED4D700DF1E5C /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */; };
@@ -111,6 +112,7 @@
 		AA7FB9662A7061760033C874 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AA815DC72A71CAB60036AFB1 /* ChecklistItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemCell.swift; sourceTree = "<group>"; };
 		AA8668362A384279002E0781 /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		AA9D82362A1ED4D700DF1E5C /* VideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
 		AAB5B5C02A69BDDA008BC538 /* VideoVCbak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoVCbak.swift; sourceTree = "<group>"; };
@@ -191,6 +193,14 @@
 			path = CoreDataFiles;
 			sourceTree = "<group>";
 		};
+		AA815DC62A71CA6B0036AFB1 /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				AA815DC72A71CAB60036AFB1 /* ChecklistItemCell.swift */,
+			);
+			path = Checklist;
+			sourceTree = "<group>";
+		};
 		AAB5B5BE2A69BBFA008BC538 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +212,7 @@
 		AAB5B5BF2A69BC17008BC538 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AA815DC62A71CA6B0036AFB1 /* Checklist */,
 				AAB5B5C32A69D555008BC538 /* Blog */,
 				AAB5B5C22A69D538008BC538 /* Video */,
 				AA7B7F912A4274B60024A755 /* LoadingCell.swift */,
@@ -484,6 +495,7 @@
 				AA7B5DA92A5CA6F500F41768 /* BlogListViewModel.swift in Sources */,
 				AA8668372A384279002E0781 /* Videos.swift in Sources */,
 				AA7B5DAD2A5CF6C900F41768 /* ChecklistsViewModel.swift in Sources */,
+				AA815DC82A71CAB60036AFB1 /* ChecklistItemCell.swift in Sources */,
 				AAFEDC9E2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld in Sources */,
 				AA7C6B322A4102AC003F4707 /* VideoTableSectionHeader.swift in Sources */,
 				AA7C6B342A41034A003F4707 /* LatestVideos.swift in Sources */,

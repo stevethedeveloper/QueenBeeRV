@@ -22,7 +22,7 @@ class PostCell: UITableViewCell {
         addSubview(blogImageView)
         addSubview(blogTitleLabel)
         
-        configureViewCell()
+        configureCellView()
         configureImageView()
         configureTitleLabel()
         setCellViewConstraints()
@@ -46,7 +46,7 @@ class PostCell: UITableViewCell {
         blogTitleLabel.text = post.title
     }
 
-    func configureViewCell() {
+    func configureCellView() {
         cellView.layer.cornerRadius = 10
         cellView.layer.borderWidth = 1
         cellView.layer.borderColor = UIColor.systemGray5.cgColor

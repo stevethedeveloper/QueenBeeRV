@@ -10,9 +10,10 @@ import UIKit
 class ChecklistEditItemVC: UIViewController {
     let viewModel = ChecklistEditItemViewModel()
     
+    // callback to refresh calling view
     var onViewWillDisappear: (()->())?
     
-//    private let scrollView = UIScrollView()
+    private let scrollView = UIScrollView()
     
 //    public var item = TodoListItem()
     
@@ -28,24 +29,26 @@ class ChecklistEditItemVC: UIViewController {
     
     private let headerView = UIView()
 
+    private let calendarView = UICalendarView()
+
     
-    let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.axis = .vertical
-        stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
-        return stackView
-    }()
+//    let stackView: UIStackView = {
+//        let stackView = UIStackView()
+//        stackView.translatesAutoresizingMaskIntoConstraints = false
+//        stackView.distribution = .fill
+//        stackView.alignment = .fill
+//        stackView.axis = .vertical
+//        stackView.isLayoutMarginsRelativeArrangement = true
+//        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+//        return stackView
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
         configureButtons()
-        
+                
         // labels
         let titleLabel = UILabel()
         titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -113,6 +116,7 @@ class ChecklistEditItemVC: UIViewController {
         lastCompletedClearButton.centerYAnchor.constraint(equalTo: lastCompletedView.centerYAnchor).isActive = true
 //        lastCompletedClearButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         lastCompletedClearButton.rightAnchor.constraint(equalTo: lastCompletedView.rightAnchor, constant: -10).isActive = true
+        lastCompletedClearButton.addTarget(self, action: #selector(clearLastCompletedDate), for: .touchUpInside)
 
         let lastCompletedChangeButton = UIButton()
 //        lastCompletedChageButton.addTarget(self, action: #selector(saveChanges), for: .touchUpInside)
@@ -124,10 +128,12 @@ class ChecklistEditItemVC: UIViewController {
         lastCompletedChangeButton.centerYAnchor.constraint(equalTo: lastCompletedView.centerYAnchor).isActive = true
 //        lastCompletedChangeButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         lastCompletedChangeButton.rightAnchor.constraint(equalTo: lastCompletedClearButton.leftAnchor, constant: -20).isActive = true
+        lastCompletedChangeButton.addTarget(self, action: #selector(toggleCalendar), for: .touchUpInside)
+
 
 
         
-        let calendarView = UICalendarView()
+        calendarView.isHidden = true
         calendarView.calendar = Calendar(identifier: .gregorian)
         calendarView.locale = .current
         calendarView.fontDesign = .rounded
@@ -140,10 +146,19 @@ class ChecklistEditItemVC: UIViewController {
         
         let spacer = UIView()
         // maximum width constraint
-        let spacerHeightConstraint = spacer.heightAnchor.constraint(equalToConstant: 2000)
+        let spacerHeightConstraint = spacer.heightAnchor.constraint(equalToConstant: 200)
         spacerHeightConstraint.priority = .defaultLow
         spacerHeightConstraint.isActive = true
 
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
+        
         //Stack View
         let stackView   = UIStackView()
         stackView.axis  = NSLayoutConstraint.Axis.vertical
@@ -161,13 +176,15 @@ class ChecklistEditItemVC: UIViewController {
         stackView.addArrangedSubview(spacer)
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        self.view.addSubview(stackView)
+//        self.view.addSubview(stackView)
+        scrollView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 10),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
         
         // Keyboard handling
@@ -179,9 +196,28 @@ class ChecklistEditItemVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        // callback to refresh calling view
         onViewWillDisappear?()
     }
     
+    @objc private func clearLastCompletedDate() {
+        setLastCompleteDateLabel(toDate: nil)
+    }
+    
+    @objc private func toggleCalendar() {
+        if calendarView.isHidden {
+            UIView.animate(withDuration: 0.35) { [unowned self] in
+                self.calendarView.isHidden = false
+                self.calendarView.alpha = 1
+            }
+        } else {
+            UIView.animate(withDuration: 0.35) { [unowned self] in
+               self.calendarView.isHidden = true
+               self.calendarView.alpha = 0
+            }
+        }
+    }
+        
 //    @objc private func dismissKeyboard() {
 //        view.endEditing(true)
 //    }
@@ -227,11 +263,15 @@ class ChecklistEditItemVC: UIViewController {
         self.dismiss(animated: true)
     }
     
-    private func setLastCompleteDateLabel(toDate newDate: Date) {
+    private func setLastCompleteDateLabel(toDate newDate: Date?) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/d/y"
-        let dateString = dateFormatter.string(from: newDate)
-        lastCompleteDateLabel.text = "  \(dateString)"
+        if let newDate = newDate {
+            let dateString = dateFormatter.string(from: newDate)
+            lastCompleteDateLabel.text = "  \(dateString)"
+        } else {
+            lastCompleteDateLabel.text = nil
+        }
 //        dateButton.setTitle(dateString, for: .normal)
     }
 
@@ -248,6 +288,11 @@ extension ChecklistEditItemVC: UICalendarViewDelegate, UICalendarSelectionSingle
             if let newDate = dateFormatter.date(from: dateString) {
                 setLastCompleteDateLabel(toDate: newDate)
             }
+            UIView.animate(withDuration: 0.35) { [unowned self] in
+               self.calendarView.isHidden = true
+               self.calendarView.alpha = 0
+            }
+
         } else {
             lastCompleteDateLabel.text = "No date selected."
         }
