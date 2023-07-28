@@ -99,4 +99,15 @@ public class ChecklistViewModel {
         }
     }
 
+    func toggleStarred(item: TodoListItem) {
+        item.starred = !item.starred
+
+        do {
+            try context.save()
+            getAllItems()
+        } catch {
+            self.onErrorHandling?("Could not change star status.  Please check your connection and try again.")
+        }
+    }
+
 }

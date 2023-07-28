@@ -54,6 +54,13 @@ class ChecklistItemCell: UITableViewCell {
         return label
     }()
     
+    var starImage: UIImageView = {
+        let imageView = UIImageView()
+        let image = UIImage(systemName: "star.fill")?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+        imageView.image = image
+        return imageView
+    }()
+    
     var currentItem: TodoListItem!
     var notesHidden = true
     let notesView = UIView()
@@ -72,19 +79,13 @@ class ChecklistItemCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
 
-//        cellView.backgroundColor = .red
-//        notesView.backgroundColor = .blue
-
         cellView.addSubview(itemTitleLabel)
         cellView.addSubview(completedButton)
         completedButton.addTarget(self, action: #selector(didTapCheckbox), for: .touchUpInside)
         cellView.addSubview(notesButton)
         notesButton.addTarget(self, action: #selector(toggleNotes), for: .touchUpInside)
         cellView.addSubview(notesButton)
-
-//        notesButton.translatesAutoresizingMaskIntoConstraints = false
-//        notesButton.leadingAnchor.constraint(equalTo: cellView.leadingAnchor).isActive = true
-//        notesButton.topAnchor.constraint(equalTo: cellView.topAnchor).isActive = true
+        cellView.addSubview(starImage)
 
         stackView.axis  = NSLayoutConstraint.Axis.vertical
         stackView.distribution  = UIStackView.Distribution.equalSpacing
@@ -94,7 +95,6 @@ class ChecklistItemCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(stackView)
-//        self.view.addSubview(stackView)
 
         stackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
@@ -122,22 +122,8 @@ class ChecklistItemCell: UITableViewCell {
 
         setCompletedButtonConstraints()
         setNotesButtonConstraints()
+        setStarImageConstraints()
         setTitleLabelConstraints()
-
-        
-//        contentView.addSubview(cellView)
-//        cellView.addSubview(itemTitleLabel)
-//        cellView.addSubview(completedButton)
-//        completedButton.addTarget(self, action: #selector(didTapCheckbox), for: .touchUpInside)
-//        cellView.addSubview(notesButton)
-//        notesButton.addTarget(self, action: #selector(toggleNotes), for: .touchUpInside)
-
-
-//        configureTitleLabel()
-//        configureNotesLabel()
-////        configureCompletedButton()
-
-//        setCellViewConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -159,7 +145,13 @@ class ChecklistItemCell: UITableViewCell {
         
         if let notes = item.notes, !notes.isEmpty {
             setNotesLabelConstraints()
-            notesLabel.text = "Notes:\n\(notes)"
+            
+            let attributedString = NSMutableAttributedString(string: "Notes:\n\(notes)")
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 1.4
+            attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+            notesLabel.attributedText = attributedString
+            
             let image = UIImage(systemName: "list.clipboard.fill")?.withTintColor(UIColor(red: 118/255, green: 152/255, blue: 218/255, alpha: 1), renderingMode: .alwaysOriginal)
             notesButton.setImage(image, for: .normal)
         } else {
@@ -168,35 +160,38 @@ class ChecklistItemCell: UITableViewCell {
             let image = UIImage(systemName: "list.clipboard")?.withTintColor(UIColor(red: 118/255, green: 152/255, blue: 218/255, alpha: 1), renderingMode: .alwaysOriginal)
             notesButton.setImage(image, for: .normal)
         }
+        
+        if item.starred {
+            starImage.isHidden = false
+        } else {
+            starImage.isHidden = true
+        }
+
     }
     
     @objc public func toggleNotes() {
         notesHidden = !notesHidden
         if notesHidden {
             notesView.isHidden = true
-//            notesView.removeFromSuperview()
-//            setNotesLabelConstraints(hidden: true)
             reloadCell()
         } else {
             notesView.isHidden = false
-//            cellView.addSubview(notesView)
-//            setNotesLabelConstraints(hidden: false)
             reloadCell()
         }
     }
-
-    private func setCellViewConstraints() {
-//        cellView.translatesAutoresizingMaskIntoConstraints = false
-//        cellView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-//        cellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
-//        cellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
-//        cellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
-    }
     
+    private func setStarImageConstraints() {
+        starImage.translatesAutoresizingMaskIntoConstraints = false
+        starImage.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 15).isActive = true
+        starImage.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 10).isActive = true
+        starImage.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        starImage.widthAnchor.constraint(equalToConstant: 15).isActive = true
+}
+
     private func setTitleLabelConstraints() {
         itemTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         itemTitleLabel.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 7).isActive = true
-        itemTitleLabel.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 10).isActive = true
+        itemTitleLabel.leadingAnchor.constraint(equalTo: starImage.trailingAnchor, constant: 10).isActive = true
         itemTitleLabel.trailingAnchor.constraint(equalTo: notesButton.leadingAnchor, constant: -5).isActive = true
         itemTitleLabel.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -7).isActive = true
     }
@@ -212,7 +207,7 @@ class ChecklistItemCell: UITableViewCell {
 
         notesLabelWrapperView.translatesAutoresizingMaskIntoConstraints = false
         notesLabelWrapperView.topAnchor.constraint(equalTo: itemTitleLabel.bottomAnchor, constant: 20).isActive = true
-        notesLabelWrapperView.leadingAnchor.constraint(equalTo: notesView.leadingAnchor, constant: 5).isActive = true
+        notesLabelWrapperView.leadingAnchor.constraint(equalTo: notesView.leadingAnchor, constant: 10).isActive = true
         notesLabelWrapperView.bottomAnchor.constraint(equalTo: notesView.bottomAnchor, constant: -10).isActive = true
         notesLabelWrapperView.trailingAnchor.constraint(equalTo: notesView.trailingAnchor, constant: -10).isActive = true
 
@@ -239,43 +234,4 @@ class ChecklistItemCell: UITableViewCell {
         completedButton.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 7).isActive = true
         completedButton.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -10).isActive = true
     }
-
-    
-    
-    //
-    //        if item.starred {
-    //            let image = UIImage(systemName: "star.fill")
-    //            cell.imageView?.image = image?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
-    //        } else {
-    //            cell.imageView?.image = nil
-    //        }
-    //
-    //        var buttonConfiguration = UIButton.Configuration.bordered()
-    //        if item.completed {
-    //            cell.textLabel?.textColor = .secondaryLabel
-    //            cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-    //            buttonConfiguration.image = UIImage(systemName: "checkmark")
-    //        } else {
-    //            cell.textLabel?.textColor = .label
-    //            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-    //            buttonConfiguration.image = UIImage()
-    //        }
-    //
-    //        buttonConfiguration.title = ""
-    //        buttonConfiguration.imagePadding = 0
-    //        buttonConfiguration.background.backgroundColor = .systemBackground
-    //
-    //        let button = UIButton(configuration: buttonConfiguration)
-    //
-    //        button.addAction(UIAction(title: "", handler: { _ in
-    //            self.viewModel.toggleCompleted(item: item)
-    //        }), for: .touchUpInside)
-    //
-    //        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-    //        button.setTitle("", for: .normal)
-    //        button.layer.cornerRadius = 10.0
-    //        button.imageView?.tintColor = .systemGreen
-    //        button.layer.borderColor = UIColor.systemGray.cgColor
-    //        button.layer.borderWidth = 1.0
-
 }

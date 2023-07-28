@@ -100,7 +100,7 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         cell.set(item: item)
         cell.separatorInset = .zero
         cell.selectionStyle = .none
-
+        
 //        cell.textLabel?.text = item.name
 //        cell.textLabel?.numberOfLines = 0
 ////        cell.detailTextLabel?.text = "aaaaa"
@@ -153,7 +153,8 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         tableView.cellForRow(at: indexPath)?.imageView?.image = nil
         let item = self.viewModel.models.value[indexPath.row]
         let star = UIContextualAction(style: .normal, title: "Star") { (action, view, handler) in
-            item.starred = !item.starred
+//            item.starred = !item.starred
+            self.viewModel.toggleStarred(item: item)
             tableView.reloadData()
         }
         if item.starred {
