@@ -18,8 +18,6 @@ public class VideoViewModel {
     private let youtubeKey = Bundle.main.infoDictionary?["YOUTUBE_KEY"] as? String
     private let youtubeChannelID = Bundle.main.infoDictionary?["YOUTUBE_CHANNEL_ID"] as? String
     let youtubeAllVideosPlaylistID = Bundle.main.infoDictionary?["YOUTUBE_ALL_VIDEOS_PLAYLIST_ID"] as? String
-//    let playlistSectionTitle = "Playlists"
-//    let videoSectionTitle = "Latest Videos"
 
     var latestVideos: Videos?
     var allPlaylists: Playlists?

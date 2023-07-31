@@ -80,13 +80,9 @@ extension BlogListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = BlogPostVC()
-//        vc.viewModel = BlogPostViewModel()
         vc.viewModel.currentWebsite.value = viewModel.blogPosts.value[indexPath.row].url
         vc.modalPresentationStyle = .pageSheet
         vc.modalTransitionStyle = .coverVertical
-//        vc.modalPresentationStyle = .fullScreen
-//        vc.currentWebsite = viewModel.blogPosts.value[indexPath.row].url
         self.present(vc, animated: true)
-//        navigationController?.pushViewController(vc, animated: true)
     }
 }

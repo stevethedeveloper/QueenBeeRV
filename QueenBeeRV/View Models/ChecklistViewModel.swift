@@ -22,31 +22,6 @@ public class ChecklistViewModel {
     func getAllItems() {
         guard let listRecord = context.object(with: todoListRecordObjectID!) as? TodoList else { return }
         models.value = listRecord.itemArray
-        
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-        
-        //        let fetchRequest: NSFetchRequest<TodoList>
-        //        fetchRequest = TodoList.fetchRequest()
-        
-        //        fetchRequest.predicate = NSPredicate(
-        //            format: "title = %@", todoListRecord.title!
-        //        )
-        
-        //        do {
-        //            let listRecord = try context.fetch(fetchRequest)
-        //            print(listRecord)
-        ////            models = listRecord.itemArray
-        ////            print(models)
-        //
-        //            DispatchQueue.main.async {
-        //                self.tableView.reloadData()
-        //            }
-        //        } catch {
-        //
-        //        }
-        
     }
     
     func createItem(name: String) {
@@ -55,9 +30,6 @@ public class ChecklistViewModel {
         newItem.name = name
         newItem.createdAt = Date()
         newItem.todoList = listRecord
-        //        newItem.todoList = todoListRecord
-        
-        //        todoListRecord.addToTodoListItems(newItem)
         do {
             try context.save()
             getAllItems()
@@ -76,17 +48,6 @@ public class ChecklistViewModel {
             self.onErrorHandling?("Could not delete item.  Please check your connection and try again.")
         }
     }
-    
-//    func updateItem(item: TodoListItem, newName: String) {
-//        item.name = newName
-//
-//        do {
-//            try context.save()
-//            getAllItems()
-//        } catch {
-//            self.onErrorHandling?("Could not update item.  Please check your connection and try again.")
-//        }
-//    }
     
     func toggleCompleted(item: TodoListItem) {
         item.completed = !item.completed

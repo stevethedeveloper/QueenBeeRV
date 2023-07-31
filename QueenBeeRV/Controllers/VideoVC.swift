@@ -10,8 +10,6 @@ import YouTubeiOSPlayerHelper
 
 class VideoVC: UIViewController {
     private let viewModel = VideoViewModel()
-//    private var playerView: YTPlayerView!
-//    private let headerViewIdentifier = "TableViewHeaderView"
     private var tableView: UITableView?
     private var loadingView = UIImageView()
 
@@ -33,8 +31,6 @@ class VideoVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
         
-//        displayVideo(viewModel.promoVideoId)
-        
         viewModel.data.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView?.reloadData()
@@ -55,7 +51,6 @@ class VideoVC: UIViewController {
             view.addSubview(tableView)
             tableView.delegate = self
             tableView.dataSource = self
-//            tableView.rowHeight = 80
             tableView.separatorColor = .systemGray
             tableView.separatorStyle = .singleLine
             tableView.register(VideoTableSectionHeader.self, forHeaderFooterViewReuseIdentifier: VideoTableSectionHeader.identifier)
@@ -68,48 +63,12 @@ class VideoVC: UIViewController {
             let constraints = [
                 tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
                 tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-//                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
                 tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                 tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
             ]
             NSLayoutConstraint.activate(constraints)
         }
     }
-    
-//    func setupPlayerView() {
-//        playerView = YTPlayerView()
-//        playerView.delegate = self
-//        playerView.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(playerView)
-//
-//        let constraints = [
-//            playerView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-//            playerView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-//            playerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-//            playerView.heightAnchor.constraint(equalToConstant: 200)
-//        ]
-//        NSLayoutConstraint.activate(constraints)
-//
-//        loadingView.image = UIImage(named: "loading")
-//        loadingView.contentMode = .scaleAspectFit
-//        loadingView.translatesAutoresizingMaskIntoConstraints = false
-//        loadingView.backgroundColor = .systemBackground
-//        loadingView.layer.zPosition = 1
-//        loadingView.isHidden = false
-//        playerView.addSubview(loadingView)
-//        let loadingViewConstraints = [
-//            loadingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-//            loadingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-//            loadingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-//            loadingView.heightAnchor.constraint(equalToConstant: 200)
-//        ]
-//        NSLayoutConstraint.activate(loadingViewConstraints)
-//    }
-//
-//    func displayVideo(_ videoId: String) {
-//        playerView.load(withVideoId: videoId, playerVars: ["playsinline": 1, "modestbranding": 1, "rel": 0])
-//        return
-//    }
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         loadingView.isHidden = true
@@ -154,8 +113,6 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
             let itemsInSection = viewModel.data.value[indexPath.section].videos
             guard let video = itemsInSection?[indexPath.row] else { return UITableViewCell() }
             cell.set(video: video)
-//            cell.layer.borderColor = UIColor.systemGray6.cgColor
-//            cell.layer.borderWidth = 1
             cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             return cell
         } else if viewModel.data.value[indexPath.section].sectionName == VideoTableSectionTitle.playlistSectionTitle.rawValue {
@@ -163,23 +120,9 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
             cell.separatorInset = .zero
             guard let itemsInSection = viewModel.data.value[indexPath.section].playlists else { return UITableViewCell() }
-//            guard let playlist = itemsInSection?[indexPath.row] else { return UITableViewCell() }
             cell.configure(with: itemsInSection)
             cell.parent = self
             return cell
-
-
-
-
-//            let cell = tableView.dequeueReusableCell(withIdentifier: VideoCell.identifier) as! VideoCell
-//            cell.separatorInset = .zero
-//            let itemsInSection = viewModel.data.value[indexPath.section].playlists
-//            guard let playlist = itemsInSection?[indexPath.row] else { return UITableViewCell() }
-//            cell.set(playlist: playlist)
-//            cell.layer.borderColor = UIColor.systemGray6.cgColor
-//            cell.layer.borderWidth = 1
-//            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-//            return cell
         }
         
         return UITableViewCell()
@@ -217,7 +160,6 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
         }))
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 30)
         button.center = footerView.center
-//        button.setTitle("View All Videos", for: .normal)
         button.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
         button.backgroundColor = .systemGray6
         button.layer.cornerRadius = 10.0
@@ -233,9 +175,6 @@ extension VideoVC: UITableViewDelegate, UITableViewDataSource {
             vc.viewModel.playlistID = viewModel.youtubeAllVideosPlaylistID
             vc.viewModel.playlistName = "All Videos"
             vc.viewModel.selectedVideo.value = viewModel.latestVideos?.items[indexPath.row]
-//        } else if viewModel.data.value[indexPath.section].sectionName == VideoTableSectionTitle.playlistSectionTitle.rawValue {
-//            vc.viewModel.playlistID = viewModel.allPlaylists?.items[indexPath.row].id
-//            vc.viewModel.playlistName = viewModel.allPlaylists?.items[indexPath.row].title
         } else {
             return
         }

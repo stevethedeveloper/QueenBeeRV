@@ -88,35 +88,6 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let vc = ChecklistVC()
         vc.viewModel.todoListRecordObjectID = list.objectID
         navigationController?.pushViewController(vc, animated: true)
-
-//
-//        let sheet = UIAlertController(title: "Edit", message: nil, preferredStyle: .actionSheet)
-//        sheet.addAction(UIAlertAction(title: "Go", style: .default, handler: { [weak self] _ in
-//            let vc = ViewController()
-//            vc.todoListRecordObjectID = list.objectID
-//            print(list.todoListItems?.count)
-////                    vc.currentWebsite = blogPosts[indexPath.row].url
-//            self?.navigationController?.pushViewController(vc, animated: true)
-//        }))
-//        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        sheet.addAction(UIAlertAction(title: "Edit", style: .default, handler: { [weak self] _ in
-//            let alert = UIAlertController(title: "Edit List", message: "Edit your list", preferredStyle: .alert)
-//            alert.addTextField(configurationHandler: nil)
-//            alert.textFields?.first?.text = list.title
-//            alert.addAction(UIAlertAction(title: "Save", style: .cancel, handler: { [weak self] _ in
-//                guard let field = alert.textFields?.first, let newName = field.text, !newName.isEmpty else {
-//                    return
-//                }
-//
-//                self?.updateList(list: list, newName: newName)
-//            }))
-//            self?.present(alert, animated: true)
-//        }))
-//        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-//            self?.deleteList(list: list)
-//        }))
-//        present(sheet, animated: true)
-
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -160,15 +131,4 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
     }
-    
-
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = BlogPostVC()
-//        vc.currentWebsite = blogPosts[indexPath.row].url
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-
-
-
 }

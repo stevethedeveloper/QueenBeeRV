@@ -106,7 +106,6 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
         }
     }
 
-
     func configureTableView() {
         if let tableView = tableView {
             view.addSubview(tableView)
@@ -132,7 +131,6 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
     func displayVideo(_ video: Video?) {
         if let video = video {
             playerView.load(withVideoId: video.videoId, playerVars: ["playsinline": 1, "autoplay": 1, "modestbranding": 1, "rel": 0])
-//            viewModel.selectedVideo.value = video
             tableView?.reloadData()
         }
         return
@@ -196,8 +194,6 @@ extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
             let video = viewModel.videos.value[indexPath.row]
             let isNowPlaying = video.videoId == viewModel.selectedVideo.value?.videoId ? true : false
             cell.set(video: video, isNowPlaying: isNowPlaying)
-//            cell.layer.borderColor = UIColor.systemGray.cgColor
-//            cell.layer.borderWidth = 1
             return cell
         } else {
             guard viewModel.playlist?.nextPageToken != nil else { return UITableViewCell() }
@@ -210,8 +206,6 @@ extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectedVideo.value = viewModel.videos.value[indexPath.row]
         loadingView.isHidden = false
-
-//        displayVideo(viewModel.videos.value[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

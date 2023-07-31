@@ -21,25 +21,9 @@ public class ChecklistsViewModel {
             fetchRequest = TodoList.fetchRequest()
                         
             models.value = try context.fetch(fetchRequest)
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
         } catch {
             self.onErrorHandling?("Could not retrieve checklists.  Please check your connection and try again.")
         }
-        
-        
-//        do {
-//            models = try context.fetch(TodoList.fetchRequest())
-//            print(models)
-//
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        } catch {
-//
-//        }
-        
     }
     
     func createList(title: String) {
