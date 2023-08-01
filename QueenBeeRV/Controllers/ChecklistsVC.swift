@@ -43,7 +43,6 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         viewModel.getAllLists()
         tableView.dataSource = self
         tableView.delegate = self
-//        tableView.frame = view.bounds
         tableView.translatesAutoresizingMaskIntoConstraints                                                 = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive  = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive                            = true

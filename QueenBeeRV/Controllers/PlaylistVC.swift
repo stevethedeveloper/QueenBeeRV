@@ -19,6 +19,10 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
         let view = UIView()
         self.view = view
         view.backgroundColor = .systemBackground
+        
+        
+        
+        
         setupPlayerView()
         configurePlaylistLabel()
         tableView = UITableView(frame: view.bounds, style: .grouped)
@@ -56,9 +60,9 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
     func setupPlayerView() {
         playerView = YTPlayerView()
         playerView.delegate = self
-        playerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(playerView)
         
+        playerView.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
             playerView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             playerView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
@@ -69,11 +73,12 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
         
         loadingView.image = UIImage(named: "loading")
         loadingView.contentMode = .scaleAspectFit
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
         loadingView.backgroundColor = .systemBackground
         loadingView.layer.zPosition = 1
         loadingView.isHidden = false
         playerView.addSubview(loadingView)
+        
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
         let loadingViewConstraints = [
             loadingView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             loadingView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
@@ -88,7 +93,6 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
         if let playlistLabel = playlistLabel {
             view.addSubview(playlistLabel)
             playlistLabel.text = viewModel.playlistName
-            playlistLabel.translatesAutoresizingMaskIntoConstraints = false
 
             playlistLabel.textColor = UIColor(named: "AccentColor")
             playlistLabel.font = UIFont.systemFont(ofSize: 24)
@@ -96,6 +100,7 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
             playlistLabel.adjustsFontSizeToFitWidth = true
             playlistLabel.textAlignment = .left
 
+            playlistLabel.translatesAutoresizingMaskIntoConstraints = false
             let constraints = [
                 playlistLabel.topAnchor.constraint(equalTo: playerView.bottomAnchor, constant: 10),
                 playlistLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),

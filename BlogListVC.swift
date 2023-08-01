@@ -8,13 +8,22 @@
 import UIKit
 
 class BlogListVC: UIViewController {
-    let viewModel = BlogListViewModel()
-    var tableView = UITableView()
+    private let viewModel = BlogListViewModel()
+    private var tableView: UITableView = {
+        let table = UITableView()
+        table.separatorStyle = UITableViewCell.SeparatorStyle.none
+        table.rowHeight = 130
+        table.register(PostCell.self, forCellReuseIdentifier: "PostCell")
+        return table
+    }()
     
     override func loadView() {
         let view = UIView()
         self.view = view
-        configureTableView()
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        setTableViewConstraints()
         viewModel.getPosts()
     }
         
@@ -39,27 +48,15 @@ class BlogListVC: UIViewController {
         }
     }
         
-    func configureTableView() {
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 130
-        tableView.register(PostCell.self, forCellReuseIdentifier: "PostCell")
-//        tableView.pin(to: view)
-        tableView.translatesAutoresizingMaskIntoConstraints                                     = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive    = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive                = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive              = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive                  = true
-    }
-    
-    func showError() {
-        DispatchQueue.main.async {
-            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
-        }
+    private func setTableViewConstraints() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
     }
 }
 

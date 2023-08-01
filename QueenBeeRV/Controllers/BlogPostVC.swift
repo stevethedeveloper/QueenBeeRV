@@ -17,15 +17,19 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
     private let loadingView = UIView()
     private var loadingImageView = UIImageView()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.largeTitleDisplayMode = .never
-        
-        view.backgroundColor = .black
-        
+    override func loadView() {
+        let view = UIView()
+        self.view = view
         configureDoneButton()
         configureWebView()
         configureAndShowLoadingView()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
+        view.backgroundColor = .black
+        
 
         viewModel.currentWebsite.bind { [weak self] _ in
             DispatchQueue.main.async {
@@ -50,33 +54,36 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
         view.addSubview(headerView)
         headerView.backgroundColor = .black
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        headerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        headerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-
-
-        doneButton.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
         headerView.addSubview(doneButton)
+        
+        doneButton.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
         doneButton.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
         doneButton.setTitle("Done", for: .normal)
         doneButton.translatesAutoresizingMaskIntoConstraints = false
-        doneButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
-        doneButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        doneButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: view.topAnchor),
+            headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 50),
+            doneButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+            doneButton.widthAnchor.constraint(equalToConstant: 50),
+            doneButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10)
+        ])
     }
     
     private func configureWebView() {
-//        webView = WKWebView()
         webView.navigationDelegate = self
         view.addSubview(webView)
         
         webView.backgroundColor = .black
         webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        webView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            webView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            webView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            webView.topAnchor.constraint(equalTo: headerView.bottomAnchor)
+        ])
     }
 
     private func configureAndShowLoadingView() {
@@ -89,10 +96,13 @@ class BlogPostVC: UIViewController, WKNavigationDelegate {
         loadingImageView.image = image
         loadingImageView.contentMode = .scaleAspectFit
         loadingView.addSubview(loadingImageView)
+
         loadingImageView.translatesAutoresizingMaskIntoConstraints = false
-        loadingImageView.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor).isActive = true
-        loadingImageView.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor).isActive = true
-        loadingImageView.widthAnchor.constraint(equalToConstant: 300).isActive = true        
+        NSLayoutConstraint.activate([
+            loadingImageView.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor),
+            loadingImageView.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            loadingImageView.widthAnchor.constraint(equalToConstant: 300)
+        ])
     }
     
     private func loadWebView(forUrlString urlString: String) {

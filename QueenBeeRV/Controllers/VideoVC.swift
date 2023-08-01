@@ -19,7 +19,6 @@ class VideoVC: UIViewController {
         view.backgroundColor = .systemBackground
         viewModel.fetchPlaylists()
         viewModel.fetchLatestVideos()
-//        setupPlayerView()
         tableView = UITableView(frame: view.bounds, style: .grouped)
         configureTableView()
     }
@@ -46,7 +45,7 @@ class VideoVC: UIViewController {
         }
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         if let tableView = tableView {
             view.addSubview(tableView)
             tableView.delegate = self
@@ -73,16 +72,8 @@ class VideoVC: UIViewController {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         loadingView.isHidden = true
     }
-
-    func showError() {
-        DispatchQueue.main.async {
-            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the videos; please check your connection and try again.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
-        }
-    }
     
-    func viewAllVideos() {
+    private func viewAllVideos() {
         let vc = PlaylistVC()
         vc.viewModel.playlistID = viewModel.youtubeAllVideosPlaylistID
         vc.viewModel.playlistName = "All Videos"
