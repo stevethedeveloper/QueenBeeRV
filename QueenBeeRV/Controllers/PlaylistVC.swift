@@ -14,21 +14,18 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
     var tableView: UITableView?
     var playlistLabel: UILabel!
     private var loadingView = UIImageView()
-    
+    private let activityIndicator = UIActivityIndicatorView()
+
     override func loadView() {
         let view = UIView()
         self.view = view
         view.backgroundColor = .systemBackground
-        
-        
-        
         
         setupPlayerView()
         configurePlaylistLabel()
         tableView = UITableView(frame: view.bounds, style: .grouped)
         configureTableView()
         viewModel.fetchPlaylist()
-        tableView?.register(LoadingCell.self, forCellReuseIdentifier: "loadingCellId")
     }
     
     override func viewDidLoad() {
@@ -56,7 +53,7 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
             }
         }
     }
-    
+        
     func setupPlayerView() {
         playerView = YTPlayerView()
         playerView.delegate = self
@@ -158,17 +155,11 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
 // MARK: Data delegate and datasource functions
 extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
             return viewModel.videos.value.count
-        } else if section == 1 {
-            return 1
-        } else {
-            return 0
-        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -180,19 +171,10 @@ extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
             return 70
-        } else {
-            if viewModel.isLoading {
-                return 55
-            } else {
-                return 0
-            }
-        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: VideoCell.identifier) as! VideoCell
             cell.separatorInset = .zero
             cell.reset()
@@ -200,22 +182,39 @@ extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
             let isNowPlaying = video.videoId == viewModel.selectedVideo.value?.videoId ? true : false
             cell.set(video: video, isNowPlaying: isNowPlaying)
             return cell
-        } else {
-            guard viewModel.playlist?.nextPageToken != nil else { return UITableViewCell() }
-            let cell = tableView.dequeueReusableCell(withIdentifier: "loadingCellId", for: indexPath) as! LoadingCell
-            cell.activityIndicator.startAnimating()
-            return cell
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectedVideo.value = viewModel.videos.value[indexPath.row]
         loadingView.isHidden = false
     }
+        
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = .clear
+        activityIndicator.startAnimating()
+        footerView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints                 = false
+        activityIndicator.centerXAnchor.constraint(equalTo: footerView.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: footerView.centerYAnchor).isActive = true
+        return footerView
+    }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == (viewModel.playlist?.items.count ?? 0) - 10, !viewModel.isLoading {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 55
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // UITableView only moves in one direction, y axis
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        if maximumOffset - currentOffset <= 10.0 {
+            tableView?.footerView(forSection: 0)?.isHidden = false
             viewModel.loadMoreVideos()
+            if !viewModel.isLoading {
+                activityIndicator.stopAnimating()
+                tableView?.footerView(forSection: 0)?.isHidden = true
+            }
         }
     }
 }

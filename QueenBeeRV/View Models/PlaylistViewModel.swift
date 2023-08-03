@@ -20,7 +20,6 @@ public class PlaylistViewModel {
     var playlist: Videos?
     var videos: Observable<[Video]> = Observable([])
 
-
     var isLoading = false
 
     func fetchPlaylist(nextPageToken: String? = nil) {
@@ -47,10 +46,8 @@ public class PlaylistViewModel {
             self.parseVideos(json: data, loadingMore: loadingMore)
             DispatchQueue.main.async {
                 if self.videos.value.count > 0 {
-//                    self.tableView?.reloadData()
                     if self.selectedVideo.value == nil {
                         self.selectedVideo.value = self.videos.value[0]
-//                        self.displayVideo(self.selectedVideo)
                     }
                 }
             }
@@ -68,7 +65,6 @@ public class PlaylistViewModel {
             fetchPlaylist(nextPageToken: playlist?.nextPageToken)
             DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(1)) {
                 DispatchQueue.main.async {
-//                    self.tableView?.reloadData()
                     self.isLoading = false
                 }
             }
@@ -89,8 +85,7 @@ public class PlaylistViewModel {
             }
             videos.value.removeAll(where: {$0.title.contains("Private")})
         } catch {
-            self.onErrorHandling?("Could not retrieve playlist.  Please check your connection and try again.")
-//            showError()
+            self.onErrorHandling?("Could not parse playlist.  Please check your connection and try again.")
         }
     }
 

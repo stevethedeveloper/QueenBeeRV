@@ -18,7 +18,6 @@
 		AA7B5DAB2A5CB28300F41768 /* BlogPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DAA2A5CB28300F41768 /* BlogPostViewModel.swift */; };
 		AA7B5DAD2A5CF6C900F41768 /* ChecklistsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DAC2A5CF6C900F41768 /* ChecklistsViewModel.swift */; };
 		AA7B5DAF2A5CFA3200F41768 /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B5DAE2A5CFA3200F41768 /* ChecklistViewModel.swift */; };
-		AA7B7F932A4274B60024A755 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7B7F912A4274B60024A755 /* LoadingCell.swift */; };
 		AA7BBC112A6F4C6600D825EF /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7BBC102A6F4C6600D825EF /* SubtitleTableViewCell.swift */; };
 		AA7BBC132A6F571B00D825EF /* ChecklistEditItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7BBC122A6F571B00D825EF /* ChecklistEditItemVC.swift */; };
 		AA7BBC152A6F573E00D825EF /* ChecklistEditItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7BBC142A6F573E00D825EF /* ChecklistEditItemViewModel.swift */; };
@@ -93,7 +92,6 @@
 		AA7B5DAA2A5CB28300F41768 /* BlogPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostViewModel.swift; sourceTree = "<group>"; };
 		AA7B5DAC2A5CF6C900F41768 /* ChecklistsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistsViewModel.swift; sourceTree = "<group>"; };
 		AA7B5DAE2A5CFA3200F41768 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
-		AA7B7F912A4274B60024A755 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		AA7BBC102A6F4C6600D825EF /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		AA7BBC122A6F571B00D825EF /* ChecklistEditItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistEditItemVC.swift; sourceTree = "<group>"; };
 		AA7BBC142A6F573E00D825EF /* ChecklistEditItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistEditItemViewModel.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 				AA815DC62A71CA6B0036AFB1 /* Checklist */,
 				AAB5B5C32A69D555008BC538 /* Blog */,
 				AAB5B5C22A69D538008BC538 /* Video */,
-				AA7B7F912A4274B60024A755 /* LoadingCell.swift */,
 				AA7BBC102A6F4C6600D825EF /* SubtitleTableViewCell.swift */,
 			);
 			path = "Custom Cells";
@@ -346,8 +343,8 @@
 				AA7C9D602A31623A004FF1EF /* Playlists.swift */,
 				AA7AAE9A2A4BBEC600C71998 /* Checklist.swift */,
 				AA7C9D622A316256004FF1EF /* Playlist.swift */,
-				AA8668362A384279002E0781 /* Videos.swift */,
 				AA7C9D642A316268004FF1EF /* Video.swift */,
+				AA8668362A384279002E0781 /* Videos.swift */,
 				AAFEDCD22A15B3FC00BE8E70 /* Blogs.swift */,
 				AAFEDCD42A15B41300BE8E70 /* Post.swift */,
 				AA7C6B332A41034A003F4707 /* LatestVideos.swift */,
@@ -536,7 +533,6 @@
 				AA7C9D612A31623A004FF1EF /* Playlists.swift in Sources */,
 				AA7C5C612A4FBB6B0053EFEA /* TodoList+CoreDataClass.swift in Sources */,
 				AA7B5DAF2A5CFA3200F41768 /* ChecklistViewModel.swift in Sources */,
-				AA7B7F932A4274B60024A755 /* LoadingCell.swift in Sources */,
 				AA7C9D632A316256004FF1EF /* Playlist.swift in Sources */,
 				AABC678B2A58D7FB0059963C /* Observable.swift in Sources */,
 				AABC67892A58CD760059963C /* VideoViewModel.swift in Sources */,

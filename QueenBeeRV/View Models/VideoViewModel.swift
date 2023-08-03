@@ -102,8 +102,7 @@ public class VideoViewModel {
             let playlistsDecoded = try decoder.decode(Playlists.self, from: json)
             self.allPlaylists = playlistsDecoded.items.count > 0 ? playlistsDecoded : nil
         } catch {
-            self.onErrorHandling?("Could not retrieve playlists.  Please check your connection and try again.")
-//            showError()
+            self.onErrorHandling?("Could not decode playlists.  Please check your connection and try again.")
         }
         
     }

@@ -26,7 +26,7 @@ public struct Playlist: Decodable {
     }
 
     private enum PlaylistItemThumbnailCodingKeys: String, CodingKey {
-        case standard, `default`
+        case high, `default`
     }
     
     private enum PlaylistItemThumbnailDetailsCodingKeys: String, CodingKey {
@@ -44,7 +44,7 @@ public struct Playlist: Decodable {
         self.publishedAt = try snippet.decode(String.self, forKey: .publishedAt)
         
         let thumbnails = try snippet.nestedContainer(keyedBy: PlaylistItemThumbnailCodingKeys.self, forKey: PlaylistItemCodingKeys.thumbnails)
-        let thumbnailLargeDetails = try thumbnails.nestedContainer(keyedBy: PlaylistItemThumbnailDetailsCodingKeys.self, forKey: PlaylistItemThumbnailCodingKeys.standard)
+        let thumbnailLargeDetails = try thumbnails.nestedContainer(keyedBy: PlaylistItemThumbnailDetailsCodingKeys.self, forKey: PlaylistItemThumbnailCodingKeys.high)
         let thumbnailSmallDetails = try thumbnails.nestedContainer(keyedBy: PlaylistItemThumbnailDetailsCodingKeys.self, forKey: PlaylistItemThumbnailCodingKeys.default)
         self.thumbnailLarge = try thumbnailLargeDetails.decode(String.self, forKey: .url)
         self.thumbnailSmall = try thumbnailSmallDetails.decode(String.self, forKey: .url)
