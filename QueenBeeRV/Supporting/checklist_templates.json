@@ -1,0 +1,109 @@
+{
+    "templates" : [
+        {
+            "title" : "Set up checklist for travel trailer",
+            "description" : "This is a set up list so you don't forget things."
+            "items": [
+                {
+                    "title": "Survey your campsite"
+                },
+                {
+                    "title": "Back in and confirm that RV is close enough to utility connections"
+                },
+                {
+                    "title": "Make sure RV is level"
+                },
+                {
+                    "title": "Chock the wheels"
+                },
+                {
+                    "title": "Disconnect tow vehicle"
+                },
+                {
+                    "title": "Deploy stabilizer jacks"
+                },
+                {
+                    "title": "Plug in at pedestal after confirming integrity with EMS"
+                },
+                {
+                    "title": "Extend slide rooms"
+                },
+                {
+                    "title": "Turn refrigerator on"
+                },
+                {
+                    "title": "Attach hose to city water connection or fill fresh tank to use with water pump"
+                },
+                {
+                    "title": "Set up sewer connections"
+                },
+                {
+                    "title": "Turn off all propane fueled appliances inside, then turn on LP tank or cylinder"
+                },
+                {
+                    "title": "Fill water heater and power on"
+                },
+                {
+                    "title": "Deploy awnings"
+                },
+                {
+                    "title": "Raise TV and satellite antennas"
+                }
+            ]
+        },
+        {
+            "title" : "Tear down checklist for travel trailer",
+            "description" : "This is a tear down list so you don't forget things."
+            "items": [
+                
+                
+                {
+                    "title": "Clean kitchen and bathroom while still connected to water and electric"
+                },
+                {
+                    "title": "Drain fresh water tank if full"
+                },
+                {
+                    "title": "Pull in the slide rooms"
+                },
+                {
+                    "title": "Crank down TV and satellite antennas"
+                },
+                {
+                    "title": "Close vent fans"
+                },
+                {
+                    "title": "Secure items in cupboards and refrigerator"
+                },
+                {
+                    "title": "Latch shower door"
+                },
+                {
+                    "title": "Power down all appliances"
+                },
+                {
+                    "title": "Turn off propane cylinder"
+                },
+                {
+                    "title": "Disconnect water, electric, sewer connections"
+                },
+                {
+                    "title": "Check tire pressure"
+                },
+                {
+                    "title": "Double check all cargo doors"
+                },
+                {
+                    "title": "Retract the stabilizer jacks"
+                },
+                {
+                    "title": "Remove chocks"
+                },
+                {
+                    "title": "Final walk around before leaving campsite"
+                }
+            ]
+        }
+    ]
+}
+
