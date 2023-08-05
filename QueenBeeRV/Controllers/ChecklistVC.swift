@@ -63,7 +63,7 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
                 return
             }
-            
+
             self?.viewModel.createItem(name: text)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))

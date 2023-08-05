@@ -7,8 +7,16 @@
 
 import Foundation
 
-struct Templates: Codable {
-    var title: String
-    var description: String
+struct Templates: Decodable {
+    let templates: [Template]
+}
+
+struct Template: Decodable {
+    let title: String
+    let description: String
     var items: [TemplateItem]
+}
+
+struct TemplateItem: Decodable {
+    var name: String
 }

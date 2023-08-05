@@ -54,19 +54,24 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     @objc private func didTapAdd() {
-        let alert = UIAlertController(title: "New List", message: "Enter new list", preferredStyle: .alert)
-        alert.addTextField(configurationHandler: nil)
-        alert.textFields?[0].spellCheckingType = .yes
-        alert.textFields?[0].autocorrectionType = .yes
-        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
-            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
-                return
-            }
-            
-            self?.viewModel.createList(title: text)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alert, animated: true)
+        let vc = TemplatesVC()
+        vc.onViewWillDisappear = { template in
+            self.viewModel.insertChecklistFromTemplate(template: template)
+        }
+        present(vc, animated: true)
+//        let alert = UIAlertController(title: "New List", message: "Enter new list", preferredStyle: .alert)
+//        alert.addTextField(configurationHandler: nil)
+//        alert.textFields?[0].spellCheckingType = .yes
+//        alert.textFields?[0].autocorrectionType = .yes
+//        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
+//            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+//                return
+//            }
+//
+//            self?.viewModel.createList(title: text)
+//        }))
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+//        present(alert, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -2,105 +2,108 @@
     "templates" : [
         {
             "title" : "Set up checklist for travel trailer",
-            "description" : "This is a set up list so you don't forget things."
+            "description" : "This is a set up list so you don't forget things.",
             "items": [
                 {
-                    "title": "Survey your campsite"
+                    "name": "Smoke a doobie and consider your options"
                 },
                 {
-                    "title": "Back in and confirm that RV is close enough to utility connections"
+                    "name": "Survey your campsite"
                 },
                 {
-                    "title": "Make sure RV is level"
+                    "name": "Back in and confirm that RV is close enough to utility connections"
                 },
                 {
-                    "title": "Chock the wheels"
+                    "name": "Make sure RV is level"
                 },
                 {
-                    "title": "Disconnect tow vehicle"
+                    "name": "Chock the wheels"
                 },
                 {
-                    "title": "Deploy stabilizer jacks"
+                    "name": "Disconnect tow vehicle"
                 },
                 {
-                    "title": "Plug in at pedestal after confirming integrity with EMS"
+                    "name": "Deploy stabilizer jacks"
                 },
                 {
-                    "title": "Extend slide rooms"
+                    "name": "Plug in at pedestal after confirming integrity with EMS"
                 },
                 {
-                    "title": "Turn refrigerator on"
+                    "name": "Extend slide rooms"
                 },
                 {
-                    "title": "Attach hose to city water connection or fill fresh tank to use with water pump"
+                    "name": "Turn refrigerator on"
                 },
                 {
-                    "title": "Set up sewer connections"
+                    "name": "Attach hose to city water connection or fill fresh tank to use with water pump"
                 },
                 {
-                    "title": "Turn off all propane fueled appliances inside, then turn on LP tank or cylinder"
+                    "name": "Set up sewer connections"
                 },
                 {
-                    "title": "Fill water heater and power on"
+                    "name": "Turn off all propane fueled appliances inside, then turn on LP tank or cylinder"
                 },
                 {
-                    "title": "Deploy awnings"
+                    "name": "Fill water heater and power on"
                 },
                 {
-                    "title": "Raise TV and satellite antennas"
+                    "name": "Deploy awnings"
+                },
+                {
+                    "name": "Raise TV and satellite antennas"
                 }
             ]
         },
         {
             "title" : "Tear down checklist for travel trailer",
-            "description" : "This is a tear down list so you don't forget things."
+            "description" : "This is a tear down list so you don't forget things.",
             "items": [
                 
                 
                 {
-                    "title": "Clean kitchen and bathroom while still connected to water and electric"
+                    "name": "Clean kitchen and bathroom while still connected to water and electric"
                 },
                 {
-                    "title": "Drain fresh water tank if full"
+                    "name": "Drain fresh water tank if full"
                 },
                 {
-                    "title": "Pull in the slide rooms"
+                    "name": "Pull in the slide rooms"
                 },
                 {
-                    "title": "Crank down TV and satellite antennas"
+                    "name": "Crank down TV and satellite antennas"
                 },
                 {
-                    "title": "Close vent fans"
+                    "name": "Close vent fans"
                 },
                 {
-                    "title": "Secure items in cupboards and refrigerator"
+                    "name": "Secure items in cupboards and refrigerator"
                 },
                 {
-                    "title": "Latch shower door"
+                    "name": "Latch shower door"
                 },
                 {
-                    "title": "Power down all appliances"
+                    "name": "Power down all appliances"
                 },
                 {
-                    "title": "Turn off propane cylinder"
+                    "name": "Turn off propane cylinder"
                 },
                 {
-                    "title": "Disconnect water, electric, sewer connections"
+                    "name": "Disconnect water, electric, sewer connections"
                 },
                 {
-                    "title": "Check tire pressure"
+                    "name": "Check tire pressure"
                 },
                 {
-                    "title": "Double check all cargo doors"
+                    "name": "Double check all cargo doors"
                 },
                 {
-                    "title": "Retract the stabilizer jacks"
+                    "name": "Retract the stabilizer jacks"
                 },
                 {
-                    "title": "Remove chocks"
+                    "name": "Remove chocks"
                 },
                 {
-                    "title": "Final walk around before leaving campsite"
+                    "name": "Final walk around before leaving campsite"
                 }
             ]
         }

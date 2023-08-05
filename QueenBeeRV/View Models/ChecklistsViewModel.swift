@@ -60,4 +60,33 @@ public class ChecklistsViewModel {
         }
     }
 
+    func insertChecklistFromTemplate(template: Template) {
+//               print("selected: \(template)")
+        let entity = NSEntityDescription.entity(forEntityName: "TodoList", in: context)!
+        let checklist = NSManagedObject(entity: entity, insertInto: context)
+        checklist.setValue(template.title, forKeyPath: "title")
+
+        do {
+            try context.save()
+            getAllLists()
+        } catch {
+            self.onErrorHandling?("Could not save checklist.  Please check your connection and try again.")
+        }
+
+        let entityItems = NSEntityDescription.entity(forEntityName: "TodoListItem", in: context)
+        // No saving happens in this loop
+        for checklistItem in template.items {
+            let item = NSManagedObject(entity: entityItems!, insertInto: context)
+            item.setValue(checklistItem.name, forKeyPath: "name")
+            item.setValue(checklist, forKey: "todoList")
+        }
+
+        do {
+            try context.save()
+            getAllLists()
+        } catch {
+            self.onErrorHandling?("Could not save checklist.  Please check your connection and try again.")
+        }
+
+    }
 }

@@ -36,7 +36,8 @@
 		AA7C9D652A316268004FF1EF /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7C9D642A316268004FF1EF /* Video.swift */; };
 		AA7F00A62A5A1AAC0030414B /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F00A52A5A1AAC0030414B /* PlaylistViewModel.swift */; };
 		AA7F5DD62A7C8588007D2615 /* Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F5DD52A7C8588007D2615 /* Templates.swift */; };
-		AA7F5DD82A7C860D007D2615 /* TemplateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F5DD72A7C860D007D2615 /* TemplateItem.swift */; };
+		AA7F5DDA2A7C86C8007D2615 /* TemplatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F5DD92A7C86C8007D2615 /* TemplatesViewModel.swift */; };
+		AA7F5DDC2A7C86F6007D2615 /* TemplatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F5DDB2A7C86F6007D2615 /* TemplatesVC.swift */; };
 		AA7FB9672A7061760033C874 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9662A7061760033C874 /* UITextField+Ext.swift */; };
 		AA7FB96A2A707E320033C874 /* TodoListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */; };
 		AA7FB96B2A707E320033C874 /* TodoListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */; };
@@ -112,7 +113,8 @@
 		AA7C9D642A316268004FF1EF /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		AA7F00A52A5A1AAC0030414B /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
 		AA7F5DD52A7C8588007D2615 /* Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templates.swift; sourceTree = "<group>"; };
-		AA7F5DD72A7C860D007D2615 /* TemplateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateItem.swift; sourceTree = "<group>"; };
+		AA7F5DD92A7C86C8007D2615 /* TemplatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewModel.swift; sourceTree = "<group>"; };
+		AA7F5DDB2A7C86F6007D2615 /* TemplatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesVC.swift; sourceTree = "<group>"; };
 		AA7FB9662A7061760033C874 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */,
 				AABC67852A58C06D0059963C /* BlogListVC.swift */,
 				AA80F8582A745CD8005DFA8A /* HomeVC.swift */,
+				AA7F5DDB2A7C86F6007D2615 /* TemplatesVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				AA7B5DAC2A5CF6C900F41768 /* ChecklistsViewModel.swift */,
 				AA7B5DAE2A5CFA3200F41768 /* ChecklistViewModel.swift */,
 				AA7BBC142A6F573E00D825EF /* ChecklistEditItemViewModel.swift */,
+				AA7F5DD92A7C86C8007D2615 /* TemplatesViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -353,7 +357,6 @@
 				AAFEDCD42A15B41300BE8E70 /* Post.swift */,
 				AA7C6B332A41034A003F4707 /* LatestVideos.swift */,
 				AA7F5DD52A7C8588007D2615 /* Templates.swift */,
-				AA7F5DD72A7C860D007D2615 /* TemplateItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				AA7AAE9B2A4BBEC600C71998 /* Checklist.swift in Sources */,
 				AA9D82372A1ED4D700DF1E5C /* VideoVC.swift in Sources */,
 				AA7FB96A2A707E320033C874 /* TodoListItem+CoreDataClass.swift in Sources */,
+				AA7F5DDA2A7C86C8007D2615 /* TemplatesViewModel.swift in Sources */,
 				AABC67862A58C06D0059963C /* BlogListVC.swift in Sources */,
 				AAFEDCD52A15B41300BE8E70 /* Post.swift in Sources */,
 				AA7C5C622A4FBB6B0053EFEA /* TodoList+CoreDataProperties.swift in Sources */,
@@ -538,7 +542,7 @@
 				AA7C9D652A316268004FF1EF /* Video.swift in Sources */,
 				AA7C9D612A31623A004FF1EF /* Playlists.swift in Sources */,
 				AA7C5C612A4FBB6B0053EFEA /* TodoList+CoreDataClass.swift in Sources */,
-				AA7F5DD82A7C860D007D2615 /* TemplateItem.swift in Sources */,
+				AA7F5DDC2A7C86F6007D2615 /* TemplatesVC.swift in Sources */,
 				AA7B5DAF2A5CFA3200F41768 /* ChecklistViewModel.swift in Sources */,
 				AA7C9D632A316256004FF1EF /* Playlist.swift in Sources */,
 				AABC678B2A58D7FB0059963C /* Observable.swift in Sources */,
