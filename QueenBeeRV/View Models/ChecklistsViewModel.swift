@@ -74,11 +74,15 @@ public class ChecklistsViewModel {
         }
 
         let entityItems = NSEntityDescription.entity(forEntityName: "TodoListItem", in: context)
+                
         // No saving happens in this loop
+        var sortIndex = 0
         for checklistItem in template.items {
             let item = NSManagedObject(entity: entityItems!, insertInto: context)
             item.setValue(checklistItem.name, forKeyPath: "name")
             item.setValue(checklist, forKey: "todoList")
+            item.setValue(sortIndex, forKey: "sortIndex")
+            sortIndex += 1
         }
 
         do {

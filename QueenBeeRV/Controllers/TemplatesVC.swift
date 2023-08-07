@@ -98,8 +98,10 @@ extension TemplatesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.text = viewModel.templates.value[indexPath.row].title
+        cell.detailTextLabel?.text = viewModel.templates.value[indexPath.row].description
         return cell
     }
     

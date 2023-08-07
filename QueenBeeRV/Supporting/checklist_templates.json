@@ -1,6 +1,12 @@
 {
     "templates" : [
         {
+            "title" : "Blank",
+            "description" : "A blank template for your custom list.",
+            "items": [
+            ]
+        },
+        {
             "title" : "Set up checklist for travel trailer",
             "description" : "This is a set up list so you don't forget things.",
             "items": [

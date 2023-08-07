@@ -20,9 +20,12 @@ class HomeVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
 
-        let tempView = UIView()
-        tempView.backgroundColor = .systemBackground
+//        let tempView = UIView()
+//        tempView.backgroundColor = .systemBackground
+//        view.addSubview(tempView)
+        let tempView = UIImageView(image: UIImage(named: "bren"))
         view.addSubview(tempView)
+        tempView.contentMode = .scaleAspectFit
         tempView.pin(to: view)
         
         let tempLabel = UILabel()

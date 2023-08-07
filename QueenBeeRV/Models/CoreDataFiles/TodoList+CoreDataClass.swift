@@ -18,7 +18,8 @@ public class TodoList: NSManagedObject {
     public var itemArray: [TodoListItem] {
         let set = todoListItems as? Set<TodoListItem> ?? []
         return set.sorted {
-            $0.wrappedName < $1.wrappedName
+            $0.sortIndex < $1.sortIndex
+//            $0.wrappedName < $1.wrappedName
         }
     }
 }
