@@ -21,6 +21,8 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         viewModel.models.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
@@ -35,7 +37,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             }
         }
 
-        title = "Checkists"
+        title = "Checklists"
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
         
@@ -43,11 +45,14 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         viewModel.getAllLists()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.translatesAutoresizingMaskIntoConstraints                                                 = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive  = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive                            = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive                          = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive                              = true
+
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
 
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
@@ -59,19 +64,6 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.viewModel.insertChecklistFromTemplate(template: template)
         }
         present(vc, animated: true)
-//        let alert = UIAlertController(title: "New List", message: "Enter new list", preferredStyle: .alert)
-//        alert.addTextField(configurationHandler: nil)
-//        alert.textFields?[0].spellCheckingType = .yes
-//        alert.textFields?[0].autocorrectionType = .yes
-//        alert.addAction(UIAlertAction(title: "Submit", style: .default, handler: { [weak self] _ in
-//            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
-//                return
-//            }
-//
-//            self?.viewModel.createList(title: text)
-//        }))
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-//        present(alert, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,6 +83,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let list = viewModel.models.value[indexPath.row]
         let vc = ChecklistVC()
         vc.viewModel.todoListRecordObjectID = list.objectID
+        vc.viewModel.listTitle = list.title ?? ""
         navigationController?.pushViewController(vc, animated: true)
     }
     

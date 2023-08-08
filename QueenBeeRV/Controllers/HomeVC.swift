@@ -36,7 +36,9 @@ class HomeVC: UIViewController {
         tempLabel.attributedText = tempAttributedString
         tempView.addSubview(tempLabel)
         tempLabel.translatesAutoresizingMaskIntoConstraints = false
-        tempLabel.centerXAnchor.constraint(equalTo: tempView.centerXAnchor).isActive = true
-        tempLabel.centerYAnchor.constraint(equalTo: tempView.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            tempLabel.centerXAnchor.constraint(equalTo: tempView.centerXAnchor),
+            tempLabel.centerYAnchor.constraint(equalTo: tempView.centerYAnchor)
+        ])
     }
 }

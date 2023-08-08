@@ -92,6 +92,9 @@ class ChecklistEditItemVC: UIViewController {
         lastCompleteDateLabel.layer.borderColor = UIColor.systemGray4.cgColor
         lastCompleteDateLabel.layer.borderWidth = 1
         lastCompleteDateLabel.layer.cornerRadius = 10.0
+        lastCompleteDateLabel.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(toggleCalendar))
+        lastCompleteDateLabel.addGestureRecognizer(tap)
         if let lastCompletedDate = viewModel.todoListRecord.lastCompleted {
             setLastCompleteDateLabel(toDate: lastCompletedDate)
         }

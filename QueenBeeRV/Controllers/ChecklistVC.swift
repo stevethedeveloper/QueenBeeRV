@@ -24,7 +24,7 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Checklist"
+        title = viewModel.listTitle
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
 
@@ -32,10 +32,13 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         viewModel.getAllItems()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive                = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive                            = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive                          = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive                              = true
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
 
         viewModel.models.bind { [weak self] _ in
             DispatchQueue.main.async {

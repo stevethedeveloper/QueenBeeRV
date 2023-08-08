@@ -21,6 +21,7 @@ class VideoVC: UIViewController {
         viewModel.fetchLatestVideos()
         tableView = UITableView(frame: view.bounds, style: .grouped)
         configureTableView()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewDidLoad() {

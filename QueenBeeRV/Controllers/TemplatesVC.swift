@@ -11,7 +11,8 @@ class TemplatesVC: UIViewController {
     private let viewModel = TemplatesViewModel()
     private let cancelButton = UIButton()
     private let headerView = UIView()
-    
+    private let titleLabel = UILabel()
+
     var onViewWillDisappear: ((Template)->())?
     
     let tableView: UITableView = {
@@ -31,6 +32,7 @@ class TemplatesVC: UIViewController {
         view.backgroundColor = .systemBackground
         viewModel.loadTemplatesFromFile()
         configureCancelButton()
+        configureTitleLabel()
         setTableViewConstraints()
     }
     
@@ -54,17 +56,7 @@ class TemplatesVC: UIViewController {
             }
         }
     }
-    
-    private func setTableViewConstraints() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
-        ])
-    }
-    
+        
     private func configureCancelButton() {
         view.addSubview(headerView)
         headerView.backgroundColor = .systemBackground
@@ -84,6 +76,31 @@ class TemplatesVC: UIViewController {
             cancelButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
             cancelButton.widthAnchor.constraint(equalToConstant: 60),
             cancelButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10)
+        ])
+    }
+    
+    private func configureTitleLabel() {
+        titleLabel.text = "Select a Template"
+        titleLabel.font = UIFont.systemFont(ofSize: 24)
+        titleLabel.textColor = UIColor(named: "AccentColor")
+        view.addSubview(titleLabel)
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            titleLabel.heightAnchor.constraint(equalToConstant: 50),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10)
+        ])
+    }
+    
+    private func setTableViewConstraints() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
     }
     

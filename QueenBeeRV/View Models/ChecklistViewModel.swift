@@ -12,6 +12,7 @@ import CoreData
 public class ChecklistViewModel {
     var onErrorHandling: ((String) -> Void)?
     var todoListRecordObjectID: NSManagedObjectID!
+    var listTitle = ""
     
     // change to "as?"
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

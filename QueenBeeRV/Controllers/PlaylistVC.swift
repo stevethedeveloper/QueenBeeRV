@@ -194,9 +194,11 @@ extension PlaylistVC: UITableViewDelegate, UITableViewDataSource {
         footerView.backgroundColor = .clear
         activityIndicator.startAnimating()
         footerView.addSubview(activityIndicator)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints                 = false
-        activityIndicator.centerXAnchor.constraint(equalTo: footerView.centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: footerView.centerYAnchor).isActive = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: footerView.centerYAnchor)
+        ])
         return footerView
     }
     
