@@ -7,12 +7,9 @@
             ]
         },
         {
-            "title" : "Set up checklist for travel trailer",
-            "description" : "This is a set up list so you don't forget things.",
+            "title" : "Set up checklist",
+            "description" : "",
             "items": [
-                {
-                    "name": "Smoke a doobie and consider your options"
-                },
                 {
                     "name": "Survey your campsite"
                 },
@@ -29,7 +26,7 @@
                     "name": "Disconnect tow vehicle"
                 },
                 {
-                    "name": "Deploy stabilizer jacks"
+                    "name": "Extend stabilizer jacks"
                 },
                 {
                     "name": "Plug in at pedestal after confirming integrity with EMS"
@@ -53,7 +50,7 @@
                     "name": "Fill water heater and power on"
                 },
                 {
-                    "name": "Deploy awnings"
+                    "name": "Extend awnings"
                 },
                 {
                     "name": "Raise TV and satellite antennas"
@@ -61,19 +58,17 @@
             ]
         },
         {
-            "title" : "Tear down checklist for travel trailer",
-            "description" : "This is a tear down list so you don't forget things.",
+            "title" : "Tear down checklist",
+            "description" : "",
             "items": [
-                
-                
+                {
+                    "name": "Turn on some fun music"
+                },
                 {
                     "name": "Clean kitchen and bathroom while still connected to water and electric"
                 },
                 {
-                    "name": "Drain fresh water tank if full"
-                },
-                {
-                    "name": "Pull in the slide rooms"
+                    "name": "Retract awning"
                 },
                 {
                     "name": "Crank down TV and satellite antennas"
@@ -82,19 +77,28 @@
                     "name": "Close vent fans"
                 },
                 {
-                    "name": "Secure items in cupboards and refrigerator"
+                    "name": "Move glass microwave plate to a secure location"
                 },
                 {
-                    "name": "Latch shower door"
+                    "name": "Secure: Cabinet doors, items in refrigerator and freezer, pantry doors"
                 },
                 {
-                    "name": "Power down all appliances"
+                    "name": "Clear countertops in kitchen and bathroom"
                 },
                 {
-                    "name": "Turn off propane cylinder"
+                    "name": "Open window shades if not too hot"
                 },
                 {
-                    "name": "Disconnect water, electric, sewer connections"
+                    "name": "Power down: TV, VCR, Satellite receiver, Hot water heater, AC or Furnace"
+                },
+                {
+                    "name": "Retract slides"
+                },
+                {
+                    "name": "Turn off propane"
+                },
+                {
+                    "name": "Disconnect water, electric, sewer"
                 },
                 {
                     "name": "Check tire pressure"
@@ -103,13 +107,399 @@
                     "name": "Double check all cargo doors"
                 },
                 {
-                    "name": "Retract the stabilizer jacks"
+                    "name": "Retract stabilizer jacks"
+                },
+                {
+                    "name": "Connect to tow vehicle, 7-pin connector, safety chains, breakaway switch, retract tongue jack/landing gear, hitch pin, if applicable"
+                },
+                {
+                    "name": "Test running lights, marker lights, brake lights, turn signals"
+                },
+                {
+                    "name": "Test trailer brakes"
                 },
                 {
                     "name": "Remove chocks"
                 },
                 {
                     "name": "Final walk around before leaving campsite"
+                },
+                {
+                    "name": "Power on: Inverter or generator if going to use while driving"
+                },
+                {
+                    "name": "Move chargers, sunglasses, phone, personal items to cab area"
+                }
+            ]
+        },
+        {
+            "title" : "Upon arrival at home",
+            "description" : "",
+            "items": [
+                {
+                    "name": "Unload the refrigerator, all food, clothes/laundry, and the toiletries/meds tub"
+                },
+                {
+                    "name": "Unload anything else that would melt or freeze depending upon season"
+                },
+                {
+                    "name": "Vacuum"
+                },
+                {
+                    "name": "Clean refrigerator"
+                },
+                {
+                    "name": "Close all of the shades"
+                },
+                {
+                    "name": "Pest repellent in place"
+                },
+                {
+                    "name": "Tire covers"
+                },
+                {
+                    "name": "Plug into shore power or battery minder to maintain batteries"
+                }            ]
+        },
+        {
+            "title" : "Gear Essentials: Electrical",
+            "description" : "",
+            "items": [
+                {
+                    "name": "Surge protector or EMS with cable lock"
+                },
+                {
+                    "name": "Electrical adapters aka dog bones"
+                },
+                {
+                    "name": "Extra fuses and fuse puller"
+                },
+                {
+                    "name": "Extension cords - indoor and heavy duty outdoor"
+                }
+            ]
+        },
+        {
+            "title" : "Gear Essentials: Water and Sewer",
+            "description" : "",
+            "items": [
+                {
+                    "name": "Sewer hose and extension sewer hose, plus adapters to connect to sewer drain hole opening"
+                },
+                {
+                    "name": "Sewer elbow attachment(s)"
+                },
+                {
+                    "name": "Sewer Sidewinder"
+                },
+                {
+                    "name": "Sewer supplies storage container"
+                },
+                {
+                    "name": "Black and gray tank treatment"
+                },
+                {
+                    "name": "Disposable gloves"
+                },
+                {
+                    "name": "Water pressure regulator"
+                },
+                {
+                    "name": "Potable water hose with 90 degree brass elbow"
+                },
+                {
+                    "name": "Extra garden hose"
+                },
+                {
+                    "name": "Black tank flush hose, if applicable"
+                },
+                {
+                    "name": "Hose splitter"
+                },
+                {
+                    "name": "Hose washers"
+                },
+                {
+                    "name": "Water filter"
+                },
+                {
+                    "name": "Toilet paper (septic safe)"
+                }
+            ]
+        },
+        {
+            "title" : "Gear Essentials: Driving, Towing, Leveling",
+            "description" : "",
+            "items": [
+                {
+                    "name": "Leveling blocks"
+                },
+                {
+                    "name": "Wheel chocks"
+                },
+                {
+                    "name": "Tire pressure gauge"
+                },
+                {
+                    "name": "Extra cotter pins and/or hitch lock"
+                },
+                {
+                    "name": "Extra motor oil and transmission fluid for tow vehicle or motorized RV"
+                },
+                {
+                    "name": "Battery jumper cables"
+                },
+                {
+                    "name": "Emergency road kit"
+                }
+            ]
+        },
+        {
+            "title" : "Gear Essentials: Tools",
+            "description" : "",
+            "items": [
+                {
+                    "name": "Cordless drill and attachments plus battery charger"
+                },
+                {
+                    "name": "Phillips and flat head screwdrivers (or 9-in-1)"
+                },
+                {
+                    "name": "Pliers - needle nose and others"
+                },
+                {
+                    "name": "Hammer or mallet"
+                },
+                {
+                    "name": "Bungees"
+                },
+                {
+                    "name": "Wrenches and socket wrenches"
+                },
+                {
+                    "name": "Stepladder"
+                },
+                {
+                    "name": "Bubble level"
+                },
+                {
+                    "name": "Air compressor"
+                },
+                {
+                    "name": "Small shovel"
+                },
+                {
+                    "name": "Shop rags and towels"
+                },
+                {
+                    "name": "Electrical and duct tape"
+                },
+                {
+                    "name": "Miscellaneous batteries"
+                }
+            ]
+        },
+        {
+            "title" : "Gear Essentials: Safety",
+            "description" : "",
+            "items": [
+                {
+                    "name": "First aid kit"
+                },
+                {
+                    "name": "Fire extinguisher"
+                },
+                {
+                    "name": "Flashlight"
+                },
+                {
+                    "name": "Weather radio"
+                }
+            ]
+        },
+        {
+            "title" : "Gear Essentials: Kitchen and cooking",
+            "description" : "",
+            "items": [
+                {
+                    "name": "Bottled water"
+                },
+                {
+                    "name": "Cutting board"
+                },
+                {
+                    "name": "Utensils/cutting knives"
+                },
+                {
+                    "name": "Can opener"
+                },
+                {
+                    "name": "Grill utensils"
+                },
+                {
+                    "name": "Tongs"
+                },
+                {
+                    "name": "Pots and pans"
+                },
+                {
+                    "name": "Bowls, plates and cups"
+                },
+                {
+                    "name": "Napkins"
+                },
+                {
+                    "name": "Paper towels"
+                },
+                {
+                    "name": "Garbage bags - indoor and outdoor"
+                },
+                {
+                    "name": "Zip close bags"
+                },
+                {
+                    "name": "Potholders"
+                },
+                {
+                    "name": "Matches and lighter"
+                },
+                {
+                    "name": "Food storage containers"
+                },
+                {
+                    "name": "Cooler"
+                },
+                {
+                    "name": "Dish soap"
+                },
+                {
+                    "name": "Disinfecting wipes"
+                },
+                {
+                    "name": "Cleaning supplies"
+                }
+            ]
+        },
+        {
+            "title" : "Gear Essentials: Personal",
+            "description" : "",
+            "items": [
+                {
+                    "name": "Tech devices and chargers"
+                },
+                {
+                    "name": "Toiletries"
+                },
+                {
+                    "name": "Hats"
+                },
+                {
+                    "name": "Rain gear"
+                },
+                {
+                    "name": "Shoes, including sneakers, hiking boots, sandals, etc."
+                },
+                {
+                    "name": "Swimsuit"
+                },
+                {
+                    "name": "Sweatshirts and jackets"
+                },
+                {
+                    "name": "Socks"
+                },
+                {
+                    "name": "Underwear"
+                },
+                {
+                    "name": "Pants and shorts"
+                },
+                {
+                    "name": "Short and long sleeve t-shirts"
+                },
+                {
+                    "name": "Clothes hangers"
+                },
+                {
+                    "name": "Sewing kit"
+                },
+                {
+                    "name": "Towels"
+                },
+                {
+                    "name": "Sheets and blankets"
+                },
+                {
+                    "name": "Pillows"
+                },
+                {
+                    "name": "Pet supplies"
+                },
+                {
+                    "name": "Large zipper bag for documents, including license, registration, manuals, etc."
+                }
+            ]
+        },
+        {
+            "title" : "Cheat Sheet: 12 Volts DC (Coach battery) appliances and systems",
+            "description" : "",
+            "items": [
+                {
+                    "name": "Interior lights"
+                },
+                {
+                    "name": "Water pump"
+                },
+                {
+                    "name": "Appliance control systems (like thermostat, refrigerator panel, water heater panel)"
+                },
+                {
+                    "name": "Slide rooms"
+                },
+                {
+                    "name": "Leveling systems"
+                },
+                {
+                    "name": "Vent fans"
+                },
+                {
+                    "name": "Furnace blower fan"
+                },
+                {
+                    "name": "Breakaway Switch and trailer brakes"
+                },
+                {
+                    "name": "Some electronics and refrigerator models"
+                }
+            ]
+        },
+        {
+            "title" : "Cheat Sheet: 120 Volts AC (Shore power, generator, inverter) appliances and systems",
+            "description" : "",
+            "items": [
+                {
+                    "name": "Air conditioner"
+                },
+                {
+                    "name": "Refrigerator (absorption and residential)"
+                },
+                {
+                    "name": "Water heater (if applicable)"
+                },
+                {
+                    "name": "Microwave"
+                },
+                {
+                    "name": "Electronics"
+                },
+                {
+                    "name": "Wall receptacles (outlets)"
+                },
+                {
+                    "name": "Converter charger"
+                },
+                {
+                    "name": "Some interior lights on older models"
                 }
             ]
         }
