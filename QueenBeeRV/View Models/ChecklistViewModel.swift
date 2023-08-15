@@ -39,6 +39,15 @@ public class ChecklistViewModel {
         }
     }
     
+    func updateListOrder(lists: [TodoListItem]) {
+        do {
+            try context.save()
+            getAllItems()
+        } catch {
+            self.onErrorHandling?("Could not save checklist.  Please check your connection and try again.")
+        }
+    }
+
     func deleteItem(item: TodoListItem) {
         context.delete(item)
         

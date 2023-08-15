@@ -19,6 +19,8 @@ public class ChecklistsViewModel {
         do {
             let fetchRequest: NSFetchRequest<TodoList>
             fetchRequest = TodoList.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "sortIndex", ascending: true)
+            fetchRequest.sortDescriptors = [sortDescriptor]
                         
             models.value = try context.fetch(fetchRequest)
         } catch {
@@ -57,6 +59,15 @@ public class ChecklistsViewModel {
             getAllLists()
         } catch {
             self.onErrorHandling?("Could not update checklist.  Please check your connection and try again.")
+        }
+    }
+
+    func updateListOrder(lists: [TodoList]) {
+        do {
+            try context.save()
+            getAllLists()
+        } catch {
+            self.onErrorHandling?("Could not save checklist.  Please check your connection and try again.")
         }
     }
 

@@ -17,6 +17,7 @@ extension TodoList {
     }
 
     @NSManaged public var title: String?
+    @NSManaged public var sortIndex: Int32
     @NSManaged public var todoListItems: NSSet?
 
 }

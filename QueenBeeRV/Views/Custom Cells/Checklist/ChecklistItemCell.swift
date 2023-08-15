@@ -130,35 +130,42 @@ class ChecklistItemCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func set(item: TodoListItem) {
+    public func set(item: TodoListItem, isEditing: Bool = false) {
         self.currentItem = item
         
         if let itemName = item.name {
             itemTitleLabel.text = itemName
         }
-        
-        if item.completed {
-            completedButton.configuration?.image  = UIImage(systemName: "checkmark")
+
+        if isEditing {
+            notesButton.isHidden = true
+            completedButton.isHidden = true
         } else {
-            completedButton.configuration?.image = UIImage()
-        }
-        
-        if let notes = item.notes, !notes.isEmpty {
-            setNotesLabelConstraints()
+            notesButton.isHidden = false
+            completedButton.isHidden = false
+            if item.completed {
+                completedButton.configuration?.image  = UIImage(systemName: "checkmark")
+            } else {
+                completedButton.configuration?.image = UIImage()
+            }
             
-            let attributedString = NSMutableAttributedString(string: "Notes:\n\(notes)")
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 1.4
-            attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-            notesLabel.attributedText = attributedString
-            
-            let image = UIImage(systemName: "list.clipboard.fill")?.withTintColor(UIColor(red: 118/255, green: 152/255, blue: 218/255, alpha: 1), renderingMode: .alwaysOriginal)
-            notesButton.setImage(image, for: .normal)
-        } else {
-            setNotesLabelConstraints()
-            notesLabel.text = "No notes yet. Swipe left to edit."
-            let image = UIImage(systemName: "list.clipboard")?.withTintColor(UIColor(red: 118/255, green: 152/255, blue: 218/255, alpha: 1), renderingMode: .alwaysOriginal)
-            notesButton.setImage(image, for: .normal)
+            if let notes = item.notes, !notes.isEmpty {
+                setNotesLabelConstraints()
+                
+                let attributedString = NSMutableAttributedString(string: "Notes:\n\(notes)")
+                let paragraphStyle = NSMutableParagraphStyle()
+                paragraphStyle.lineSpacing = 1.4
+                attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+                notesLabel.attributedText = attributedString
+                
+                let image = UIImage(systemName: "list.clipboard.fill")?.withTintColor(UIColor(red: 118/255, green: 152/255, blue: 218/255, alpha: 1), renderingMode: .alwaysOriginal)
+                notesButton.setImage(image, for: .normal)
+            } else {
+                setNotesLabelConstraints()
+                notesLabel.text = "No notes yet. Swipe left to edit."
+                let image = UIImage(systemName: "list.clipboard")?.withTintColor(UIColor(red: 118/255, green: 152/255, blue: 218/255, alpha: 1), renderingMode: .alwaysOriginal)
+                notesButton.setImage(image, for: .normal)
+            }
         }
         
         if item.starred {

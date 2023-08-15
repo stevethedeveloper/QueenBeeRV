@@ -10,17 +10,17 @@ import CoreData
 
 class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let viewModel = ChecklistsViewModel()
-
+    
     let tableView: UITableView = {
         let table = UITableView()
         table.separatorColor = .systemGray
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return table
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         viewModel.models.bind { [weak self] _ in
@@ -28,7 +28,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 self?.tableView.reloadData()
             }
         }
-
+        
         viewModel.onErrorHandling = { error in
             DispatchQueue.main.async {
                 let ac = UIAlertController(title: "An error occured", message: error, preferredStyle: .alert)
@@ -36,7 +36,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 self.present(ac, animated: true)
             }
         }
-
+        
         title = "Checklists"
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
@@ -45,7 +45,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         viewModel.getAllLists()
         tableView.dataSource = self
         tableView.delegate = self
-
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -53,9 +53,8 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+        setNavbarButtons()
     }
     
     @objc private func didTapAdd() {
@@ -64,6 +63,28 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.viewModel.insertChecklistFromTemplate(template: template)
         }
         present(vc, animated: true)
+    }
+    
+    @objc private func didTapSort() {
+        if tableView.isEditing {
+            tableView.isEditing = false
+            setNavbarButtons(editing: false)
+        } else {
+            tableView.isEditing = true
+            setNavbarButtons(editing: true)
+        }
+    }
+    
+    private func setNavbarButtons(editing: Bool = false) {
+        if editing {
+            let doneButton = UIBarButtonItem(title: "Done Sorting", image: nil, target: self, action: #selector(didTapSort))
+            navigationItem.setRightBarButtonItems([doneButton], animated: true)
+        } else {
+            let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+            let sortButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "arrow.up.arrow.down"), target: self, action: #selector(didTapSort))
+            navigationItem.setRightBarButtonItems([addButton, sortButton], animated: true)
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -122,10 +143,36 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             self.present(alert, animated: true)
         }
-
+        
         delete.backgroundColor = .systemRed
         let configuration = UISwipeActionsConfiguration(actions: [delete, edit])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        var objects = viewModel.models.value
+        
+        let object = objects[sourceIndexPath.row]
+        objects.remove(at: sourceIndexPath.row)
+        objects.insert(object, at: destinationIndexPath.row)
+        
+        for (index, item) in objects.enumerated() {
+            item.sortIndex = Int32(index)
+        }
+
+        viewModel.updateListOrder(lists: objects)
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
     }
 }

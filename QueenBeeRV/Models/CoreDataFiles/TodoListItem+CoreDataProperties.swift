@@ -19,7 +19,7 @@ extension TodoListItem {
     @NSManaged public var completed: Bool
     @NSManaged public var createdAt: Date?
     @NSManaged public var name: String?
-    @NSManaged public var sortIndex: Int16
+    @NSManaged public var sortIndex: Int32
     @NSManaged public var starred: Bool
     @NSManaged public var lastCompleted: Date?
     @NSManaged public var notes: String?

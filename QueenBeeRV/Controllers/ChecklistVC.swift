@@ -54,7 +54,8 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             }
         }
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+        setNavbarButtons()
     }
     
     @objc private func didTapAdd() {
@@ -73,6 +74,30 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         present(alert, animated: true)
     }
     
+    @objc private func didTapSort() {
+        if tableView.isEditing {
+            tableView.isEditing = false
+            setNavbarButtons(editing: false)
+            tableView.reloadData()
+        } else {
+            tableView.isEditing = true
+            setNavbarButtons(editing: true)
+            tableView.reloadData()
+        }
+    }
+    
+    private func setNavbarButtons(editing: Bool = false) {
+        if editing {
+            let doneButton = UIBarButtonItem(title: "Done Sorting", image: nil, target: self, action: #selector(didTapSort))
+            navigationItem.setRightBarButtonItems([doneButton], animated: true)
+        } else {
+            let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+            let sortButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "arrow.up.arrow.down"), target: self, action: #selector(didTapSort))
+            navigationItem.setRightBarButtonItems([addButton, sortButton], animated: true)
+        }
+        
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.models.value.count
     }
@@ -92,7 +117,8 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             tableView.beginUpdates()
             tableView.endUpdates()
         }
-        cell.set(item: item)
+        let isEditing = tableView.isEditing
+        cell.set(item: item, isEditing: isEditing)
         cell.separatorInset = .zero
         cell.selectionStyle = .none
         if item.completed {
@@ -171,5 +197,31 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        var objects = viewModel.models.value
+        
+        let object = objects[sourceIndexPath.row]
+        objects.remove(at: sourceIndexPath.row)
+        objects.insert(object, at: destinationIndexPath.row)
+        
+        for (index, item) in objects.enumerated() {
+            item.sortIndex = Int32(index)
+        }
+
+        viewModel.updateListOrder(lists: objects)
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
     }
 }
