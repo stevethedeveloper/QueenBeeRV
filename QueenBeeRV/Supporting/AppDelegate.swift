@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        preloadTemplateData()
+        
         return true
     }
 
@@ -77,5 +80,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    private func preloadTemplateData() {
+        let preloadKey = "didPreload"
+        let userDefaults = UserDefaults.standard
+
+        if userDefaults.bool(forKey: preloadKey) == false {
+            guard let templatesFileURL = Bundle.main.url(forResource: "checklist_templates", withExtension: "json") else { return }
+                        
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let templatesContents = try? String(contentsOf: templatesFileURL) {
+                    let decoder = JSONDecoder()
+                    
+                    do {
+                        let jsonString = templatesContents.data(using: .utf8)
+                        if let jsonString = jsonString {
+                            let templatesDecoded = try decoder.decode(Templates.self, from: jsonString)
+                            for template in templatesDecoded.templates {
+                                if template.items.count > 0 {
+                                    self.insertChecklistFromTemplate(template: template)
+                                }
+                            }
+                        }
+                    } catch {
+                        print("Could not load templates.  Please check your connection and try again.")
+                    }
+                }
+                
+                userDefaults.set(true, forKey: preloadKey)
+            }
+        }
+    }
+    
+    private func insertChecklistFromTemplate(template: Template) {
+        let context = persistentContainer.newBackgroundContext()
+        let entity = NSEntityDescription.entity(forEntityName: "TodoList", in: context)!
+        let checklist = NSManagedObject(entity: entity, insertInto: context)
+        checklist.setValue(template.title, forKeyPath: "title")
+        checklist.setValue(1, forKeyPath: "sortIndex")
+
+        do {
+            try context.save()
+        } catch {
+            print("Could not save checklist.  Please check your connection and try again.")
+        }
+
+        let entityItems = NSEntityDescription.entity(forEntityName: "TodoListItem", in: context)
+                
+        // No saving happens in this loop
+        var sortIndex = 0
+        for checklistItem in template.items {
+            let item = NSManagedObject(entity: entityItems!, insertInto: context)
+            item.setValue(checklistItem.name, forKeyPath: "name")
+            item.setValue(checklist, forKey: "todoList")
+            item.setValue(sortIndex, forKey: "sortIndex")
+            sortIndex += 1
+        }
+
+        do {
+            try context.save()
+        } catch {
+            print("Could not save checklist.  Please check your connection and try again.")
+        }
+
+    }
 }
 

@@ -77,7 +77,7 @@ class ChecklistsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     private func setNavbarButtons(editing: Bool = false) {
         if editing {
-            let doneButton = UIBarButtonItem(title: "Done Sorting", image: nil, target: self, action: #selector(didTapSort))
+            let doneButton = UIBarButtonItem(title: "Done", image: nil, target: self, action: #selector(didTapSort))
             navigationItem.setRightBarButtonItems([doneButton], animated: true)
         } else {
             let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
