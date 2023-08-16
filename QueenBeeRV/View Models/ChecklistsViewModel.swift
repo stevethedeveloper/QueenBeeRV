@@ -76,6 +76,7 @@ public class ChecklistsViewModel {
         let entity = NSEntityDescription.entity(forEntityName: "TodoList", in: context)!
         let checklist = NSManagedObject(entity: entity, insertInto: context)
         checklist.setValue(template.title, forKeyPath: "title")
+        checklist.setValue(template.items.count + 1, forKeyPath: "sortIndex")
 
         do {
             try context.save()
