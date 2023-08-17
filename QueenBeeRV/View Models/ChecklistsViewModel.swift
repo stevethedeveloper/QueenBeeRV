@@ -14,7 +14,6 @@ public class ChecklistsViewModel {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var models: Observable<[TodoList]> = Observable([])
 
-    // Core Data
     func getAllLists() {
         do {
             let fetchRequest: NSFetchRequest<TodoList>
@@ -72,7 +71,6 @@ public class ChecklistsViewModel {
     }
 
     func insertChecklistFromTemplate(template: Template) {
-//               print("selected: \(template)")
         let entity = NSEntityDescription.entity(forEntityName: "TodoList", in: context)!
         let checklist = NSManagedObject(entity: entity, insertInto: context)
         checklist.setValue(template.title, forKeyPath: "title")
