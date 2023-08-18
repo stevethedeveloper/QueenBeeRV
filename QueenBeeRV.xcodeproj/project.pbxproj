@@ -41,6 +41,9 @@
 		AA7FB9672A7061760033C874 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9662A7061760033C874 /* UITextField+Ext.swift */; };
 		AA7FB96A2A707E320033C874 /* TodoListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */; };
 		AA7FB96B2A707E320033C874 /* TodoListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */; };
+		AA8032DE2A8ED6210013124F /* TestBlogListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8032DD2A8ED6210013124F /* TestBlogListViewModel.swift */; };
+		AA8032E12A8ED9800013124F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = AA8032E02A8ED9800013124F /* SDWebImage */; };
+		AA8032E32A8ED9850013124F /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = AA8032E22A8ED9850013124F /* YouTubeiOSPlayerHelper */; };
 		AA80F8592A745CD8005DFA8A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80F8582A745CD8005DFA8A /* HomeVC.swift */; };
 		AA80F85B2A746818005DFA8A /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA80F85A2A746818005DFA8A /* UIViewController+Ext.swift */; };
 		AA815DC82A71CAB60036AFB1 /* ChecklistItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815DC72A71CAB60036AFB1 /* ChecklistItemCell.swift */; };
@@ -118,6 +121,7 @@
 		AA7FB9662A7061760033C874 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AA8032DD2A8ED6210013124F /* TestBlogListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBlogListViewModel.swift; sourceTree = "<group>"; };
 		AA80F8582A745CD8005DFA8A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		AA80F85A2A746818005DFA8A /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		AA815DC72A71CAB60036AFB1 /* ChecklistItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemCell.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8032E12A8ED9800013124F /* SDWebImage in Frameworks */,
+				AA8032E32A8ED9850013124F /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +207,13 @@
 				AA7C5C5E2A4FBB6B0053EFEA /* TodoList+CoreDataProperties.swift */,
 			);
 			path = CoreDataFiles;
+			sourceTree = "<group>";
+		};
+		AA8032DF2A8ED9800013124F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		AA815DC62A71CA6B0036AFB1 /* Checklist */ = {
@@ -271,6 +284,7 @@
 				AAFEDCAC2A15805500BE8E70 /* QueenBeeRVTests */,
 				AAFEDCB62A15805500BE8E70 /* QueenBeeRVUITests */,
 				AAFEDC912A15805300BE8E70 /* Products */,
+				AA8032DF2A8ED9800013124F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -304,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				AAFEDCAD2A15805500BE8E70 /* QueenBeeRVTests.swift */,
+				AA8032DD2A8ED6210013124F /* TestBlogListViewModel.swift */,
 			);
 			path = QueenBeeRVTests;
 			sourceTree = "<group>";
@@ -400,6 +415,10 @@
 				AAFEDCAB2A15805500BE8E70 /* PBXTargetDependency */,
 			);
 			name = QueenBeeRVTests;
+			packageProductDependencies = (
+				AA8032E02A8ED9800013124F /* SDWebImage */,
+				AA8032E22A8ED9850013124F /* YouTubeiOSPlayerHelper */,
+			);
 			productName = QueenBeeRVTests;
 			productReference = AAFEDCA92A15805500BE8E70 /* QueenBeeRVTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -558,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8032DE2A8ED6210013124F /* TestBlogListViewModel.swift in Sources */,
 				AAFEDCAE2A15805500BE8E70 /* QueenBeeRVTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -932,6 +952,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA7C077B2A45059800286486 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		AA8032E02A8ED9800013124F /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA782BDE2A16FAD500ACFCC5 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		AA8032E22A8ED9850013124F /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA9D82332A1EBF9500DF1E5C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
 		};
 		AA9D82342A1EBF9500DF1E5C /* YouTubeiOSPlayerHelper */ = {
 			isa = XCSwiftPackageProductDependency;

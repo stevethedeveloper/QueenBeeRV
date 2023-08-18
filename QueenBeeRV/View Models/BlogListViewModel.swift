@@ -12,7 +12,9 @@ public class BlogListViewModel {
     let urlString: String = "https://queenbeerv.com/blog/f.json"
     var blogPosts: Observable<[Post]> = Observable([])
 
-    func getPosts() {
+    // An example of using URLSession with completion handler instead of async/await
+    // The function's completion handler is for unit tests
+    func getPosts(completion: @escaping (Bool) -> Void = {_ in }) {
         guard let url: URL = URL(string: urlString) else { return }
         
         var request = URLRequest(url: url)
@@ -22,9 +24,11 @@ public class BlogListViewModel {
             if let error = error {
                 print(error)
                 self.onErrorHandling?("Could not retrieve articles.  Please check your connection and try again.")
+                completion(false)
             }
             guard let data = data else { return }
             self.parse(json: data)
+            completion(true)
             return
         }.resume()
     }
