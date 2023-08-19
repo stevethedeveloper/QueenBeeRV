@@ -25,7 +25,9 @@ class PlaylistVC: UIViewController, YTPlayerViewDelegate {
         configurePlaylistLabel()
         tableView = UITableView(frame: view.bounds, style: .grouped)
         configureTableView()
-        viewModel.fetchPlaylist()
+        Task {
+            await viewModel.fetchPlaylist()
+        }
     }
     
     override func viewDidLoad() {

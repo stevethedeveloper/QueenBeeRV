@@ -17,8 +17,10 @@ class VideoVC: UIViewController {
         let view = UIView()
         self.view = view
         view.backgroundColor = .systemBackground
-        viewModel.fetchPlaylists()
-        viewModel.fetchLatestVideos()
+        Task {
+            await viewModel.fetchPlaylists()
+            await viewModel.fetchLatestVideos()
+        }
         tableView = UITableView(frame: view.bounds, style: .grouped)
         configureTableView()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

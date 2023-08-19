@@ -8,8 +8,10 @@
 import Foundation
 
 public class BlogListViewModel {
+    private let urlString: String = "https://queenbeerv.com/blog/f.json"
+
     var onErrorHandling: ((String) -> Void)?
-    let urlString: String = "https://queenbeerv.com/blog/f.json"
+
     var blogPosts: Observable<[Post]> = Observable([])
 
     // An example of using URLSession with completion handler instead of async/await
@@ -33,7 +35,7 @@ public class BlogListViewModel {
         }.resume()
     }
 
-    func parse(json: Data) {
+    private func parse(json: Data) {
         let decoder = JSONDecoder()
         
         if let jsonBlogs = try? decoder.decode(Blogs.self, from: json) {

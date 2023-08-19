@@ -13,6 +13,8 @@ public class PlaylistViewModel {
     private let youtubeChannelID = Bundle.main.infoDictionary?["YOUTUBE_CHANNEL_ID"] as? String
     private let youtubeAllVideosPlaylistID = Bundle.main.infoDictionary?["YOUTUBE_ALL_VIDEOS_PLAYLIST_ID"] as? String
 
+    private let urlSession = URLSession.shared
+
     var playlistID: String?
     var playlistName: String?
     var selectedVideo: Observable<Video?> = Observable(nil)
@@ -22,7 +24,7 @@ public class PlaylistViewModel {
 
     var isLoading = false
 
-    func fetchPlaylist(nextPageToken: String? = nil) {
+    func fetchPlaylist(nextPageToken: String? = nil) async {
         var loadingMore: Bool = false
         var urlString: String
         if let token = nextPageToken {
@@ -32,18 +34,12 @@ public class PlaylistViewModel {
             urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(playlistID ?? "")&key=\(youtubeKey ?? "")&maxResults=10"
         }
         let url: URL = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        request.cachePolicy = .useProtocolCachePolicy
-        // TODO: implement etag
-        //        request.setValue("94GJ_J4sdWd_UmWSFt7hnr1Zn_g", forHTTPHeaderField: "If-None-Match")
-        //        request.allHTTPHeaderFields?["If-None-Match"] = "4072u9p5TkOOjeUoWj1hoDIN3sI"
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print(error)
-                self.onErrorHandling?("Could not retrieve playlist.  Please check your connection and try again.")
-            }
-            guard let data = data else { return }
-            self.parseVideos(json: data, loadingMore: loadingMore)
+
+        do {
+            let (returnData, _) = try await urlSession.data(from: url)
+            parseVideos(json: returnData, loadingMore: loadingMore)
+                        
+            // Write to main thread
             DispatchQueue.main.async {
                 if self.videos.value.count > 0 {
                     if self.selectedVideo.value == nil {
@@ -51,7 +47,9 @@ public class PlaylistViewModel {
                     }
                 }
             }
-        }.resume()
+        } catch {
+            onErrorHandling?("Could not retrieve videos.  Please check your connection and try again.")
+        }
     }
     
     func loadMoreVideos() {
@@ -62,7 +60,9 @@ public class PlaylistViewModel {
         
         if !isLoading {
             isLoading = true
-            fetchPlaylist(nextPageToken: playlist?.nextPageToken)
+            Task {
+                await fetchPlaylist(nextPageToken: playlist?.nextPageToken)
+            }
             DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(1)) {
                 DispatchQueue.main.async {
                     self.isLoading = false
@@ -71,7 +71,7 @@ public class PlaylistViewModel {
         }
     }
     
-    func parseVideos(json: Data, loadingMore: Bool = false) {
+    private func parseVideos(json: Data, loadingMore: Bool = false) {
         let decoder = JSONDecoder()
         do {
             let videoDecoded = try decoder.decode(Videos.self, from: json)

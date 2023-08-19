@@ -1,14 +1,15 @@
 //
-//  TestBlogListViewModel.swift
+//  TestPlaylistViewModel.swift
 //  QueenBeeRVTests
 //
-//  Created by Stephen Walton on 8/17/23.
+//  Created by Stephen Walton on 8/18/23.
 //
 
 import XCTest
 @testable import QueenBeeRV
 
-final class TestBlogListViewModel: XCTestCase {
+final class TestPlaylistViewModel: XCTestCase {
+
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -31,20 +32,15 @@ final class TestBlogListViewModel: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-    
-    func testGetPosts() throws {
-        let blogListVM = BlogListViewModel()
 
-        let expectation = expectation(description: "getPosts")
-
-        blogListVM.getPosts { _ in
-            expectation.fulfill()
+    func testFetchPlaylist() async {
+        let playlistVM = PlaylistViewModel()
+        playlistVM.playlistID = "PLHjzGLpw8j9FsUeT0Pj5_sIdUM9VBgWkY"
+        await playlistVM.fetchPlaylist()
+        
+        XCTAssertNotNil(playlistVM.playlist)
+        if let count = playlistVM.playlist?.items.count {
+            XCTAssertGreaterThan(count, 0)
         }
-
-        wait(for: [expectation], timeout: 10.0)
-
-        let count = blogListVM.blogPosts.value.count
-        XCTAssertGreaterThanOrEqual(count, 1)
     }
-
 }
