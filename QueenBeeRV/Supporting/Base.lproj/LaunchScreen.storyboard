@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,18 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Honeycomb" translatesAutoresizingMaskIntoConstraints="NO" id="dFC-q0-sba">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="AcE-3r-sS7">
                                 <rect key="frame" x="11" y="0.0" width="382" height="852"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="AcE-3r-sS7" secondAttribute="bottom" id="PW3-em-iKN"/>
+                            <constraint firstItem="dFC-q0-sba" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PlD-He-wIF"/>
+                            <constraint firstItem="dFC-q0-sba" firstAttribute="bottom" secondItem="AcE-3r-sS7" secondAttribute="bottom" id="Ukk-6u-aag"/>
                             <constraint firstItem="AcE-3r-sS7" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="dIp-lY-vNy"/>
+                            <constraint firstItem="dFC-q0-sba" firstAttribute="trailing" secondItem="AcE-3r-sS7" secondAttribute="trailing" id="e6x-io-dNF"/>
                             <constraint firstItem="AcE-3r-sS7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="jzw-uI-om8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AcE-3r-sS7" secondAttribute="trailing" id="oYR-PA-Hml"/>
+                            <constraint firstItem="dFC-q0-sba" firstAttribute="top" secondItem="AcE-3r-sS7" secondAttribute="top" id="owP-HR-ppC"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,9 +43,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Honeycomb" width="192" height="341.33334350585938"/>
         <image name="logo" width="426.66665649414062" height="309.33334350585938"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
