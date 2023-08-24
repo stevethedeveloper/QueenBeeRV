@@ -17,43 +17,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-//        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
-//        UITabBarItem.appearance().titlePositionAdjustment.vertical = 5
-        
-
-//        let homeViewController = HomeVC()
-//        homeViewController.title = "Home"
-//        homeViewController.tabBarItem.image = UIImage(systemName: "house.fill")?.withBaselineOffset(fromBottom: 5.0)
-//        homeViewController.tabBarItem.title = "Home"
-
+        let homeViewController = HomeVC()
+        homeViewController.title = "Home"
+        homeViewController.tabBarItem.image = UIImage(systemName: "house.fill")?.withBaselineOffset(fromBottom: 5.0)
         let firstViewController = ChecklistsVC()
         firstViewController.title = "Checklists"
         firstViewController.tabBarItem.image = UIImage(systemName: "checklist")?.withBaselineOffset(fromBottom: 5.0)
-//        thirdViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15.0)
         let thirdViewController = VideoVC()
         thirdViewController.title = "Videos"
-//        firstViewController.tabBarItem.image = UIImage(systemName: "video")?.withBaselineOffset(fromBottom: 5.0)
         thirdViewController.tabBarItem.image = UIImage(systemName: "play.tv.fill")?.withBaselineOffset(fromBottom: 5.0)
-//        firstViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15.0)
         let secondViewController = BlogListVC()
         secondViewController.title = "Blog"
         secondViewController.tabBarItem.image = UIImage(systemName: "doc.text.fill")?.withBaselineOffset(fromBottom: 5.0)
-//        secondViewController.tabBarItem.image = UIImage(systemName: "square.and.pencil")?.withBaselineOffset(fromBottom: 5.0)
-//        secondViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -15.0)
-
-//        viewController.view.backgroundColor = UIColor.white
 
         let titleColor = UIColor.white
 
-//        let homeNavController = UINavigationController(rootViewController: homeViewController)
+        let homeNavController = UINavigationController(rootViewController: homeViewController)
         let firstNavController = UINavigationController(rootViewController: firstViewController)
         let secondNavController = UINavigationController(rootViewController: secondViewController)
         let thirdNavController = UINavigationController(rootViewController: thirdViewController)
 
-        let allNavControllers = [firstNavController, secondNavController, thirdNavController]
+        let allNavControllers = [homeNavController, firstNavController, secondNavController, thirdNavController]
 
         // init navigation bar on all views
-        for nc in allNavControllers {
+        for (index, nc) in allNavControllers.enumerated() {
+            if index == 0 {
+                continue
+            }
             let navigationBarAppearance = UINavigationBarAppearance()
             navigationBarAppearance.configureWithOpaqueBackground()
             nc.navigationBar.prefersLargeTitles = true
@@ -68,49 +58,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             nc.navigationBar.scrollEdgeAppearance = nc.navigationBar.standardAppearance
         }
         
-//        firstNavController.navigationBar.prefersLargeTitles = true
-//        firstNavController.navigationBar.titleTextAttributes = [.foregroundColor: titleColor]
-//        firstNavController.navigationBar.largeTitleTextAttributes = [.foregroundColor: titleColor]
-//        firstNavController.navigationBar.tintColor = titleColor
-//        firstNavController.navigationBar.backgroundColor = UIColor(named: "MenuColor")
-//        firstNavController.navigationBar.layer.cornerRadius = 25
-//        firstNavController.navigationBar.clipsToBounds = true
-//        firstNavController.navigationBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-
         let tabController = RoundedTabBarController()
         
-//        let tabController = UITabBarController()
         tabController.viewControllers = allNavControllers
-//        if let items = tabController.tabBar.items {
-//            items.forEach { item in
-////                item.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-//            }
-//        }
-
-//        tabController.tabBar.tintColor = .white
-
-//        tabController.tabBar.backgroundColor = .systemBackground.withAlphaComponent(0.80)
-//        navController.navigationBar.backgroundColor = .black
-//        navController.navigationBar.isTranslucent = false
-        
-//        let navigationBarAppearance = UINavigationBarAppearance()
-//        navigationBarAppearance.configureWithOpaqueBackground()
-//        navigationBarAppearance.titleTextAttributes = [
-//            NSAttributedString.Key.foregroundColor : UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
-//        ]
-//        navigationBarAppearance.largeTitleTextAttributes = [
-//            NSAttributedString.Key.foregroundColor : UIColor(red: 66 / 255, green: 190 / 255, blue: 181 / 255, alpha: 1)
-//        ]
-//        navigationBarAppearance.backgroundColor = UIColor.black
-//        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-//        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-//        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        
-//        let tabBarApperance = UITabBarAppearance()
-//        tabBarApperance.configureWithOpaqueBackground()
-//        tabBarApperance.backgroundColor = UIColor.black
-//        UITabBar.appearance().scrollEdgeAppearance = tabBarApperance
-//        UITabBar.appearance().standardAppearance = tabBarApperance
     
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.backgroundColor = .systemBackground

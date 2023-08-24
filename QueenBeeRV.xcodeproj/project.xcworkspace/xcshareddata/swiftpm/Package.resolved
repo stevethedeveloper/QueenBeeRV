@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios",
+      "state" : {
+        "revision" : "d6feea26a370019b4d3a85f5984cb95a2734776f",
+        "version" : "4.2.0"
+      }
+    },
+    {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "7f9fb5d43ecd4aa714c00746f54873f354403438",
+        "version" : "5.15.8"
+      }
+    },
+    {
+      "identity" : "youtube-ios-player-helper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/youtube/youtube-ios-player-helper",
+      "state" : {
+        "revision" : "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
+        "version" : "1.0.4"
+      }
+    }
+  ],
+  "version" : 2
+}

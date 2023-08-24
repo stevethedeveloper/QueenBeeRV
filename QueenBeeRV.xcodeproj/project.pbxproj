@@ -58,6 +58,7 @@
 		AABC678B2A58D7FB0059963C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC678A2A58D7FB0059963C /* Observable.swift */; };
 		AAC5719A2A903DF80063E10C /* TestPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC571992A903DF80063E10C /* TestPlaylistViewModel.swift */; };
 		AAD616BD2A1C4494008EC100 /* BlogPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */; };
+		AAEBC52C2A96FF8700754981 /* FontdinerdotcomSparkly.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAEBC52B2A96FF8700754981 /* FontdinerdotcomSparkly.ttf */; };
 		AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC932A15805300BE8E70 /* AppDelegate.swift */; };
 		AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */; };
 		AAFEDC9E2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC9C2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld */; };
@@ -137,6 +138,7 @@
 		AABC678A2A58D7FB0059963C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		AAC571992A903DF80063E10C /* TestPlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPlaylistViewModel.swift; sourceTree = "<group>"; };
 		AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostVC.swift; sourceTree = "<group>"; };
+		AAEBC52B2A96FF8700754981 /* FontdinerdotcomSparkly.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontdinerdotcomSparkly.ttf; sourceTree = "<group>"; };
 		AAFEDC902A15805300BE8E70 /* QueenBeeRV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueenBeeRV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFEDC932A15805300BE8E70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */,
 				AAFEDC9F2A15805500BE8E70 /* Assets.xcassets */,
 				AAFEDCA12A15805500BE8E70 /* LaunchScreen.storyboard */,
+				AAEBC52B2A96FF8700754981 /* FontdinerdotcomSparkly.ttf */,
 				AA7AAE982A4BB96A00C71998 /* checklist_templates.json */,
 			);
 			path = Supporting;
@@ -500,6 +503,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEBC52C2A96FF8700754981 /* FontdinerdotcomSparkly.ttf in Resources */,
 				AA7C077F2A45062900286486 /* waves.json in Resources */,
 				AAFEDCA32A15805500BE8E70 /* LaunchScreen.storyboard in Resources */,
 				AAFEDCA02A15805500BE8E70 /* Assets.xcassets in Resources */,
@@ -751,7 +755,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = MXP653QBU3;
+				DEVELOPMENT_TEAM = UQ6DTZ8S4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueenBeeRV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -764,7 +768,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stevethedeveloper.QueenBeeRV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.queenbeerv.QueenBeeRV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -782,7 +786,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = MXP653QBU3;
+				DEVELOPMENT_TEAM = UQ6DTZ8S4A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QueenBeeRV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -795,7 +799,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stevethedeveloper.QueenBeeRV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.queenbeerv.QueenBeeRV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
