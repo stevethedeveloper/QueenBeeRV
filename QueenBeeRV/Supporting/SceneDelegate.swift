@@ -23,12 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let firstViewController = ChecklistsVC()
         firstViewController.title = "Checklists"
         firstViewController.tabBarItem.image = UIImage(systemName: "checklist")?.withBaselineOffset(fromBottom: 5.0)
-        let thirdViewController = VideoVC()
-        thirdViewController.title = "Videos"
-        thirdViewController.tabBarItem.image = UIImage(systemName: "play.tv.fill")?.withBaselineOffset(fromBottom: 5.0)
-        let secondViewController = BlogListVC()
-        secondViewController.title = "Blog"
-        secondViewController.tabBarItem.image = UIImage(systemName: "doc.text.fill")?.withBaselineOffset(fromBottom: 5.0)
+        let secondViewController = VideoVC()
+        secondViewController.title = "Videos"
+        secondViewController.tabBarItem.image = UIImage(systemName: "play.tv.fill")?.withBaselineOffset(fromBottom: 5.0)
+        let thirdViewController = BlogListVC()
+        thirdViewController.title = "Articles"
+        thirdViewController.tabBarItem.image = UIImage(systemName: "doc.text.fill")?.withBaselineOffset(fromBottom: 5.0)
 
         let titleColor = UIColor.white
 
@@ -42,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // init navigation bar on all views
         for (index, nc) in allNavControllers.enumerated() {
             if index == 0 {
+                nc.navigationBar.isHidden = true
                 continue
             }
             let navigationBarAppearance = UINavigationBarAppearance()

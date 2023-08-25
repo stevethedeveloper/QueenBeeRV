@@ -29,7 +29,7 @@ class BlogListVC: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Blog"
+        title = "Articles"
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setStatusBar(backgroundColor: UIColor(named: "MenuColor")!)
 
@@ -76,7 +76,7 @@ extension BlogListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = BlogPostVC()
+        let vc = WebviewVC()
         vc.viewModel.currentWebsite.value = viewModel.blogPosts.value[indexPath.row].url
         vc.modalPresentationStyle = .pageSheet
         vc.modalTransitionStyle = .coverVertical

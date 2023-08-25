@@ -1,15 +1,15 @@
 //
-//  BlogPostVC.swift
+//  WebviewVC.swift
 //  QueenBeeRV
 //
-//  Created by Stephen Walton on 5/22/23.
+//  Created by Stephen Walton on 8/25/23.
 //
 
 import UIKit
 import WebKit
 
-class BlogPostVC: UIViewController, WKNavigationDelegate {
-    let viewModel = BlogPostViewModel()
+class WebviewVC: UIViewController, WKNavigationDelegate {
+    let viewModel = WebviewViewModel()
 
     private var webView = WKWebView()
     private let doneButton = UIButton()

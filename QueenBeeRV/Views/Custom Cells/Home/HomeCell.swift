@@ -43,6 +43,8 @@ class HomeCell: UITableViewCell {
     
     private func setCellViewConstraints() {
         cellView.backgroundColor = .quaternarySystemFill
+        cellView.layer.borderColor = UIColor(named: "MenuColor")?.cgColor
+        cellView.layer.borderWidth = 0.50
         cellView.layer.cornerRadius = 10.0
         cellView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -66,7 +68,7 @@ class HomeCell: UITableViewCell {
     }
 
     private func setSymbolConstraints() {
-        symbol.tintColor = UIColor(named: "SalmonColor")
+        symbol.tintColor = UIColor(named: "GoldColor")
         symbol.translatesAutoresizingMaskIntoConstraints = false
         print(row)
         if row % 2 == 0 {
