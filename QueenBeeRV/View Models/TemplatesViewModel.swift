@@ -11,7 +11,7 @@ import CoreData
 
 final public class TemplatesViewModel {
     var onErrorHandling: ((String) -> Void)?
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var templates: Observable<[Template]> = Observable([])
 
     func loadTemplatesFromFile() {

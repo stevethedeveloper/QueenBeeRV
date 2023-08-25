@@ -58,6 +58,7 @@
 		AABC678B2A58D7FB0059963C /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC678A2A58D7FB0059963C /* Observable.swift */; };
 		AAC5719A2A903DF80063E10C /* TestPlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC571992A903DF80063E10C /* TestPlaylistViewModel.swift */; };
 		AAD616BD2A1C4494008EC100 /* BlogPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */; };
+		AAE603DD2A98259F00D3686F /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE603DC2A98259F00D3686F /* HomeCell.swift */; };
 		AAEBC52C2A96FF8700754981 /* FontdinerdotcomSparkly.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAEBC52B2A96FF8700754981 /* FontdinerdotcomSparkly.ttf */; };
 		AAFEDC942A15805300BE8E70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC932A15805300BE8E70 /* AppDelegate.swift */; };
 		AAFEDC962A15805300BE8E70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFEDC952A15805300BE8E70 /* SceneDelegate.swift */; };
@@ -138,6 +139,7 @@
 		AABC678A2A58D7FB0059963C /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		AAC571992A903DF80063E10C /* TestPlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPlaylistViewModel.swift; sourceTree = "<group>"; };
 		AAD616BC2A1C4494008EC100 /* BlogPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostVC.swift; sourceTree = "<group>"; };
+		AAE603DC2A98259F00D3686F /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		AAEBC52B2A96FF8700754981 /* FontdinerdotcomSparkly.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontdinerdotcomSparkly.ttf; sourceTree = "<group>"; };
 		AAFEDC902A15805300BE8E70 /* QueenBeeRV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueenBeeRV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAFEDC932A15805300BE8E70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		AAB5B5BF2A69BC17008BC538 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AAE603DB2A98255600D3686F /* Home */,
 				AA815DC62A71CA6B0036AFB1 /* Checklist */,
 				AAB5B5C32A69D555008BC538 /* Blog */,
 				AAB5B5C22A69D538008BC538 /* Video */,
@@ -281,6 +284,14 @@
 				AA7F5DD92A7C86C8007D2615 /* TemplatesViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		AAE603DB2A98255600D3686F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AAE603DC2A98259F00D3686F /* HomeCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		AAFEDC872A15805300BE8E70 = {
@@ -554,6 +565,7 @@
 				AA7B5DAB2A5CB28300F41768 /* BlogPostViewModel.swift in Sources */,
 				AA7C5C672A4FC0080053EFEA /* ChecklistsVC.swift in Sources */,
 				AA7FB96B2A707E320033C874 /* TodoListItem+CoreDataProperties.swift in Sources */,
+				AAE603DD2A98259F00D3686F /* HomeCell.swift in Sources */,
 				AA80F8592A745CD8005DFA8A /* HomeVC.swift in Sources */,
 				AA7FB9672A7061760033C874 /* UITextField+Ext.swift in Sources */,
 				AA4FFC072A620BE0000ED15F /* UINavigationController+Ext.swift in Sources */,
