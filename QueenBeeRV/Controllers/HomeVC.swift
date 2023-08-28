@@ -18,11 +18,14 @@ class HomeVC: UIViewController {
     private var sections = [HomeSection]()
 
     let tableView: UITableView = {
-        let table = UITableView()
+        let table = UITableView(frame: .zero, style: .plain)
         table.separatorStyle = UITableViewCell.SeparatorStyle.none
         table.register(HomeCell.self, forCellReuseIdentifier: "HomeCell")
-        table.rowHeight = 200.0
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = 200.0
+//        table.rowHeight = 200.0
         table.tableFooterView = nil
+        table.backgroundColor = .systemBackground
         return table
     }()
 
@@ -75,7 +78,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
         cell.set(title: sections[indexPath.row].title, text: sections[indexPath.row].text, symbol: sections[indexPath.row].symbol, row: indexPath.row)
@@ -83,7 +86,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 60
     }
@@ -102,7 +105,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         button_tos.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
         button_tos.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button_tos.backgroundColor = .systemBackground
-
+        
         let button_privacy = UIButton(type: .custom, primaryAction: UIAction(title: "Privacy Policy", handler: { _ in
             let vc = WebviewVC()
             vc.viewModel.currentWebsite.value = "https://queenbeerv.com/privacy-policy"
@@ -113,7 +116,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         button_privacy.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
         button_privacy.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button_privacy.backgroundColor = .systemBackground
-
+        
         footerView.addSubview(button_tos)
         footerView.addSubview(button_privacy)
         
@@ -123,15 +126,22 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         NSLayoutConstraint.activate([
             button_tos.leadingAnchor.constraint(equalTo: footerView.leadingAnchor),
             button_privacy.trailingAnchor.constraint(equalTo: footerView.trailingAnchor),
-            button_tos.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 40.0),
-            button_privacy.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 40.0)
+            button_tos.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 30.0),
+            button_privacy.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 30.0)
         ])
         
         return footerView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = VideoVC()
         self.tabBarController?.selectedIndex = sections[indexPath.row].tabIndex
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

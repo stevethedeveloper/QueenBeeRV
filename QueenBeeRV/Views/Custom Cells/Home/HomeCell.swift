@@ -47,6 +47,16 @@ class HomeCell: UITableViewCell {
         cellView.layer.borderWidth = 0.50
         cellView.layer.cornerRadius = 10.0
         cellView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        let cellHeight = cellView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+//        cellHeight.priority = UILayoutPriority(999)
+//        cellHeight.isActive = true
+        
+        
+        cellView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200.0).isActive = true
+
+        
+        
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 15.0),
             cellView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -59,7 +69,7 @@ class HomeCell: UITableViewCell {
     private func setTitleConstraints() {
         title.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            title.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            title.centerXAnchor.constraint(equalTo: cellView.centerXAnchor),
             title.heightAnchor.constraint(equalToConstant: 45.0)
         ])
         let titleConstraintTop = title.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 10.0)
@@ -70,7 +80,6 @@ class HomeCell: UITableViewCell {
     private func setSymbolConstraints() {
         symbol.tintColor = UIColor(named: "GoldColor")
         symbol.translatesAutoresizingMaskIntoConstraints = false
-        print(row)
         if row % 2 == 0 {
             NSLayoutConstraint.activate([
                 symbol.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20.0),
@@ -98,13 +107,15 @@ class HomeCell: UITableViewCell {
             NSLayoutConstraint.activate([
                 text.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20.0),
                 text.leadingAnchor.constraint(equalTo: symbol.trailingAnchor, constant: 10.0),
-                text.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -10.0)
+                text.trailingAnchor.constraint(equalTo: cellView.trailingAnchor, constant: -10.0),
+                text.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -10)
             ])
         } else {
             NSLayoutConstraint.activate([
                 text.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 20.0),
                 text.leadingAnchor.constraint(equalTo: cellView.leadingAnchor, constant: 10.0),
-                text.trailingAnchor.constraint(equalTo: symbol.leadingAnchor, constant: -10.0)
+                text.trailingAnchor.constraint(equalTo: symbol.leadingAnchor, constant: -10.0),
+                text.bottomAnchor.constraint(equalTo: cellView.bottomAnchor, constant: -10)
             ])
         }
         let textLayoutConstraintBottom = symbol.bottomAnchor.constraint(equalTo: cellView.bottomAnchor)
