@@ -8,6 +8,8 @@
 import UIKit
 
 class HomeCell: UITableViewCell {
+    static let identifier = "HomeCell"
+
     private let cellView = UIView()
     private let title: UILabel = {
         let label = UILabel()
@@ -48,15 +50,8 @@ class HomeCell: UITableViewCell {
         cellView.layer.cornerRadius = 10.0
         cellView.translatesAutoresizingMaskIntoConstraints = false
         
-//        let cellHeight = cellView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
-//        cellHeight.priority = UILayoutPriority(999)
-//        cellHeight.isActive = true
-        
-        
         cellView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200.0).isActive = true
 
-        
-        
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 15.0),
             cellView.leadingAnchor.constraint(equalTo: self.leadingAnchor),

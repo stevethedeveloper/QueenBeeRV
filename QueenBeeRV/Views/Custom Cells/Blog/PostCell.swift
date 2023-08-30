@@ -9,7 +9,8 @@ import UIKit
 import SDWebImage
 
 class PostCell: UITableViewCell {
-    
+    static let identifier = "PostCell"
+
     let cellView = UIView()
     var blogImageView   = UIImageView()
     var blogTitleLabel  = UILabel()
@@ -35,8 +36,6 @@ class PostCell: UITableViewCell {
     }
     
     func set(post: Post) {
-        // get paragraph
-//        let paragraph = post.html_content.components(separatedBy: "<p>").last?.replacingOccurrences(of: "</p>", with: "", options: .regularExpression) ?? ""
         //get images
         let regex: Regex = /src\s*=\s*"(.+?)"/
         if let match = post.html_content.firstMatch(of: regex) {
@@ -75,9 +74,7 @@ class PostCell: UITableViewCell {
         blogImageView.translatesAutoresizingMaskIntoConstraints = false
         blogImageView.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
         blogImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-//        blogImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         blogImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-//        blogImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         blogImageView.widthAnchor.constraint(equalTo: blogImageView.heightAnchor, multiplier: 16/9).isActive = true
     }
 
@@ -85,10 +82,7 @@ class PostCell: UITableViewCell {
         blogTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         blogTitleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
         blogTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-//        blogTitleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         blogTitleLabel.leadingAnchor.constraint(equalTo: blogImageView.trailingAnchor, constant: 20).isActive = true
-//        blogTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-//        blogTitleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
         blogTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
     }
 

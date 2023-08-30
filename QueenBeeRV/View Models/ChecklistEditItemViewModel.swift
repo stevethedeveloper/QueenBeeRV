@@ -11,10 +11,8 @@ import CoreData
 
 final public class ChecklistEditItemViewModel {
     var onErrorHandling: ((String) -> Void)?
-//    var todoListRecordObjectID: NSManagedObjectID!
     var todoListRecord: TodoListItem!
     
-    // change to "as?"
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     func updateItem(item: TodoListItem, newName: String, newNotes: String, newLastCompleted: DateComponents?) {

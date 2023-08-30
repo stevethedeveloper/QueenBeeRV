@@ -20,10 +20,9 @@ class HomeVC: UIViewController {
     let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
         table.separatorStyle = UITableViewCell.SeparatorStyle.none
-        table.register(HomeCell.self, forCellReuseIdentifier: "HomeCell")
+        table.register(HomeCell.self, forCellReuseIdentifier: HomeCell.identifier)
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = 200.0
-//        table.rowHeight = 200.0
         table.tableFooterView = nil
         table.backgroundColor = .systemBackground
         return table
@@ -80,7 +79,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as! HomeCell
         cell.set(title: sections[indexPath.row].title, text: sections[indexPath.row].text, symbol: sections[indexPath.row].symbol, row: indexPath.row)
         cell.separatorInset = .zero
         cell.selectionStyle = .none

@@ -11,7 +11,6 @@ import CoreData
 
 final public class TemplatesViewModel {
     var onErrorHandling: ((String) -> Void)?
-//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var templates: Observable<[Template]> = Observable([])
 
     func loadTemplatesFromFile() {
@@ -38,16 +37,4 @@ final public class TemplatesViewModel {
         }
         
     }
-    
-//    func createList(from template: Template) {
-//        let newList = TodoList(context: context)
-//        newList.title = title
-//        
-//        do {
-//            try context.save()
-//            getAllLists()
-//        } catch {
-//            self.onErrorHandling?("Could not save checklist.  Please check your connection and try again.")
-//        }
-//    }
 }

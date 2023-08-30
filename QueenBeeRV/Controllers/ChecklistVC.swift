@@ -15,7 +15,7 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let table = UITableView(frame: .zero, style: .plain)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorColor = .systemGray
-        table.register(ChecklistItemCell.self, forCellReuseIdentifier: "cell")
+        table.register(ChecklistItemCell.self, forCellReuseIdentifier: ChecklistItemCell.identifier)
         table.rowHeight = UITableView.automaticDimension
         table.estimatedRowHeight = 44
         return table
@@ -54,7 +54,6 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             }
         }
 
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
         setNavbarButtons()
     }
     
@@ -104,7 +103,7 @@ class ChecklistVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = viewModel.models.value[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ChecklistItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ChecklistItemCell.identifier, for: indexPath) as! ChecklistItemCell
         cell.toggleCompletedCallback = {
             self.viewModel.toggleCompleted(item: item)
         }

@@ -46,7 +46,6 @@ class RoundedTabBarController: UITabBarController {
         // This is a technique I found to refresh the gradient layer when user switches to dark mode.
         // Normally, with solid colors and no extra layer, you can just change the values here,
         // But this needs to update an added layer, not the standard tabBar.
-        
         if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
             // Remove background gradient
             tabBar.layer.sublayers?[1].removeFromSuperlayer()

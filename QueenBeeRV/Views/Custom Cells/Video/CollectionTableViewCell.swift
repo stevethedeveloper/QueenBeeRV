@@ -8,7 +8,6 @@
 import UIKit
 
 class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     static let identifier = "CollectionTableViewCell"
     
     var collectionView: UICollectionView!
@@ -49,27 +48,6 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     }
 
-//    static func nib() -> UINib {
-//        return UINib(nibName: "CollectionTableViewCell", bundle: nil)
-//    }
-//
-//
-//    @IBOutlet var collectionView: UICollectionView!
-//
-//
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//        collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//    }
-    
     // collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return playlists.count
@@ -89,7 +67,6 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         let vc = PlaylistVC()
         vc.viewModel.playlistID = playlists[indexPath.row].id
         vc.viewModel.playlistName = playlists[indexPath.row].title
-//        print(playlists[indexPath.row].title)
         parent?.navigationController?.pushViewController(vc, animated: true)
     }
 }

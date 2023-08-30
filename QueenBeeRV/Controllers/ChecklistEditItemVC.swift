@@ -14,15 +14,12 @@ class ChecklistEditItemVC: UIViewController {
     var onViewWillDisappear: (()->())?
     
     private let scrollView = UIScrollView()
-    
-//    public var item = TodoListItem()
-    
+        
     // Notes view
     private let notesView = UITextView()
     // Title View
     private let titleField = UITextField()
     // Date view
-//    private let dateButton = UIButton()
     private let lastCompleteDateLabel = UILabel()
     // Date components selected
     private var saveDateComponents: DateComponents?

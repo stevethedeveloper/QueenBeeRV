@@ -16,8 +16,6 @@ class VideoTableSectionHeader: UITableViewHeaderFooterView {
         }
     }
     
-//    var showViewAll = false
-    
     var sectionName: String?
         
     private let label: UILabel = {

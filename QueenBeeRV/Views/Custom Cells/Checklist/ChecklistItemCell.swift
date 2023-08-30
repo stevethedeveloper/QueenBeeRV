@@ -8,6 +8,8 @@
 import UIKit
 
 class ChecklistItemCell: UITableViewCell {
+    static let identifier = "ChecklistItemCell"
+    
     let cellView = UIView()
 
     var itemTitleLabel: UILabel = {
@@ -110,9 +112,6 @@ class ChecklistItemCell: UITableViewCell {
         notesView.isHidden = true
         stackView.addArrangedSubview(notesView)
 
-//        let cellHeight = cellView.widthAnchor.constraint(equalTo: stackView.widthAnchor)
-//        cellHeight.priority = UILayoutPriority(999)
-//        cellHeight.isActive = true
         cellView.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
         
         notesView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true

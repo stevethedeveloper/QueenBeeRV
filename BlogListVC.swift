@@ -13,7 +13,7 @@ class BlogListVC: UIViewController {
         let table = UITableView()
         table.separatorStyle = UITableViewCell.SeparatorStyle.none
         table.rowHeight = 130
-        table.register(PostCell.self, forCellReuseIdentifier: "PostCell")
+        table.register(PostCell.self, forCellReuseIdentifier: PostCell.identifier)
         return table
     }()
     
@@ -67,7 +67,7 @@ extension BlogListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostCell.identifier) as! PostCell
         cell.separatorInset = .zero
         cell.selectionStyle = .none
         let post = viewModel.blogPosts.value[indexPath.row]
