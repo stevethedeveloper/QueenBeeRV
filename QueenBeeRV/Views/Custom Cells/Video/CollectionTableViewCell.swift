@@ -14,7 +14,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     private var playlists = [Playlist]()
     public var parent: UIViewController?
-        
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -68,5 +68,5 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         vc.viewModel.playlistID = playlists[indexPath.row].id
         vc.viewModel.playlistName = playlists[indexPath.row].title
         parent?.navigationController?.pushViewController(vc, animated: true)
-    }
+    }    
 }

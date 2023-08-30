@@ -43,7 +43,6 @@ class VideoCollectionCell: UICollectionViewCell {
     
     func configureTextLabel() {
         text.numberOfLines = 0
-//        text.font = text.font.withSize(15)
         text.font = UIFont.boldSystemFont(ofSize: 16)
         text.numberOfLines = 0
         text.textColor = .label
@@ -71,5 +70,14 @@ class VideoCollectionCell: UICollectionViewCell {
         self.text.text = playlist.title
         self.imageView.sd_setImage(with: URL(string: playlist.thumbnailLarge), placeholderImage: placeholderImage, options: SDWebImageOptions.highPriority, context: nil, progress: nil)
 
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            text.textColor = .label
+            self.layer.borderColor = UIColor.systemGray4.cgColor
+            self.layer.backgroundColor = UIColor.systemBackground.cgColor
+        }
     }
 }
