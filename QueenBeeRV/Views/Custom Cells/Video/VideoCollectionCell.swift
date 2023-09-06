@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 
 class VideoCollectionCell: UICollectionViewCell {
+    // identifier for this custom cell
     static let identifier = "VideoCollectionCell"
 
     private let placeholderImage = UIImage(named: "placeholder")
