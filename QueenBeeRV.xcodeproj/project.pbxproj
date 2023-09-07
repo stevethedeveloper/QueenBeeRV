@@ -122,6 +122,7 @@
 		AA7F5DD52A7C8588007D2615 /* Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templates.swift; sourceTree = "<group>"; };
 		AA7F5DD92A7C86C8007D2615 /* TemplatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewModel.swift; sourceTree = "<group>"; };
 		AA7F5DDB2A7C86F6007D2615 /* TemplatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesVC.swift; sourceTree = "<group>"; };
+		AA7F6FE52AA95B75005F317C /* Config-sample.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Config-sample.xcconfig"; sourceTree = "<group>"; };
 		AA7FB9662A7061760033C874 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		AA7FB9682A707E320033C874 /* TodoListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA7FB9692A707E320033C874 /* TodoListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -323,6 +324,7 @@
 				AAB5B5BE2A69BBFA008BC538 /* Views */,
 				AAFEDCA42A15805500BE8E70 /* Info.plist */,
 				AA7C765E2A28494E007C3E46 /* Config.xcconfig */,
+				AA7F6FE52AA95B75005F317C /* Config-sample.xcconfig */,
 				AAFEDC9C2A15805300BE8E70 /* QueenBeeRV.xcdatamodeld */,
 			);
 			path = QueenBeeRV;
