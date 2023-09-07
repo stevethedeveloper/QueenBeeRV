@@ -24,7 +24,16 @@ The iOS app for a startup called Queen Bee RV.  Written in Swift, the app delive
 - Custom table view and collection view cells
 - Codable Models, with CodingKeys
 - Custom floating Tab Bar
-- A few libraries: SDWebImage, Lottie, and YouTube iOS Player Helper
+- A few libraries: [SDWebImage](), Lottie [lottie-ios](https://github.com/airbnb/lottie-ios), and YouTube iOS Player Helper [youtube-ios-player-helper](https://github.com/youtube/youtube-ios-player-helper), installed using SPM
+
+# Installation
+If you want to run this code, you'll need to clone and then do the following:
+- Add the libraries (SDWebImage, lottie-ios, and youtube-ios-player-helper)
+- Copy the file Config-sample.scconfig to Config.xcconfig and update the values within that file (YouTube API key, the YouTube channel id containing the videos, and the channel's automatically create "all videos" playlist). [Get started here.] (https://developers.google.com/youtube/v3/getting-started)
 
 # Author
 - Stephen Walton - *All work to date* - [waltonresume@gmail.com](mailto:waltonresume@gmail.com)
+
+# Copyright
+- All branding is Copyright Queen Bee RV, LLC, as well as the pre-populated checklists, articles, and videos.
+- Used by permission for demonstration purposes only.  No license is granted.
