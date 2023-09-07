@@ -29,7 +29,7 @@ The iOS app for a startup called Queen Bee RV.  Written in Swift, the app delive
 # Installation
 If you want to run this code, you'll need to clone and then do the following:
 - Add the libraries (SDWebImage, lottie-ios, and youtube-ios-player-helper)
-- Copy the file Config-sample.scconfig to Config.xcconfig and update the values within that file (YouTube API key, the YouTube channel id containing the videos, and the channel's automatically created "all videos" playlist). [Get started here.] (https://developers.google.com/youtube/v3/getting-started)
+- Copy the file Config-sample.scconfig to Config.xcconfig and update the values within that file (YouTube API key, the YouTube channel id containing the videos, and the channel's automatically created "all videos" playlist). [Get started here.](https://developers.google.com/youtube/v3/getting-started)
 
 # Author
 - Stephen Walton - *All work to date* - [waltonresume@gmail.com](mailto:waltonresume@gmail.com)
