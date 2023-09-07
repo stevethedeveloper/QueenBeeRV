@@ -35,5 +35,5 @@ If you want to run this code, you'll need to clone and then do the following:
 - Stephen Walton - *All work to date* - [waltonresume@gmail.com](mailto:waltonresume@gmail.com)
 
 # Copyright
-- All branding is Copyright Queen Bee RV, LLC, as well as the pre-populated checklists, articles, and videos.
+- All branding, pre-populated checklists, articles, and videos Copyright Queen Bee RV, LLC.
 - Used by permission for demonstration purposes only.  No license is granted.
