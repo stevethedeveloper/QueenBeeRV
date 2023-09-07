@@ -1,0 +1,14 @@
+//
+//  Config-sample.xcconfig
+//  QueenBeeRV
+//
+//  Created by Stephen Walton on 9/6/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+//
+// Add your values below
+YOUTUBE_KEY =
+YOUTUBE_CHANNEL_ID =
+YOUTUBE_ALL_VIDEOS_PLAYLIST_ID = 
