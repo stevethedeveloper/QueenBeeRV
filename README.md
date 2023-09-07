@@ -16,6 +16,15 @@ The iOS app for a startup called Queen Bee RV.  Written in Swift, the app delive
 <img src="https://github.com/stevethedeveloper/QueenBeeRV/assets/2591438/418da0d0-8e5b-4aba-8ac4-d5059ca0cc5f" width="150" height="325">
 </p>
 
-# Technologies Used
+# Technology
 - UIKit, 100% code without storyboards
-- 
+- Core Animation, Core Data, Auto Layout
+- MVVM, with straightforward generic Ovservable class
+- Unit testing using XCTest
+- Custom table view and collection view cells
+- Codable Models, with CodingKeys
+- Custom floating Tab Bar
+- A few libraries: SDWebImage, Lottie, and YouTube iOS Player Helper
+
+# Author
+- Stephen Walton - *All work to date* - [waltonresume@gmail.com](mailto:waltonresume@gmail.com)
