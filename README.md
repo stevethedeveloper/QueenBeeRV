@@ -1,6 +1,6 @@
 # Queen Bee RV
 
-The iOS app for a startup called Queen Bee RV.  Written in Swift, the app delivers video, articles, and provides pre-populated checklists for maintenance, gear, and safety.  This app is for demonstration purposes, and is used by permission.
+The iOS app for a startup called Queen Bee RV.  Written in Swift, the app delivers video, articles, and provides pre-populated checklists for maintenance, gear, and safety.  Used by permission.
 ###
 # Screenshots
 <p align="center">
